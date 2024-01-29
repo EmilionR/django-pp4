@@ -126,6 +126,7 @@ Python, HTML, CSS, and JavaScript.
 
 Django
 
+Bootstrap
 
 ### Other Technologies Used
 
