@@ -1,110 +1,199 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# FOOROOM
 
-Welcome USER_NAME,
+![Project-image]()
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Fooroom is a forum site that aims to strike a happy middle ground between the modern format of Reddit and the sleek form and functionality of traditional bulletin board sites from decades past. Ease of use and no distractions make the foundation of this app's design philosophy.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+Users can post, discuss, and interact without any unnecessary distractions.
 
-## Gitpod Reminders
+[View the website here](#)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Contents
 
-`python3 -m http.server`
+* [Development Process](#development-process)
 
-A blue button should appear to click: _Make Public_,
+* [Features](#Features)
+  * [Existing Features](#existing-features)
+    * [Home page](#home-page)
+    * [Post page](#post-page)
+    * [Comments](#comments)
+  * [Future Implementations](#future-implementations)
 
-Another blue button should appear to click: _Open Browser_.
+* [User Experience](#User-Experience)
+  * [User Stories](#User-Stories)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+* [Deployment](#Deployment)
 
-A blue button should appear to click: _Make Public_,
+* [Design](#Design)
+  * [Colour Scheme](#Colour-Scheme)
+  * [Typography](#Typography)
+  * [Images](#Images)
+  * [Wireframe](#wireframe)
+  * [Accessibility](#Accessibility)
 
-Another blue button should appear to click: _Open Browser_.
+* [Technologies Used](#Technologies-Used)
+  * [Languages Used](#Languages-Used)
+  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+* [Testing](#Testing)
+  * [Solved Bugs](#solved-bugs)
+  * [Known Bugs](#unfixed-bugs)
+  
+* [Credits](#Credits)
+  * [Content](#Content)
+  * [Media](#Media)
+  * [Tutorials & Code Used](#tutorials--code-used)
 
-To log into the Heroku toolbelt CLI:
+## Development Process
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Features
 
-------
+The site has two pages, one for the main menu and one for the game itself.
 
-## Release History
+### Existing Features
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+#### Home Page:
+![](#)
+__The home page has:__
 
-**September 20 2023:** Update Python version to 3.9.17.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+![Home page](#)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### Game Page:
+![Post page](#)
+__The Game page has:__
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Future Implementations:
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## User Experience
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### User stories
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+__Site owner goals__
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+* Goal
+* Goal
+* Goal
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+__First-time visitor goals__
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+* Goal
+* Goal
+* Goal
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+__Returning visitor goals__
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+* Goal
+* Goal
+* Goal
 
-------
+__Frequent visitor goals__
 
-## FAQ about the uptime script
+* Goal
+* Goal
+* Goal
 
-**Why have you added this script?**
+## Design
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Color palette
 
-**How will this affect me?**
+![Color Palette](#)
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Typography
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+### Images
 
-**So….?**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### Wireframe
 
-**Can I opt out?**
+![Wireframe](documentation/wireframe.png)
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+### Accessibility
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
 
-**Anything more?**
+## Technologies Used
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Languages Used
 
----
+Python, HTML, CSS, and JavaScript.
 
-Happy coding!
+### Frameworks & Libraries Used
+
+Django
+
+
+### Other Technologies Used
+
+VSCode - Used for all the coding.
+
+Git - For version control.
+
+GitHub - To store files and provide a live site.
+
+Google Fonts - For stylish headings.
+
+Google & Mozilla Developer Tools - For debugging and trying out design improvements on the fly.
+
+GNU Image Manipulation Program - Cropping and scaling images for faster load times.
+
+Am I Responsive - For testing how the site looks on different devices.
+
+WAVE Evaluation Tool - To check accessibility.
+
+Web Disability Simulator - To check accessibility.
+
+## Deployment
+
+### Heroku
+The Application has been deployed from GitHub to Heroku following the steps:
+
+1. Sign in or sign up at heroku.com
+2. Create a new app with a unique app name and select your region
+3. Click "Create app"
+4. Click "Settings" and then "Config Vars", add a key called "PORT" with the value "8000" and (when making an app like this using an external worksheet) add another key with private API credentials in the value area.
+5. Add any required buildpacks. This project uses Python and Node.js, with the latter being used for the terminal display and not the program itself.
+6. Go to the "Deploy" tab and, under "Deployment method", select "GitHub." 
+7. Insert the GitHub repository link or the name of the repository and click "Search" followed by "Connect" to deploy the GitHub repo to Heroku.
+8. Next, you must select a branch of the repository for building the project, in this case "main."
+9. Click "Deploy Branch" to deploy, or use "Enable Automatic Deploys" to make automatic deployments when the repo is updated.
+10. You'll see a message saying “App was successfully deployed” when it's ready, and you click the "View" button to view the deployed project.
+
+### GitHub
+
+#### How to Fork the repository
+
+1. Sign in to GitHub.
+2. Go to the repository for this project, [EmilionR/card-battle-pp2](https://github.com/EmilionR/card-battle-pp2/commits/main/)
+3. Click the Fork button in the top right corner.
+
+#### How to Clone the repository
+
+1. Log in (or sign up) to GitHub.
+2. Go to the repository for this project, [EmilionR/card-battle-pp2](https://github.com/EmilionR/card-battle-pp2/commits/main/)
+3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+
+## Testing
+
+Please refer to [TESTING.md](TESTING.md) for testing documentation.
+
+### Solved Bugs
+
+### Unfixed Bugs
+
+## Credits
+
+### Content
+
+### Media
+
+**Images used**
+
+
+### Tutorials & Code Used
