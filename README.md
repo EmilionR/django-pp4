@@ -25,8 +25,10 @@ Users can post, discuss, and interact without any unnecessary distractions.
 * [Deployment](#Deployment)
 
 * [Design](#Design)
-  * [Colour Scheme](#Colour-Scheme)
+  * [Color Scheme](#Color-Scheme)
   * [Typography](#Typography)
+  * [Agile Methodology](agile-methodology)
+  * [Data Model](data-model)
   * [Images](#Images)
   * [Wireframe](#wireframe)
   * [Accessibility](#Accessibility)
@@ -120,10 +122,21 @@ EPIC - User profile
 
 ### Images
 
+## Agile Methodology
+
+
+## Data Model
+
+![Data model](documentation/forum-erd.png)
 
 ### Wireframe
 
-![Wireframe](documentation/wireframe.png)
+![Wireframe](documentation/post-list.png)
+
+![Wireframe](documentation/thread-view.png)
+
+![Wireframe](documentation/profile-page.png)
+
 
 ### Accessibility
 
