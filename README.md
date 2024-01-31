@@ -73,35 +73,47 @@ __The Game page has:__
 
 ### User stories
 
-__Site owner goals__
+__Site owner / Administrator goals__
 
-* Goal
-* Goal
-* Goal
+EPIC - Site Administration
 
-__First-time visitor goals__
+* As a site admin, I can manage, edit, and delete content on the site
 
-* Goal
-* Goal
-* Goal
+* As a site admin, I can delete user accounts from the site
 
-__Returning visitor goals__
+__User goals__
 
-* Goal
-* Goal
-* Goal
+EPIC - Site navigation
 
-__Frequent visitor goals__
+* As a site user, I can have a clear idea of the site as soon as I open it so that I can know whether I should stay there.
 
-* Goal
-* Goal
-* Goal
+* As a site user, I can see how to navigate the site intuitively so that I can find what I want and find the around the site
+
+* As a site user, I can see a segmented list of posts so that I can select what to read
+
+* As a site user, I can click on a chosen post to see the whole post and its thread of comments on its own page
+
+EPIC - User posting
+
+* As a site user, I can submit a new post to the forum so that people can read my post
+
+* As a site user, I can post replies to other people's posts and replies so that we can discuss the content of the post
+
+* As a site user, I can edit or delete my posts so that I can correct mistakes
+
+EPIC - User profile
+
+* As a site user, I can upload a profile picture
+
+* As a site user, I can view the profile page for my account and others
+
+* As a site user, I can see my posts and profile picture on my profile page
 
 ## Design
 
 ### Color palette
 
-![Color Palette](#)
+![Color Palette](documentation/color-palette.png)
 
 ### Typography
 
