@@ -16,7 +16,8 @@ Users can post, discuss, and interact without any unnecessary distractions.
   * [Existing Features](#existing-features)
     * [Home page](#home-page)
     * [Post page](#post-page)
-    * [Comments](#comments)
+    * [Profile page](#profile-page)
+    * [Register/Login page](#registerlogin-page)
   * [Future Implementations](#future-implementations)
 
 * [User Experience](#User-Experience)
@@ -56,17 +57,26 @@ The site has two pages, one for the main menu and one for the game itself.
 ### Existing Features
 
 #### Home Page:
-![](#)
+![Home page](#)
+
 __The home page has:__
 
 
-![Home page](#)
-
-
-#### Game Page:
+#### Post Page:
 ![Post page](#)
-__The Game page has:__
 
+__The Post page has:__
+
+
+#### Profile Page:
+![Profile page](#)
+
+#### Register/Login Page:
+![Login page](#)
+
+__The Post page has:__
+
+__The Post page has:__
 
 ### Future Implementations:
 
@@ -191,13 +201,13 @@ The Application has been deployed from GitHub to Heroku following the steps:
 
 ### GitHub
 
-#### How to Fork the repository
+#### How to Fork the Repository
 
 1. Sign in to GitHub.
 2. Go to the repository for this project, [EmilionR/card-battle-pp2](https://github.com/EmilionR/card-battle-pp2/commits/main/)
 3. Click the Fork button in the top right corner.
 
-#### How to Clone the repository
+#### How to Clone the Repository
 
 1. Log in (or sign up) to GitHub.
 2. Go to the repository for this project, [EmilionR/card-battle-pp2](https://github.com/EmilionR/card-battle-pp2/commits/main/)
