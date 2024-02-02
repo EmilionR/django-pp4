@@ -10,6 +10,8 @@ class Entry(models.Model):
     posted_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     likes = models.IntegerField(default=0)
+    preview = models.TextField(blank=True)
+
     class Meta:
         abstract = True
 
@@ -20,8 +22,6 @@ class Post(Entry):
     )
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    preview = models.TextField(blank=True)
-
     class Meta:
         ordering = ["-posted_on"]
 
@@ -39,7 +39,7 @@ class Comment(Entry):
     )
 
     class Meta:
-        ordering = ["created_on"]
+        ordering = ["posted_on"]
 
     def __str__(self):
         return f"Comment {self.preview} by {self.author}"
