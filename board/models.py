@@ -22,6 +22,13 @@ class Post(Entry):
     slug = models.SlugField(max_length=100, unique=True)
     preview = models.TextField(blank=True)
 
+    class Meta:
+        ordering = ["-posted_on"]
+
+    
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+
 
 class Comment(Entry):
     author = models.ForeignKey(
@@ -30,3 +37,9 @@ class Comment(Entry):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments"
     )
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.preview} by {self.author}"
