@@ -1,0 +1,41 @@
+[
+    {
+        "model": "board.post",
+        "pk": null,
+        "fields": {
+            "title": "Welcome to FooRoom",
+            "slug": "welcome-to-fooroom",
+            "author": 1,
+            "body": "<p><b>Welcome to FooRoom\r\n</b></p><p>\r\nWe hope you'll enjoy discussing things here. First, take some time to look at the rules and the current discussions going on.\r\n</p><p><b>\r\nFooRoom rules\r\n</b></p><p>\nDo not post anyone's personal information\n</p><p>\nDo not post things that are off-topic. If you want to talk something that is not on topic, create a new thread.\n</p><p>\nDo not post flame or fight with other users.\n</p><p>\nDo not make duplicate threads. Search first to see if your topic is already covered, and if so, post in an existing thread.\n</p>",
+            "posted_on": "2024-01-30T13:58:53.884Z",
+            "preview": "Welcome to FooRoom. We hope you'll enjoy discussing things here. First, take some time to look at the rules and the current discussions going on.",
+            "updated_on": "2024-02-02T14:43:19.754Z"
+        }
+    },
+    {
+        "model": "board.post",
+        "pk": null,
+        "fields": {
+            "title": "Mouse in the House",
+            "slug": "mouse-in-the-house",
+            "author": 1,
+            "body": "<p><b>Mouse in the House\r\n</b></p>Just wanted to test the posting function. Neat!<p>",
+            "posted_on": "2024-01-30T13:58:53.884Z",
+            "preview": "Mouse in the House",
+            "updated_on": "2024-02-02T14:43:19.754Z"
+        }
+    },
+    {
+        "model": "board.post",
+        "pk": null,
+        "fields": {
+            "title": "Fat Cat at the Mat",
+            "slug": "fat-cat-at-the-mat",
+            "author": 1,
+            "body": "<p><b>Hello, World!\r\n</b></p><p>\r\nFat Cat splat at the mat.\r\n</p>",
+            "posted_on": "2024-01-30T13:58:53.884Z",
+            "preview": "Hello, World!",
+            "updated_on": "2024-02-02T14:43:19.754Z"
+        }
+    }
+]
