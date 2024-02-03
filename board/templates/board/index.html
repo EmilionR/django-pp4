@@ -2,22 +2,23 @@
 
 {% block content %}
 
-<div class="container-fluid bg-secondary">
+<div class="container-fluid bg-shade">
     <div class="row">
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
-                <div class="col-12 bg-secondary board-post">
+                <div class="col-12 bg-shade">
                     <div>
                         <div>
                             <a href="#" class="post-link">
-                                <h2 class="text-white">{{ post.title }}</h2>
+                                <h2 class="text-white mb-0">{{ post.title }}</h2>
+                            
+                            <a href="#" class="author">
+                                <p class="author text-white my-0">{{ post.author }}</p>
+                                <small class="text-lighter my-0">{{ post.posted_on}}</small>
                             </a>
-                            <div class="author">
-                                <p class="author text-white">{{ post.author }}</p>
-                            </div>
-                            <p class="text-light h6">{{ post.posted_on}}
-                            </p>
+                            
+                        </a>
                         </div>
                     </div>
                 </div>
