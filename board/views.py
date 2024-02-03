@@ -6,4 +6,4 @@ from .models import Post, Comment
 
 class PostList(generic.ListView):
     queryset = Post.objects.all().order_by("-posted_on")
-    template_name = "board.html"
+    template_name = "board/index.html"
