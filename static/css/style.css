@@ -1,10 +1,14 @@
+/*----------------------------------- My custom variables */
+
 :root{
     --clr-white: #F2F6D0;
     --clr-black: #1B191D;
     --clr-shade: #524462;
     --clr-light: #A48BA4;
-    --clr-lighter: #EDBBBB;
+    --clr-fade: #EDBBBB;
 }
+
+/*---------------------------------------- General styling */
 
 a {
     text-decoration: none;
@@ -14,6 +18,9 @@ h2 {
     font-size: 1.5rem;
 }
 
+/*---------------------------------------- Utility classes */
+
+
 .bg-shade {
     background-color: var(--clr-shade);
 }
@@ -22,6 +29,6 @@ h2 {
     color: var(--clr-white);
 }
 
-.text-lighter {
-    color: var(--clr-lighter);
+.text-fade {
+    color: var(--clr-fade);
 }
