@@ -18,6 +18,16 @@ h2 {
     font-size: 1.5rem;
 }
 
+.board-post {
+    background-color: var(--clr-shade);
+    border: 2px solid var(--clr-light);
+}
+
+.sticky {
+    background-color: var(--clr-black);
+    border: 2px solid var(--clr-fade);
+}
+
 /*---------------------------------------- Utility classes */
 
 

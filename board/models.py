@@ -11,6 +11,7 @@ class Entry(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     likes = models.IntegerField(default=0)
     preview = models.TextField(blank=True)
+    is_sticky = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
@@ -22,6 +23,7 @@ class Post(Entry):
     )
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
+
     class Meta:
         ordering = ["-posted_on"]
 

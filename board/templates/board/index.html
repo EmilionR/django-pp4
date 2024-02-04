@@ -7,11 +7,14 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
-                <div class="col-12 bg-shade">
+                <div class="col-12 board-post {% if post.is_sticky %}sticky{% endif %}">
                     <div>
                         <div>
                             <a href="#" class="post-link">
-                                <h2 class="text-white mb-0">{{ post.title }}</h2>
+                                <h2 class="text-white mb-0">
+                                    {% if post.is_sticky %}*{% endif %}
+                                    {{ post.title }}
+                                </h2>
                             
                             <a href="#" class="author">
                                 <p class="author text-white my-0">{{ post.author }}</p>
