@@ -16,7 +16,7 @@
                                     {{ post.title }}
                                 </h2>
                             
-                            <a href="#" class="author">
+                            <a href="{% url 'profile' user.username %}" class="author">
                                 <p class="author text-white my-0 py-0">{{ post.author }}</p>
                                 <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
                             </a>
