@@ -29,6 +29,17 @@ h2 {
     border-bottom: 2px solid var(--clr-fade);
 }
 
+/* Styling for crispy comment form */
+#div_id_body label {
+    display: none
+}
+
+#div_id_body textarea {
+    color: var(--clr-white);
+    background-color: var(--clr-shade);
+    border: none;
+}
+
 /*---------------------------------------- Utility classes */
 
 
