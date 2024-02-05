@@ -233,3 +233,7 @@ Please refer to [TESTING.md](TESTING.md) for testing documentation.
 
 
 ### Tutorials & Code Used
+
+
+Signal for automatically creating a profile when a new user is created
+https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
