@@ -29,6 +29,25 @@ h2 {
     border-bottom: 2px solid var(--clr-fade);
 }
 
+#posting-button {
+    display: block;
+    margin: auto;
+}
+
+#posting-form {
+    display: none;
+}
+
+#close-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+
 /* Styling for crispy comment form */
 #div_id_body label {
     display: none
