@@ -11,6 +11,10 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('body',)
     prepopulated_fields = {'slug': ('title',)}
 
-
-# Register your models here.
-admin.site.register(Comment)
+@admin.register(Comment)
+class CommentAdmin(SummernoteModelAdmin):
+    fields = ('author', 'post', 'body', 'is_sticky')
+    list_display = ('author', 'posted_on')
+    search_fields = ['body']
+    list_filter = ['posted_on', 'author']
+    summernote_fields = ('body',)
