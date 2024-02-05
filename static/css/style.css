@@ -37,7 +37,7 @@ h2 {
 }
 
 .text-white {
-    color: var(--clr-white);
+    color: var(--clr-white) !important;
 }
 
 .text-fade {

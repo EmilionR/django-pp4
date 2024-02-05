@@ -10,7 +10,7 @@
                 <div class="col-12 board-post {% if post.is_sticky %}sticky{% endif %}">
                     <div>
                         <div>
-                            <a href="#" class="post-link">
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                 <h2 class="text-white mb-0 pb-0">
                                     {% if post.is_sticky %}*{% endif %}
                                     {{ post.title }}
