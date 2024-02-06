@@ -1,33 +1,66 @@
 {% extends "base.html" %}
-
 {% block content %}
+{% load crispy_forms_tags %}
+
 
 <div class="container-fluid bg-shade">
+    <!-- Post a Thread -->
     <div class="row">
+        <div class="col">
+            <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto mt-3" onclick="openForm()">
+                Post a Thread
+            </button>
+        </div>
+    </div>
+    <div class="row mx-3">
         <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for post in post_list %}
-                <div class="col-12 board-post {% if post.is_sticky %}sticky{% endif %}">
-                    <div>
-                        <div>
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                <h2 class="text-white mb-0 pb-0">
-                                    {% if post.is_sticky %}*{% endif %}
-                                    {{ post.title }}
-                                </h2>
-                            <a href="{% url 'profile' post.author.username %}" class="author">
-                                <p class="author text-white my-0 py-0">{{ post.author }}</p>
-                                <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
-                            </a>
-                            
-                        </a>
-                        </div>
+            <div class="row" id="posting-form">
+                <div class="col card mb-3 mt-3 bg-dark">
+                    <div class="card-body">
+                        <button id="close-form" onclick="closeForm()" class="text-white h3">X</button>
+                        {% if user.is_authenticated %}
+                        <h4 class="text-white">
+                            Post a thread <span class="h6 text-fade">as {{ user.username }}</span>
+                        </h4>
+                        <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                            {{ post_form|crispy }}
+                            {% csrf_token %}
+                            <button id="submitButton" type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        </form>
+                        {% else %}
+                        <p>Log in to leave a comment</p>
+                        {% endif %}
                     </div>
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 
+<!-- Threads -->
+<div class="row mx-4">
+    <div class="col-12 mt-3">
+        <div class="row">
+            {% for post in post_list %}
+            <div class="col-12 board-post {% if post.is_sticky %}sticky{% endif %}">
+                <div>
+                    <div>
+                        <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                            <h2 class="text-white mb-0 pb-0">
+                                {% if post.is_sticky %}*{% endif %}
+                                {{ post.title }}
+                            </h2>
+                            <a href="{% url 'profile' post.author.username %}" class="author">
+                                <p class="author text-white my-0 py-0">{{ post.author }}</p>
+                                <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
+                            </a>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

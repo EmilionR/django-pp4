@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Post
-from .forms import CommentForm
+from crispy_forms.helper import FormHelper
+from .forms import PostForm, CommentForm
 from django.contrib import messages
+from django.utils.text import slugify
 
 
 # Create your views here.
@@ -10,6 +12,27 @@ from django.contrib import messages
 class PostList(generic.ListView):
     queryset = Post.objects.all().order_by("-is_sticky", "-posted_on")
     template_name = "board/index.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post_form = PostForm()
+        post_form.helper = FormHelper()
+        context['post_form'] = post_form
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        post_form = PostForm(request.POST)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.author = request.user
+            post.slug = slugify(post.title)
+            post.save()
+            messages.success(request, 'Thread posted successfully.')
+            return redirect('home')
+        else:
+            messages.error(request, 'There was an error with your post. Please try again.')
+            return redirect('home')
+
 
 def post_detail(request, slug):
     """

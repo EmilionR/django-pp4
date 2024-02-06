@@ -34,15 +34,15 @@
     </div>
     <!-- Post a Comment -->
     <div class="row">
-        <div class="col-m-6 mx-auto">
-            <button id="posting-button" class="btn btn-primary px-4" onclick="openForm()">Post a Comment</button>
-        </div>
+        <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto" onclick="openForm()">
+            Post a Comment
+        </button>
     </div>
     <div class="row" id="posting-form">
         <div class="col card mb-3 mt-3 bg-dark">
             <div class="card-body">
                 <button id="close-form" onclick="closeForm()" class="text-white h3">X</button>
-                
+
                 {% if user.is_authenticated %}
                 <h4 class="text-white">Post a comment <span class="h6 text-fade">as {{ user.username }}</span></h4>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
