@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
-from .models import Post, Comment, Entry
+from .models import Post, Comment
 from crispy_forms.helper import FormHelper
 from .forms import PostForm, CommentForm
 from django.contrib import messages
@@ -83,13 +83,13 @@ class EditComment(UserPassesTestMixin, UpdateView):
     Checks if the user is allowed to edit and then opens the editing form
     """
     model = Comment
-    fields = ['body']  # The field to edit
+    form_class = CommentForm # Using this form from forms.py
     template_name = 'board/editing.html'
 
     def get_success_url(self):
         return reverse_lazy('post_detail', kwargs={'slug': self.get_object().post.slug})
 
-    # Check if the user is the author of the comment
+    #  Check if the user is the author of the comment
     def test_func(self):
         comment = self.get_object()
         return self.request.user == comment.author
