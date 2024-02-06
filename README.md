@@ -183,6 +183,8 @@ WAVE Evaluation Tool - To check accessibility.
 
 Web Disability Simulator - To check accessibility.
 
+realfavicongenerator.net/ - For the Favicon
+
 ## Deployment
 
 ### Heroku
