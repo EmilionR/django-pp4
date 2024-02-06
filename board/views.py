@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
 from .models import Post, Comment
 from crispy_forms.helper import FormHelper
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, EditPostForm
 from django.contrib import messages
 from django.utils.text import slugify
 from django.urls import reverse_lazy
@@ -77,6 +77,24 @@ def post_detail(request, slug):
             "comment_form": comment_form,
          },
     )
+
+
+class EditPost(UserPassesTestMixin, UpdateView):
+    """
+    Checks if the user is allowed to edit and then opens the editing form
+    """
+    model = Post
+    form_class = EditPostForm # Using this form from forms.py
+    template_name = 'board/editing.html'
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug': self.get_object().slug})
+
+    #  Check if the user is the author of the post
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+    
 
 class EditComment(UserPassesTestMixin, UpdateView):
     """

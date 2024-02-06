@@ -29,6 +29,9 @@
                 <strong class="text-secondary">
                     <i class="far fa-comment"></i> {{ comment_count }}
                 </strong>
+                {% if user.is_authenticated and post.author == user %}
+                    <a class="text-white" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
+                {% endif %}
             </div>
         </div>
     </div>

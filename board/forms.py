@@ -6,10 +6,20 @@ class PostForm(forms.ModelForm):
     
     class Meta:
         model = Post
-        fields = ('title', 'body',)#  Fields that user can write to
+        fields = ('title', 'body',) #  Fields that user can write to
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'body': forms.Textarea(attrs={'placeholder': 'Your content here...'}),
+        }
+
+
+class EditPostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('body',) #  Fields that user can write to
+        widgets = {
+            'body': forms.Textarea(),
         }
 
 
