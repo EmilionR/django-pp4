@@ -71,6 +71,11 @@ h2 {
 #div_id_title input::placeholder {
     color: var(--clr-fade);
 }
+
+#edit-form textarea {
+    display: block;
+}
+
 /*---------------------------------------- Utility classes */
 
 

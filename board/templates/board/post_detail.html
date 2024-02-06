@@ -72,6 +72,9 @@
                     <div class="text-white" id="comment{{ comment.id }}">
                         {{ comment.body | safe}}
                     </div>
+                    {% if user.is_authenticated and comment.author == user %}
+                    <a class="text-white" comment_id="{{ comment.id }}" href="{% url 'edit_comment' comment.pk %}">Edit</a>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>

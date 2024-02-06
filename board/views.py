@@ -1,15 +1,22 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
-from .models import Post
+from .models import Post, Comment, Entry
 from crispy_forms.helper import FormHelper
 from .forms import PostForm, CommentForm
 from django.contrib import messages
 from django.utils.text import slugify
-
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 # Create your views here.
 
 class PostList(generic.ListView):
+
+    """
+    Display a list of all posts and a posting form
+    """
+
     queryset = Post.objects.all().order_by("-is_sticky", "-posted_on")
     template_name = "board/index.html"
     
@@ -39,6 +46,7 @@ def post_detail(request, slug):
     Display an individual post thread
     """
 
+    # Retrieve all posts
     queryset = Post.objects.all()
     post = get_object_or_404(queryset, slug=slug)
 
@@ -69,3 +77,19 @@ def post_detail(request, slug):
             "comment_form": comment_form,
          },
     )
+
+class EditComment(UserPassesTestMixin, UpdateView):
+    """
+    Checks if the user is allowed to edit and then opens the editing form
+    """
+    model = Comment
+    fields = ['body']  # The field to edit
+    template_name = 'board/editing.html'
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug': self.get_object().post.slug})
+
+    # Check if the user is the author of the comment
+    def test_func(self):
+        comment = self.get_object()
+        return self.request.user == comment.author
