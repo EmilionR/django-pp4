@@ -48,6 +48,12 @@ h2 {
     background-color: transparent;
 }
 
+.signup label,
+.signup li,
+.login label {
+    color: var(--clr-fade);
+}
+
 /* Styling for crispy comment form */
 #div_id_title label,
 #div_id_body label {
