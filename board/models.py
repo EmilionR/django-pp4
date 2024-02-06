@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -15,6 +16,13 @@ class Entry(models.Model):
 
     class Meta:
         abstract = True
+
+    def save(self, *args, **kwargs):
+        # Check if entry already exists and has been modified
+        if self.pk and self._state.adding is False:
+            # Append update message to end of content
+            self.body += f"<br><small>Updated on {datetime.now().strftime("%Y-%m-%d %H:%M")} by {self.author}</small>"
+        super().save(*args, **kwargs)
 
 
 class Post(Entry):
