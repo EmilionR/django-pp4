@@ -66,24 +66,26 @@
                 <!-- Iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div class="p-2 comments card bg-dark mb-1">
-                    <a href="{% url 'profile' comment.author.username %}" class="font-weight-bold text-fade">
-                        {{ comment.author }}
-                        <small class="text-fade">
-                            {{ comment.posted_on }}
-                        </small>
-                    </a>
+                    <p class="text-fade small">
+                        <a href="{% url 'profile' comment.author.username %}" class="font-weight-bold lead text-fade">
+                            {{ comment.author }}
+                        </a>
+                        {{ comment.posted_on }}
+                    </p>
                     <div class="text-white" id="comment{{ comment.id }}">
                         {{ comment.body | safe}}
                     </div>
                     <div class="text-white" id="comment{{ comment.id }}">
                         {% if comment.posted_on != comment.updated_on %}
-                            <small>Updated on {{ comment.updated_on }}</small>    
+                        <small>Updated on {{ comment.updated_on }}</small>
                         {% endif %}
                     </div>
-                    {% if user.is_authenticated and comment.author == user %}
-                    <a class="text-white" comment_id="{{ comment.id }}"
-                        href="{% url 'edit_comment' comment.pk %}">Edit</a>
-                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                    {% if user.is_authenticated and comment.author == user or user.is_staff %}
+                    <div class="d-flex flex-row gap-1">
+                        <a class="comment-control" comment_id="{{ comment.id }}"
+                            href="{% url 'edit_comment' comment.pk %}">Edit</a>
+                        <button class="btn-delete comment-control" comment_id="{{ comment.id }}">Delete</button>
+                    </div>
                     {% endif %}
                 </div>
                 {% endfor %}
@@ -109,7 +111,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn
           btn-danger">Delete</button>
-          {% csrf_token %}
+                    {% csrf_token %}
                 </form>
             </div>
         </div>
