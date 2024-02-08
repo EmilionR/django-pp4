@@ -117,13 +117,16 @@ class EditComment(UserPassesTestMixin, UpdateView):
     #  Check if the user is the author of the comment
     def test_func(self):
         comment = self.get_object()
-        return self.request.user == comment.author
-    
+        if self.request.user == comment.author or self.request.user.is_staff:
+            return True
+        else:
+            return False
+        
 
 @login_required
 def comment_delete(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    if request.user != comment.author or not request.user.is_staff:
+    if request.user != comment.author and not request.user.is_staff:
         messages.error(request, "You can not delete another user's post.")
         return redirect(comment.post.get_absolute_url())  # Redirect if the user doesn't have permission
     if request.method == "POST":
