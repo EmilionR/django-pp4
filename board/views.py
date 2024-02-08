@@ -125,8 +125,8 @@ def comment_delete(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     if request.user != comment.author or not request.user.is_staff:
         messages.error(request, "You can not delete another user's post.")
-        return HttpResponseRedirect("/")  # Redirect if the user doesn't have permission
+        return redirect(comment.post.get_absolute_url())  # Redirect if the user doesn't have permission
     if request.method == "POST":
         comment.delete()
         messages.success(request, 'Comment deleted successfully.')
-        return HttpResponseRedirect("/")
+        return redirect(comment.post.get_absolute_url())
