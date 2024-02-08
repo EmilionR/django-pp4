@@ -9,8 +9,6 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.CharField(max_length=500, default='No bio...')
-    posts = models.ManyToManyField('board.Post', related_name='user_posts')
-    comments = models.ManyToManyField('board.Comment', related_name='user_comments')
 
     def __str__(self):
         return f'{self.user.username} Profile'

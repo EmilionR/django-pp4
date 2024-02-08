@@ -8,6 +8,9 @@ from django.utils.text import slugify
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -111,3 +114,15 @@ class EditComment(UserPassesTestMixin, UpdateView):
     def test_func(self):
         comment = self.get_object()
         return self.request.user == comment.author
+    
+
+@login_required
+def comment_delete(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.user != comment.author or not request.user.is_staff:
+        messages.error(request, "You can not delete another user's post.")
+        return HttpResponseRedirect("/")  # Redirect if the user doesn't have permission
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, 'Comment deleted successfully.')
+        return HttpResponseRedirect("/")

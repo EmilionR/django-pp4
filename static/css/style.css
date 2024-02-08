@@ -76,6 +76,17 @@ h2 {
     display: block;
 }
 
+.btn-delete{
+    color: var(--clr-white);
+    background-color: var(--clr-black);
+}
+
+.btn-delete:hover {
+    color: var(--clr-fade);
+    background-color: var(--clr-black);
+}
+
+
 /*---------------------------------------- Utility classes */
 
 

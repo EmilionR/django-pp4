@@ -30,7 +30,7 @@
                     <i class="far fa-comment"></i> {{ comment_count }}
                 </strong>
                 {% if user.is_authenticated and post.author == user %}
-                    <a class="text-white" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
+                <a class="text-white" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
                 {% endif %}
             </div>
         </div>
@@ -75,11 +75,42 @@
                     <div class="text-white" id="comment{{ comment.id }}">
                         {{ comment.body | safe}}
                     </div>
+                    <div class="text-white" id="comment{{ comment.id }}">
+                        {% if comment.posted_on != comment.updated_on %}
+                            <small>Updated on {{ comment.updated_on | safe}}</small>    
+                        {% endif %}
+                    </div>
                     {% if user.is_authenticated and comment.author == user %}
-                    <a class="text-white" comment_id="{{ comment.id }}" href="{% url 'edit_comment' comment.pk %}">Edit</a>
+                    <a class="text-white" comment_id="{{ comment.id }}"
+                        href="{% url 'edit_comment' comment.pk %}">Edit</a>
+                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
                     {% endif %}
                 </div>
                 {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <form id="deleteConfirm" method="post">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn
+          btn-danger">Delete</button>
+          {% csrf_token %}
+                </form>
             </div>
         </div>
     </div>

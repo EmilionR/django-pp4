@@ -92,6 +92,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'fooroom.wsgi.application'
 
 
