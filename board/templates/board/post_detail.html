@@ -77,7 +77,7 @@
                     </div>
                     <div class="text-white" id="comment{{ comment.id }}">
                         {% if comment.posted_on != comment.updated_on %}
-                            <small>Updated on {{ comment.updated_on | safe}}</small>    
+                            <small>Updated on {{ comment.updated_on }}</small>    
                         {% endif %}
                     </div>
                     {% if user.is_authenticated and comment.author == user %}

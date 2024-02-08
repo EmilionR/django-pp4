@@ -56,6 +56,10 @@ def post_detail(request, slug):
     comments = post.comments.all().order_by("-is_sticky", "posted_on")
     comment_count = post.comments.all().count()
 
+    for comment in comments:
+        comment.posted_on = comment.posted_on.strftime("%b %d, %Y %H:%M")
+        comment.updated_on = comment.updated_on.strftime("%b %d, %Y %H:%M")
+
     comment_form = CommentForm()
 
     if request.method == "POST":
