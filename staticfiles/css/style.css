@@ -54,6 +54,26 @@ h2 {
     color: var(--clr-fade);
 }
 
+#about {
+    background-color: var(--clr-black);
+    padding: 10px;
+}
+
+#edit-about {
+    display: none;
+}
+
+#edit-about textarea {
+    width: 100%;
+    background-color: #1B191D;
+    color: var(--clr-white);
+    padding: 10px;
+}
+
+#edit-about label {
+    display: none;
+}
+
 /* Styling for crispy form */
 #div_id_title label,
 #div_id_body label {
