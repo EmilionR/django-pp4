@@ -26,6 +26,9 @@
                 <p class="card-text">
                     {{ post.body | safe }}
                 </p>
+                {% if post.posted_on != post.updated_on %}
+                    <small>Updated on {{ post.updated_on }}</small>
+                {% endif %}
                 <strong class="text-secondary">
                     <i class="far fa-comment"></i> {{ comment_count }}
                 </strong>

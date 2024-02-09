@@ -52,11 +52,15 @@ def post_detail(request, slug):
     # Retrieve all posts
     queryset = Post.objects.all()
     post = get_object_or_404(queryset, slug=slug)
+    # Format the date time to exclude seconds and microseconds
+    post.posted_on = post.posted_on.strftime("%b %d, %Y %H:%M")
+    post.updated_on = post.updated_on.strftime("%b %d, %Y %H:%M")
 
     comments = post.comments.all().order_by("-is_sticky", "posted_on")
     comment_count = post.comments.all().count()
 
     for comment in comments:
+        # Format the date time to exclude seconds and microseconds
         comment.posted_on = comment.posted_on.strftime("%b %d, %Y %H:%M")
         comment.updated_on = comment.updated_on.strftime("%b %d, %Y %H:%M")
 
