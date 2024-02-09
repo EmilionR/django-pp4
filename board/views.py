@@ -99,7 +99,7 @@ class EditMixin(UserPassesTestMixin):
 
     def test_func(self):
         obj = self.get_object()
-        return self.request.user == obj.author and self.request.user.is_staff
+        return self.request.user == obj.author or self.request.user.is_staff
         
     def get_success_url(self):
         if self.model == Comment:
