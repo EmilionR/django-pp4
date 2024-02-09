@@ -65,7 +65,7 @@
             <div>
                 <!-- Iterate through each comment in comments -->
                 {% for comment in comments %}
-                <div class="p-2 comments card bg-dark mb-1">
+                <div class="p-2 comments card mb-1 {% if comment.is_sticky %}sticky{% else %} bg-dark {% endif %}">
                     <p class="text-fade small">
                         <a href="{% url 'profile' comment.author.username %}" class="font-weight-bold lead text-fade">
                             {{ comment.author }}

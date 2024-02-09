@@ -25,8 +25,8 @@ h2 {
 }
 
 .sticky {
-    background-color: var(--clr-black);
-    border-bottom: 2px solid var(--clr-fade);
+    background-color: var(--clr-black) !important;
+    border: 2px solid var(--clr-fade) !important;
 }
 
 #posting-button {
