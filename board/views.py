@@ -73,6 +73,7 @@ def post_detail(request, slug):
                 request, messages.SUCCESS,
                 'Comment posted successfully'
             )
+            return redirect(comment.post.get_absolute_url())
 
     return render(
         request,
