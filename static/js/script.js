@@ -25,8 +25,9 @@ function closeForm() {
 */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-      let commentId = e.target.getAttribute("comment_id");
-      deleteConfirm.setAttribute("action", `/delete_comment/${commentId}`);
+      let entryID = e.target.getAttribute("entry_id");
+      let entryType = e.target.getAttribute("entry_type");
+      deleteConfirm.setAttribute("action", `/delete/${entryType}/${entryID}`);
       deleteModal.show();
     });
   }

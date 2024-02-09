@@ -29,8 +29,9 @@
                 <strong class="text-secondary">
                     <i class="far fa-comment"></i> {{ comment_count }}
                 </strong>
-                {% if user.is_authenticated and post.author == user %}
-                <a class="text-white" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
+                {% if user.is_authenticated and post.author == user or user.is_staff %}
+                <a class="comment-control" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
+                <button class="btn-delete comment-control" entry_type="post" entry_id="{{ post.id }}">Delete</button>
                 {% endif %}
             </div>
         </div>
@@ -84,7 +85,7 @@
                     <div class="d-flex flex-row gap-1">
                         <a class="comment-control" comment_id="{{ comment.id }}"
                             href="{% url 'edit_comment' comment.pk %}">Edit</a>
-                        <button class="btn-delete comment-control" comment_id="{{ comment.id }}">Delete</button>
+                        <button class="btn-delete comment-control" entry_type="comment" entry_id="{{ comment.id }}">Delete</button>
                     </div>
                     {% endif %}
                 </div>

@@ -101,7 +101,10 @@ class EditPost(UserPassesTestMixin, UpdateView):
     #  Check if the user is the author of the post
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author
+        if self.request.user == post.author or self.request.user.is_staff:
+            return True
+        else:
+            return False
     
 
 class EditComment(UserPassesTestMixin, UpdateView):
@@ -125,12 +128,21 @@ class EditComment(UserPassesTestMixin, UpdateView):
         
 
 @login_required
-def comment_delete(request, comment_id):
-    comment = get_object_or_404(Comment, id=comment_id)
-    if request.user != comment.author and not request.user.is_staff:
+def post_delete(request, entry_type, entry_id):
+    """
+    Delete a post or comment, depending on the entry_type
+    then redirect to the post's detail page
+    """
+    EntryType = Comment if entry_type == "comment" else Post
+    entry = get_object_or_404(EntryType, id=entry_id)
+    
+    #  Decide where to redirect after deletion
+    redirect_url = entry.post.get_absolute_url() if entry_type == "comment" else reverse('home')
+
+    if request.user != entry.author and not request.user.is_staff:
         messages.error(request, "You can not delete another user's post.")
-        return redirect(comment.post.get_absolute_url())  # Redirect if the user doesn't have permission
+        return redirect(redirect_url)  # Redirect if the user doesn't have permission
     if request.method == "POST":
-        comment.delete()
-        messages.success(request, 'Comment deleted successfully.')
-        return redirect(comment.post.get_absolute_url())
+        entry.delete()
+        messages.success(request, 'Post deleted successfully.')
+        return redirect(redirect_url)
