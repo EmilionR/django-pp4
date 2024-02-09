@@ -4,11 +4,13 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # User profile
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.CharField(max_length=500, default='No bio...')
+    avatar = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return f'{self.user.username} Profile'

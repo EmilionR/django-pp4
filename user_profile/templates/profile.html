@@ -6,7 +6,14 @@
 <div class="container">
     <div class="row">
         <div class="col mt-4 text-white">
-            <h1>{{ profile.user.username }}{% if user.is_staff %} (Admin){% endif %}</h1>
+            <div class="text-center mb-4">
+                <h1>{{ profile.user.username }}{% if user.is_staff %} (Admin){% endif %}</h1>
+                {% if "placeholder" in profile.avatar.url %}
+                <img src="{% static 'images/nobody.jpg' %}" width="200px" alt="placeholder image">
+                {% else %}
+                <img src="{{ profile.avatar.url }}" width="200px" alt="{{ about.title }}">
+                {% endif %}
+            </div>
             <div id="about">
                 <small>Info</small>
                 <p>{{ profile.about }}</p>
@@ -29,5 +36,5 @@
 </div>
 {% endblock %}
 {% block extras %}
-    <script src="{% static 'js/profile.js' %}"></script>
+<script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
