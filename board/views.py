@@ -87,44 +87,34 @@ def post_detail(request, slug):
     )
 
 
-class EditPost(UserPassesTestMixin, UpdateView):
+class EditMixin(UserPassesTestMixin):
     """
-    Checks if the user is allowed to edit and then opens the editing form
+    Checks if the user is allowed to edit
     """
-    model = Post
-    form_class = EditPostForm # Using this form from forms.py
     template_name = 'board/editing.html'
 
-    def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'slug': self.get_object().slug})
-
-    #  Check if the user is the author of the post
     def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author or self.request.user.is_staff:
-            return True
+        obj = self.get_object()
+        return self.request.user == obj.author and self.request.user.is_staff
+        
+    def get_success_url(self):
+        if self.model == Comment:
+            # Commens get the slug from the related Post
+            return reverse_lazy('post_detail', kwargs={'slug': self.get_object().post.slug})
         else:
-            return False
+            # Posts get their own slug
+            return reverse_lazy('post_detail', kwargs={'slug': self.get_object().slug})
+
+
+class EditPost(EditMixin, UpdateView):
+    model = Post
+    form_class = EditPostForm #  Using this form from forms.py
     
 
-class EditComment(UserPassesTestMixin, UpdateView):
-    """
-    Checks if the user is allowed to edit and then opens the editing form
-    """
+class EditComment(EditMixin, UpdateView):
     model = Comment
     form_class = CommentForm # Using this form from forms.py
-    template_name = 'board/editing.html'
 
-    def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'slug': self.get_object().post.slug})
-
-    #  Check if the user is the author of the comment
-    def test_func(self):
-        comment = self.get_object()
-        if self.request.user == comment.author or self.request.user.is_staff:
-            return True
-        else:
-            return False
         
 
 @login_required
