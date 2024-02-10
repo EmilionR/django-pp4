@@ -5,33 +5,29 @@
 
 <div class="container-fluid bg-shade">
     <!-- Post a Thread -->
-    <div class="row">
-        <div class="col">
+    <div class="row mx-4 mt-1">
+        <div class="col-12 mt-0">
             <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto mt-3" onclick="openForm()">
                 Post a Thread
             </button>
         </div>
     </div>
-    <div class="row mx-3">
-        <div class="col-12 mt-3 left">
-            <div class="row" id="posting-form">
-                <div class="col card mb-3 mt-3 bg-dark">
-                    <div class="card-body">
-                        <button id="close-form" onclick="closeForm()" class="text-white h3">X</button>
-                        {% if user.is_authenticated %}
-                        <h4 class="text-white">
-                            What's on your mind, <span class="text-fade"> {{ user.username }}?</span>
-                        </h4>
-                        <form id="commentForm" method="post" style="margin-top: 1.3em;">
-                            {{ post_form|crispy }}
-                            {% csrf_token %}
-                            <button id="submitButton" type="submit" class="btn btn-primary btn-lg">Submit</button>
-                        </form>
-                        {% else %}
-                        <p class="text-white">You must log in to post a thread.</p>
-                        {% endif %}
-                    </div>
-                </div>
+    <div class="row" id="posting-form">
+        <div class="col card mb-3 mt-3 bg-dark">
+            <div class="card-body">
+                <button id="close-form" onclick="closeForm()" class="text-white h3">X</button>
+                {% if user.is_authenticated %}
+                <h4 class="text-white">
+                    What's on your mind, <span class="text-fade"> {{ user.username }}?</span>
+                </h4>
+                <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                    {{ post_form|crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </form>
+                {% else %}
+                <p class="text-white">You must log in to post a thread.</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -43,12 +39,14 @@
         <div class="row">
             {% for post in post_list %}
             <div class="col-12 board-post bg-dark {% if post.is_sticky %}sticky{% endif %}">
-                <div class="row">
-                    <div class="col-1">
-                        <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
-                            class="text-fade" width="50">
+                <div class="row pt-2">
+                    <div class="col-2 col-md-1 d-none d-sm-block">
+                        <a href="{% url 'profile' post.author.username %}" class="author text-white my-0 py-0">
+                            <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
+                                class="text-fade" width="45">
+                        </a>
                     </div>
-                    <div class="col-10 text-left">
+                    <div class="col-md-11 col-sm-10 col-12 text-left">
                         <a href="{% url 'post_detail' post.slug %}" class="post-link">
                             <h2 class="text-white mb-0 pb-0 h5">
                                 {% if post.is_sticky %}*{% endif %}
@@ -59,6 +57,11 @@
                             </a>
                             <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
                         </a>
+                    </div>
+                </div>
+                <div class="row mb-0 pb-0">
+                    <div class="col text-fade mb-0 pb-0">
+                        <p class="mb-1"><i class="far fa-comment"></i> {{ post.comment_count }}</p>
                     </div>
                 </div>
             </div>

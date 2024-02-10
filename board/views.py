@@ -8,8 +8,8 @@ from django.utils.text import slugify
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 
 
 # Create your views here.
@@ -20,8 +20,10 @@ class PostList(generic.ListView):
     Display a list of all posts and a posting form
     """
 
-    queryset = Post.objects.all().order_by("-is_sticky", "-posted_on")
+    queryset = Post.objects.annotate(comment_count=Count('comments'))\
+                             .order_by("-is_sticky", "-posted_on")
     template_name = "board/index.html"
+    
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
