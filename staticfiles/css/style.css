@@ -19,9 +19,8 @@ h2 {
 }
 
 .board-post {
-    background-color: var(--clr-shade);
-    border-bottom: 2px solid var(--clr-light);
-    padding: 6px;
+    border-radius: 12px 0 0 0;
+    margin-bottom: 4px;
 }
 
 .sticky {
@@ -96,7 +95,6 @@ h2 {
     display: block;
 }
 
-
 /*---------------------------------------- Buttons and such */
 
 .comment-control {
@@ -105,9 +103,10 @@ h2 {
     border: none;
     border-radius: 4px;
     padding: 4px;
-    height: 20x !important;
+    height: 20px !important;
     line-height: 1rem;
     font-size: 0.8rem;
+    display: inline;
 }
 
 

@@ -3,17 +3,17 @@
 {% load crispy_forms_tags %}
 
 <!-- Post info -->
-<div class="container mt-3 bg-dark card pt-3">
+<div class="container mt-3 mb-2 pb-1 bg-dark card pt-3">
     <div class="row">
         <div class="col d-flex">
             <!-- Avatar -->
             <a href="{% url 'profile' post.author.username %}" class="author text-white">
-                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar." class="text-fade mx-3"
-                    width="80">
+                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar." class="text-fade mr-3"
+                    width="64">
             </a>
             <!-- Title, author, time of post -->
-            <div class="">
-                <h1 class="post-title text-white my-0">{{ post.title }}</h1>
+            <div class="mx-3">
+                <h2 class="post-title text-white my-0">{{ post.title }}</h2>
                 <p class="post-subtitle text-white  my-0">
                     <a href="{% url 'profile' post.author.username %}" class="link text-white font-weight-bold">
                         {{ post.author }}
@@ -26,33 +26,38 @@
     <!-- Post content -->
     <div class="row">
         <div class="col left top bg-dark">
-            <div class="card-body text-white pt-0">
-                <p class="card-text">
+            <div class="card-body text-white p-0 mb-1">
+                <p>
                     {{ post.body | safe }}
                 </p>
                 {% if post.posted_on != post.updated_on %}
                 <small>Updated on {{ post.updated_on }}</small>
                 {% endif %}
-                <!-- Likes and Comments -->
-                <strong class="text-secondary">
-                    <i class="far fa-heart"></i> {{ post.likes }}
-                    <i class="far fa-comment"></i> {{ comment_count }}
-                </strong>
-                <!-- Edit / delete -->
-                {% if user.is_authenticated and post.author == user or user.is_staff %}
-                <a class="comment-control" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
-                <button class="btn-delete comment-control" entry_type="post" entry_id="{{ post.id }}">Delete</button>
-                {% endif %}
+
             </div>
         </div>
+    </div>
+    <div class="d-flex flex-row gap-1">
+        <!-- Likes and Comments -->
+        <strong class="text-fade">
+            <i class="far fa-heart"></i> {{ post.likes }}
+            <i class="far fa-comment"></i> {{ comment_count }}
+        </strong>
+        <!-- Edit / delete -->
+        {% if user.is_authenticated and post.author == user or user.is_staff %}
+        <a class="comment-control" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
+        <button class="btn-delete comment-control" entry_type="post" entry_id="{{ post.id }}">Delete</button>
+        {% endif %}
     </div>
 </div>
 <!-- Post a Comment -->
 <div class="container">
     <div class="row">
-        <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto" onclick="openForm()">
-            Post a Comment
-        </button>
+        <div class="col-6 mx-auto">
+            <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto" onclick="openForm()">
+                Post a Comment
+            </button>
+        </div>
     </div>
     <div class="row" id="posting-form">
         <div class="col card mb-3 mt-3 bg-dark">
@@ -74,41 +79,57 @@
     </div>
 </div>
 <!-- Comments -->
-<div class="container">
+<div class="container mt-2">
     <div class="row">
-        <div class="col mb-4 mt-3 p-0 mx-auto">
-            <div>
-                <!-- Iterate through each comment in comments -->
-                {% for comment in comments %}
-                <div class="p-2 comments card mb-1 {% if comment.is_sticky %}sticky{% else %} bg-dark {% endif %}">
-                    <!-- Comment info (author, time of post) -->
-                    <p class="text-fade small">
-                        <a href="{% url 'profile' comment.author.username %}" class="font-weight-bold lead text-fade">
-                            {{ comment.author }}
+        <div class="col mb-4 p-0 mx-auto">
+            <!-- Iterate through each comment in comments -->
+            {% for comment in comments %}
+            <div class="container card px-0 py-1  mb-1 {% if comment.is_sticky %}sticky{% else %} bg-dark {% endif %}">
+                <div class="row">
+                    <div class="col-3 col-sm-2 col-lg-1 pt-2">
+                        <!-- Avatar -->
+                        <a href="{% url 'profile' comment.author.username %}" class="author text-white">
+                            <img src="{{ comment.author.profile.avatar.url }}" alt="{{ comment.author }}'s avatar."
+                                class="avatar text-fade mx-3" width="64">
                         </a>
-                        {{ comment.posted_on }}
-                    </p>
-                    <!-- Comment body -->
-                    <div class="text-white" id="comment{{ comment.id }}">
-                        {{ comment.body | safe}}
                     </div>
-                    <div class="text-white" id="comment{{ comment.id }}">
-                        {% if comment.posted_on != comment.updated_on %}
-                        <small>Updated on {{ comment.updated_on }}</small>
-                        {% endif %}
+                    <div class="col-9 col-sm-10 col-lg-11 px-3">
+                        <!-- Comment info (author, time of post) -->
+                        <p class="text-fade small mb-0">
+                            <a href="{% url 'profile' comment.author.username %}"
+                                class="font-weight-bold lead text-fade">
+                                {{ comment.author }}
+                            </a>
+                            {{ comment.posted_on }}
+                        </p>
+                        <!-- Comment body -->
+                        <div class="text-white" id="comment{{ comment.id }}">
+                            {{ comment.body | safe}}
+                        </div>
+                        <div class="mb-1 text-white" id="comment{{ comment.id }}">
+                            {% if comment.posted_on != comment.updated_on %}
+                            <small>Updated on {{ comment.updated_on }}</small>
+                            {% endif %}
+                        </div>
+
                     </div>
+                </div>
+                <div class="d-flex flex-row gap-1 px-3 pb-1">
+                    <!-- Likes -->
+                    <strong class="text-fade">
+                        <i class="far fa-heart"></i> {{ post.likes }}
+                    </strong>
                     <!-- Edit / delete -->
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
-                    <div class="d-flex flex-row gap-1">
-                        <a class="comment-control" comment_id="{{ comment.id }}"
-                            href="{% url 'edit_comment' comment.pk %}">Edit</a>
-                        <button class="btn-delete comment-control" entry_type="comment"
-                            entry_id="{{ comment.id }}">Delete</button>
-                    </div>
-                    {% endif %}
+
+                    <a class="comment-control" comment_id="{{ comment.id }}"
+                        href="{% url 'edit_comment' comment.pk %}">Edit</a>
+                    <button class="btn-delete comment-control" entry_type="comment"
+                        entry_id="{{ comment.id }}">Delete</button>
                 </div>
-                {% endfor %}
+                {% endif %}
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

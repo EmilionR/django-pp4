@@ -28,6 +28,13 @@ h2 {
     border: 2px solid var(--clr-fade) !important;
 }
 
+.avatar {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--clr-fade);
+    border-radius: 8px;
+}
+
 #posting-button {
     display: block;
     margin: auto;
@@ -102,10 +109,12 @@ h2 {
     background-color: var(--clr-shade);
     border: none;
     border-radius: 4px;
-    padding: 4px;
-    height: 20x !important;
+    padding: 2px 4px;
+    max-height: 20px !important;
+    max-width: 40px !important;
     line-height: 1rem;
     font-size: 0.8rem;
+    display: inline-block;
 }
 
 
