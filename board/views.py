@@ -24,7 +24,6 @@ class PostList(generic.ListView):
                              .order_by("-is_sticky", "-posted_on")
     template_name = "board/index.html"
     
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post_form = PostForm()

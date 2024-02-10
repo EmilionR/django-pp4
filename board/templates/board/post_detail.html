@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
+<!-- Post info (title, author, time of post) -->
 <div>
     <div class="container mt-4">
         <div class="row g-0">
@@ -18,7 +18,7 @@
         </div>
     </div>
 </div>
-
+<!-- Post content -->
 <div class="container">
     <div class="row">
         <div class="col card mb-3  mt-3 left top bg-dark">
@@ -29,9 +29,12 @@
                 {% if post.posted_on != post.updated_on %}
                     <small>Updated on {{ post.updated_on }}</small>
                 {% endif %}
+                <!-- Likes and Comments -->
                 <strong class="text-secondary">
+                    <i class="far fa-heart"></i> {{ post.likes }}
                     <i class="far fa-comment"></i> {{ comment_count }}
                 </strong>
+                <!-- Edit / delete -->
                 {% if user.is_authenticated and post.author == user or user.is_staff %}
                 <a class="comment-control" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
                 <button class="btn-delete comment-control" entry_type="post" entry_id="{{ post.id }}">Delete</button>
@@ -70,12 +73,14 @@
                 <!-- Iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div class="p-2 comments card mb-1 {% if comment.is_sticky %}sticky{% else %} bg-dark {% endif %}">
+                    <!-- Comment info (author, time of post) -->
                     <p class="text-fade small">
                         <a href="{% url 'profile' comment.author.username %}" class="font-weight-bold lead text-fade">
                             {{ comment.author }}
                         </a>
                         {{ comment.posted_on }}
                     </p>
+                    <!-- Comment body -->
                     <div class="text-white" id="comment{{ comment.id }}">
                         {{ comment.body | safe}}
                     </div>
@@ -84,6 +89,7 @@
                         <small>Updated on {{ comment.updated_on }}</small>
                         {% endif %}
                     </div>
+                    <!-- Edit / delete -->
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
                     <div class="d-flex flex-row gap-1">
                         <a class="comment-control" comment_id="{{ comment.id }}"

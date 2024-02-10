@@ -5,6 +5,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <!-- Profile info -->
         <div class="col mt-4 text-white">
             <div class="text-center mb-4">
                 <h1>{{ profile.user.username }}{% if user.is_staff %} (Admin){% endif %}</h1>
@@ -21,6 +22,7 @@
                     Edit profile
                 </button>
             </div>
+            <!-- Edit profile form -->
             <div id="edit-about">
                 <form method="post" enctype="multipart/form-data">
                     {{ profile_form.as_p | safe }}

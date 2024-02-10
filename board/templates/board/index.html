@@ -12,6 +12,7 @@
             </button>
         </div>
     </div>
+    <!-- Post form -->
     <div class="row" id="posting-form">
         <div class="col card mb-3 mt-3 bg-dark">
             <div class="card-body">
@@ -40,12 +41,14 @@
             {% for post in post_list %}
             <div class="col-12 board-post bg-dark {% if post.is_sticky %}sticky{% endif %}">
                 <div class="row pt-2">
+                    <!-- Avatar -->
                     <div class="col-2 col-md-1 d-none d-sm-block">
                         <a href="{% url 'profile' post.author.username %}" class="author text-white my-0 py-0">
                             <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
                                 class="text-fade" width="45">
                         </a>
                     </div>
+                    <!-- Title, author, time of post -->
                     <div class="col-md-11 col-sm-10 col-12 text-left">
                         <a href="{% url 'post_detail' post.slug %}" class="post-link">
                             <h2 class="text-white mb-0 pb-0 h5">
@@ -59,9 +62,13 @@
                         </a>
                     </div>
                 </div>
+                <!-- Likes and Comments -->
                 <div class="row mb-0 pb-0">
                     <div class="col text-fade mb-0 pb-0">
-                        <p class="mb-1"><i class="far fa-comment"></i> {{ post.comment_count }}</p>
+                        <p class="mb-1">
+                            <i class="far fa-heart"></i> {{ post.likes }}
+                            <i class="far fa-comment"></i>  {{ post.comment_count }}   
+                        </p>
                     </div>
                 </div>
             </div>
