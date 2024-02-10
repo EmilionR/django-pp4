@@ -242,4 +242,9 @@ https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-u
 
 Phind for help with the post form and edit model
 
+For cloudinary and profile image form
+https://cloudinary.com/blog/managing-media-files-in-django
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype
+
+Shortening the datetime format
 https://docs.python.org/3/library/datetime.html

@@ -5,7 +5,8 @@ class ProfileForm(forms.ModelForm):
     
     class Meta:
         model = Profile
-        fields = ('about',) #  Fields that user can write to
+        fields = ('avatar', 'about',) # Fields that can be updated
         widgets = {
-            'about': forms.Textarea(attrs={'rows': 5})
+            'avatar': forms.FileInput(attrs={'accept': 'image/*'}), #  Accept only image files
+            'about': forms.Textarea(attrs={'rows': 5}),
         }
