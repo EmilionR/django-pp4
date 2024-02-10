@@ -2,11 +2,17 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<!-- Post info (title, author, time of post) -->
-<div>
-    <div class="container mt-4">
-        <div class="row g-0">
-            <div class="col-md-6">
+<!-- Post info -->
+<div class="container mt-3 bg-dark card pt-3">
+    <div class="row">
+        <div class="col d-flex">
+            <!-- Avatar -->
+            <a href="{% url 'profile' post.author.username %}" class="author text-white">
+                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar." class="text-fade mx-3"
+                    width="80">
+            </a>
+            <!-- Title, author, time of post -->
+            <div class="">
                 <h1 class="post-title text-white my-0">{{ post.title }}</h1>
                 <p class="post-subtitle text-white  my-0">
                     <a href="{% url 'profile' post.author.username %}" class="link text-white font-weight-bold">
@@ -17,17 +23,15 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Post content -->
-<div class="container">
+    <!-- Post content -->
     <div class="row">
-        <div class="col card mb-3  mt-3 left top bg-dark">
-            <div class="card-body text-white">
+        <div class="col left top bg-dark">
+            <div class="card-body text-white pt-0">
                 <p class="card-text">
                     {{ post.body | safe }}
                 </p>
                 {% if post.posted_on != post.updated_on %}
-                    <small>Updated on {{ post.updated_on }}</small>
+                <small>Updated on {{ post.updated_on }}</small>
                 {% endif %}
                 <!-- Likes and Comments -->
                 <strong class="text-secondary">
@@ -42,7 +46,9 @@
             </div>
         </div>
     </div>
-    <!-- Post a Comment -->
+</div>
+<!-- Post a Comment -->
+<div class="container">
     <div class="row">
         <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto" onclick="openForm()">
             Post a Comment
@@ -66,9 +72,11 @@
             </div>
         </div>
     </div>
-    <!-- Comments -->
+</div>
+<!-- Comments -->
+<div class="container">
     <div class="row">
-        <div class="col mb-4 mt-3 p-0">
+        <div class="col mb-4 mt-3 p-0 mx-auto">
             <div>
                 <!-- Iterate through each comment in comments -->
                 {% for comment in comments %}
@@ -94,7 +102,8 @@
                     <div class="d-flex flex-row gap-1">
                         <a class="comment-control" comment_id="{{ comment.id }}"
                             href="{% url 'edit_comment' comment.pk %}">Edit</a>
-                        <button class="btn-delete comment-control" entry_type="comment" entry_id="{{ comment.id }}">Delete</button>
+                        <button class="btn-delete comment-control" entry_type="comment"
+                            entry_id="{{ comment.id }}">Delete</button>
                     </div>
                     {% endif %}
                 </div>
@@ -129,5 +138,5 @@
 </div>
 {% endblock content %}
 {% block extras %}
-    <script src="{% static 'js/thread.js' %}"></script>
+<script src="{% static 'js/thread.js' %}"></script>
 {% endblock %}
