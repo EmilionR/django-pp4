@@ -19,9 +19,9 @@ h2 {
 }
 
 .board-post {
-    background-color: var(--clr-shade);
-    border-bottom: 2px solid var(--clr-light);
     padding: 6px;
+    border-radius: 12px 0 0 0;
+    margin-bottom: 4px;
 }
 
 .sticky {
