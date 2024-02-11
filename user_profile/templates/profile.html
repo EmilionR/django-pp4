@@ -36,7 +36,39 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block extras %}
-<script src="{% static 'js/profile.js' %}"></script>
-{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 text-white mt-1">
+            <h3 class="text-fade bg-dark p-2">Recent posts</h3>
+            {% for post in posts %}
+            <div class="card bg-dark mb-1">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title | safe }}</h5>
+                    <p class="card-text">{{ post.body | safe }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No posts found.</p>
+            {% endfor %}
+        </div>
+        <div class="col-lg-6 text-white mt-1">
+            <h3 class="text-fade bg-dark p-2">Recent comments</h3>
+            {% for comment in comments %}
+            <div class="card bg-dark mb-1">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ comment.post.title | safe }}
+                        <span class="text-fade h6"> by {{ comment.post.author }}</span>
+                    </h5>
+                    <p class="card-text">{{ comment.body | safe }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No comments found.</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+    {% block extras %}
+    <script src="{% static 'js/profile.js' %}"></script>
+    {% endblock %}

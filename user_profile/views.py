@@ -6,6 +6,7 @@ from .forms import ProfileForm
 from django.contrib import messages
 from django.shortcuts import redirect
 import cloudinary.uploader
+from board.models import Post, Comment
 
 
 @login_required
@@ -13,9 +14,13 @@ def profile(request, username):
     """
     A view to display a user's profile, and update it if the user is logged in    
     """
-    
+    # Fetch the user
     user = get_object_or_404(User, username=username)
+    # Fetch the user's profile
     profile = get_object_or_404(Profile, user=user)
+    # Fetch the the user's posts and comments
+    posts = Post.objects.filter(author=user).order_by('-posted_on')
+    comments = Comment.objects.filter(author=user).order_by('-posted_on')
 
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
@@ -32,4 +37,12 @@ def profile(request, username):
     else:
         profile_form = ProfileForm(instance=profile)
 
-    return render(request, 'profile.html', {'profile': profile, 'profile_form': profile_form})
+    # Pass the posts to the template context
+    context = {
+        'profile': profile,
+        'profile_form': profile_form,
+        'posts': posts,  # Include the user's posts in the context
+        'comments': comments,  # Include the user's comments in the context
+    }
+
+    return render(request, 'profile.html', context)
