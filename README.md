@@ -243,6 +243,8 @@ Mouse - [Photo by Joshua J. Cottenhttps](https://unsplash.com/photos/a-rat-sitti
 
 ### Tutorials & Code Used
 
+Unique together, abstract classes, and more
+https://docs.djangoproject.com/en/5.0/ref/models/options/
 
 Signal for automatically creating a profile when a new user is created
 https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
@@ -255,3 +257,6 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype
 
 Shortening the datetime format
 https://docs.python.org/3/library/datetime.html
+
+CSRF without forms for the 'like' button AJAX code
+https://stackoverflow.com/questions/7827079/django-csrf-token-without-forms

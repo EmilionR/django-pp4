@@ -8,7 +8,7 @@
         <!-- Profile info -->
         <div class="col mt-4 text-white">
             <div class="text-center mb-4">
-                <h1>{{ profile.user.username }}{% if user.is_staff %} (Admin){% endif %}</h1>
+                <h1>{{ profile.user.username }}{% if profile.user.is_staff %} (Admin){% endif %}</h1>
                 {% if "placeholder" in profile.avatar.url %}
                 <img src="{% static 'images/nobody.jpg' %}" width="200px" alt="placeholder image">
                 {% else %}

@@ -1,6 +1,6 @@
 /*----------------------------------- My custom variables */
 
-:root{
+:root {
     --clr-white: #F2F6D0;
     --clr-black: #1B191D;
     --clr-shade: #524462;
@@ -29,10 +29,21 @@ h2 {
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: 2px solid var(--clr-fade);
     border-radius: 8px;
+}
+
+.like-btn {
+    color: var(--clr-fade);
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.like-btn:hover {
+    color: var(--clr-white);
 }
 
 .profile-posts {
@@ -137,4 +148,15 @@ h2 {
 
 .text-fade {
     color: var(--clr-fade) !important;
+}
+
+/*---------------------------------------- Media Queries */
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media srreen and (min-width: 576px) {
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
 }

@@ -1,16 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
-from .models import Post, Comment
+from .models import Post, Comment, Like
 from crispy_forms.helper import FormHelper
 from .forms import PostForm, CommentForm, EditPostForm
 from django.contrib import messages
 from django.utils.text import slugify
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, resolve
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -56,6 +56,8 @@ def post_detail(request, slug):
     # Format the date time to exclude seconds and microseconds
     post.posted_on = post.posted_on.strftime("%b %d, %Y %H:%M")
     post.updated_on = post.updated_on.strftime("%b %d, %Y %H:%M")
+    # Check if the user has liked the post
+    user_has_liked = Like.objects.filter(user=request.user, post=post).exists()
 
     comments = post.comments.all().order_by("-is_sticky", "posted_on")
     comment_count = post.comments.all().count()
@@ -88,6 +90,7 @@ def post_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
+            "user_has_liked": user_has_liked,
          },
     )
 
@@ -141,3 +144,24 @@ def post_delete(request, entry_type, entry_id):
         entry.delete()
         messages.success(request, 'Post deleted successfully.')
         return redirect(redirect_url)
+    
+
+@login_required
+def like_post(request, post_id): #  Made with some mentor help
+    if request.method == 'POST':
+        # post_id = request.POST['post_id']
+        post = Post.objects.get(id=post_id)
+        user = request.user
+        like = Like.objects.filter(user=user, post=post).first()
+        # If user has already liked this post, delete the like
+        if like:
+            like.delete()
+            liked = False
+            post.likes -= 1
+        # Otherwise, create a new like pairing the user and post
+        else:
+            Like.objects.create(user=user, post=post)
+            liked = True
+            post.likes += 1
+        post.save()
+        return JsonResponse({'liked': liked, 'new_likes': post.likes})

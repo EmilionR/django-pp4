@@ -49,3 +49,12 @@ class Comment(Entry):
 
     def __str__(self):
         return f"Comment {self.preview} by {self.author}"
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    # Only allow one like per post and user pairing
+    class Meta:
+        unique_together = ['user', 'post']

@@ -8,7 +8,7 @@
         <div class="col d-flex">
             <!-- Avatar -->
             <a href="{% url 'profile' post.author.username %}" class="author text-white">
-                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar." class="text-fade mr-3"
+                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar." class="avatar text-fade mx-3"
                     width="64">
             </a>
             <!-- Title, author, time of post -->
@@ -39,8 +39,17 @@
     </div>
     <div class="d-flex flex-row gap-1">
         <!-- Likes and Comments -->
+        <button class="like-btn" data-post-id="{{ post.id }}">
+            <!-- If user has liked, display filled heart, else display empty heart -->
+            {% if user_has_liked %}
+                <i class="fas fa-heart"></i>
+            {% else %}
+                <i class="far fa-heart"></i>
+            {% endif %}
+        </button> 
+        <!-- Like count and comment count -->
         <strong class="text-fade">
-            <i class="far fa-heart"></i> {{ post.likes }}
+            <span id="like-count-{{ post.id }}">{{ post.likes }}</span>
             <i class="far fa-comment"></i> {{ comment_count }}
         </strong>
         <!-- Edit / delete -->
@@ -63,7 +72,6 @@
         <div class="col card mb-3 mt-3 bg-dark">
             <div class="card-body">
                 <button id="close-form" onclick="closeForm()" class="text-white h3">X</button>
-
                 {% if user.is_authenticated %}
                 <h4 class="text-white">Post a comment <span class="h6 text-fade">as {{ user.username }}</span></h4>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
@@ -111,13 +119,12 @@
                             <small>Updated on {{ comment.updated_on }}</small>
                             {% endif %}
                         </div>
-
                     </div>
                 </div>
                 <div class="d-flex flex-row gap-1 px-3 pb-1">
                     <!-- Likes -->
                     <strong class="text-fade">
-                        <i class="far fa-heart"></i> {{ post.likes }}
+                        <button id="like-btn" data-post-id="{{ post.id }}"><i class="far fa-heart"></i></button> {{ post.likes }}
                     </strong>
                     <!-- Edit / delete -->
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
