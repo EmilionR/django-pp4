@@ -22,6 +22,7 @@ for (let button of deleteButtons) {
   });
 }
 
+// Retrieve the CSRF token from the cookies
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -38,16 +39,21 @@ function getCookie(name) {
   return cookieValue;
 }
 
+/**
+ * Initializes like functionality for the like buttons.
+ * Retrieves the CSRF token from the cookies and sends a POST request to the
+ * like endpoint for the post.
+ */
 document.addEventListener('DOMContentLoaded', () => {
   let likeButtons = document.querySelectorAll('.like-btn');
 
   likeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       let postId = button.dataset.postId;
+      let contentType = button.dataset.contentType;
       let csrfToken = getCookie('csrftoken');
-      console.log("Ajax, Post ID:", postId);
-
-      fetch(`/post/${postId}/like/`, {
+      // Made with help from my mentor
+      fetch(`/like_${contentType}/${postId}/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -62,12 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(data => {
         if (data.liked) {
+          // Change icon to solid
           button.innerHTML = `<i class="fas fa-heart"></i>`;
-          // Update any other UI elements here
         } else {
-          button.textContent = `<i class="fas fa-heart"></i>`;
-          // Update any other UI elements here
+          // Change icon to hollow
+          button.innerHTML = `<i class="far fa-heart"></i>`;
         }
+        // Update the like count
+        document.getElementById(`like-count-${contentType}${postId}`).textContent = data.new_likes;
       })
       .catch(error => {
         console.error("Request failed:", error);
