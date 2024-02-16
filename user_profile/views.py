@@ -46,3 +46,15 @@ def profile(request, username):
     }
 
     return render(request, 'profile.html', context)
+
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        request.user.delete()
+        # Redirect to home page
+        messages.add_message(request, messages.SUCCESS, "Account deleted successfully")
+        return redirect('home')
+    else:
+        # Render the confirmation template
+        return render(request, 'confirm_delete.html')

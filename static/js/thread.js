@@ -22,6 +22,7 @@ for (let button of deleteButtons) {
   });
 }
 
+// Retrieve the CSRF token from the cookies
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
