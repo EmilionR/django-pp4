@@ -13,6 +13,7 @@ urlpatterns = [
     # Delete post
     path('delete/<str:entry_type>/<int:entry_id>',
          views.post_delete, name='post_delete'),
-    # Lke post
-    path('post/<int:post_id>/like/', views.like_post, name='like-post'),
+    # Lke post / comment
+    path('like_post/<int:object_id>/', views.LikePost.as_view(), name='like_post'),
+    path('like_comment/<int:object_id>/', views.LikeComment.as_view(), name='like_comment'),
 ]

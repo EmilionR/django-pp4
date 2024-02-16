@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views import generic
+from django.views import generic, View
 from .models import Post, Comment, Like
 from crispy_forms.helper import FormHelper
 from .forms import PostForm, CommentForm, EditPostForm
@@ -11,6 +11,8 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+
 
 # Create your views here.
 
@@ -49,23 +51,26 @@ def post_detail(request, slug):
     """
     Display an individual post thread
     """
-
     # Retrieve all posts
     queryset = Post.objects.all()
     post = get_object_or_404(queryset, slug=slug)
     # Format the date time to exclude seconds and microseconds
     post.posted_on = post.posted_on.strftime("%b %d, %Y %H:%M")
     post.updated_on = post.updated_on.strftime("%b %d, %Y %H:%M")
-    # Check if the user has liked the post
-    user_has_liked = Like.objects.filter(user=request.user, post=post).exists()
+    # Check if the user likes the post
+    liked_post = Like.objects.filter(user=request.user, post=post).exists()
 
+    # Retrieve all comments
     comments = post.comments.all().order_by("-is_sticky", "posted_on")
     comment_count = post.comments.all().count()
+    # Comments that are liked by the current user
+    liked_comments = []
 
     for comment in comments:
         # Format the date time to exclude seconds and microseconds
         comment.posted_on = comment.posted_on.strftime("%b %d, %Y %H:%M")
         comment.updated_on = comment.updated_on.strftime("%b %d, %Y %H:%M")
+        comment.liked_by_user = Like.objects.filter(user=request.user, comment=comment).exists()
 
     comment_form = CommentForm()
 
@@ -90,7 +95,8 @@ def post_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
-            "user_has_liked": user_has_liked,
+            "liked_post": liked_post,
+            "liked_comments": liked_comments,
          },
     )
 
@@ -146,22 +152,51 @@ def post_delete(request, entry_type, entry_id):
         return redirect(redirect_url)
     
 
-@login_required
-def like_post(request, post_id): #  Made with some mentor help
-    if request.method == 'POST':
-        # post_id = request.POST['post_id']
-        post = Post.objects.get(id=post_id)
+class LikeMixin(View):
+    """
+    Like function refactored into a mixin to allow likes on different models
+    without repeating code
+    """
+    model = None  # Will be set to the model being liked
+
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        object_id = kwargs.get('object_id')
         user = request.user
-        like = Like.objects.filter(user=user, post=post).first()
-        # If user has already liked this post, delete the like
+        try:
+            content_object = self.model.objects.get(id=object_id)
+        except self.model.DoesNotExist:
+            return JsonResponse({'error': 'Content not found'}, status=404)
+        # Check if it's a post or comment
+        if self.model == Post:
+            like = Like.objects.filter(user=user, post=content_object).first()
+        else:
+            like = Like.objects.filter(user=user, comment=content_object).first()
+        # Check if the user has already liked the object, then like or unlike
         if like:
             like.delete()
             liked = False
-            post.likes -= 1
-        # Otherwise, create a new like pairing the user and post
+            content_object.likes -= 1
         else:
-            Like.objects.create(user=user, post=post)
+            if self.model == Post:
+                like = Like.objects.filter(user=user, post=content_object).first()
+                Like.objects.create(user=user, post=content_object)
+            else:
+                like = Like.objects.filter(user=user, comment=content_object).first()
+                Like.objects.create(user=user, comment=content_object)
             liked = True
-            post.likes += 1
-        post.save()
-        return JsonResponse({'liked': liked, 'new_likes': post.likes})
+            content_object.likes += 1
+        content_object.save()
+        return JsonResponse({'liked': liked, 'new_likes': content_object.likes})
+
+
+class LikePost(LikeMixin):
+    model = Post
+
+
+class LikeComment(LikeMixin):
+    model = Comment

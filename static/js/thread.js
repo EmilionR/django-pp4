@@ -49,9 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
   likeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       let postId = button.dataset.postId;
+      let contentType = button.dataset.contentType;
       let csrfToken = getCookie('csrftoken');
       // Made with help from my mentor
-      fetch(`/post/${postId}/like/`, {
+      fetch(`/like_${contentType}/${postId}/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
           button.innerHTML = `<i class="far fa-heart"></i>`;
         }
         // Update the like count
-        document.getElementById(`like-count-${postId}`).textContent = data.new_likes;
+        document.getElementById(`like-count-${contentType}${postId}`).textContent = data.new_likes;
       })
       .catch(error => {
         console.error("Request failed:", error);

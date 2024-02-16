@@ -8,8 +8,8 @@
         <div class="col d-flex">
             <!-- Avatar -->
             <a href="{% url 'profile' post.author.username %}" class="author text-white">
-                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar." class="avatar text-fade mx-3"
-                    width="64">
+                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
+                    class="avatar text-fade mx-3" width="64">
             </a>
             <!-- Title, author, time of post -->
             <div class="mx-3">
@@ -39,17 +39,17 @@
     </div>
     <div class="d-flex flex-row gap-1">
         <!-- Likes and Comments -->
-        <button class="like-btn" data-post-id="{{ post.id }}">
+        <button class="like-btn" data-post-id="{{ post.id }}" data-content-type="post">
             <!-- If user has liked, display filled heart, else display empty heart -->
-            {% if user_has_liked %}
-                <i class="fas fa-heart"></i>
+            {% if liked_post %}
+            <i class="fas fa-heart"></i>
             {% else %}
-                <i class="far fa-heart"></i>
+            <i class="far fa-heart"></i>
             {% endif %}
-        </button> 
+        </button>
         <!-- Like count and comment count -->
-        <strong class="text-fade">
-            <span id="like-count-{{ post.id }}">{{ post.likes }}</span>
+        <strong class="text-light">
+            <span id="like-count-post{{ post.id }}" class="text-fade">{{ post.likes }}</span>
             <i class="far fa-comment"></i> {{ comment_count }}
         </strong>
         <!-- Edit / delete -->
@@ -124,7 +124,15 @@
                 <div class="d-flex flex-row gap-1 px-3 pb-1">
                     <!-- Likes -->
                     <strong class="text-fade">
-                        <button id="like-btn" data-post-id="{{ post.id }}"><i class="far fa-heart"></i></button> {{ post.likes }}
+                        <button class="like-btn" data-post-id="{{ comment.id }}" data-content-type="comment">
+                            <!-- If user has liked, display filled heart, else display empty heart -->
+                            {% if comment.liked_by_user %}
+                            <i class="fas fa-heart"></i>
+                            {% else %}
+                            <i class="far fa-heart"></i>
+                            {% endif %}
+                        </button>
+                        <span id="like-count-comment{{ comment.id }}">{{ comment.likes }}</span>
                     </strong>
                     <!-- Edit / delete -->
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
