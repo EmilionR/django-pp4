@@ -37,15 +37,6 @@ document.getElementById('confirmDelete').addEventListener('click', function () {
             'X-CSRFToken': csrfToken
         },
     })
-    .then(response => {
-        if (response.ok) {
-            // Close the modal and redirect the user
-            $('#deleteAccountModal').modal('hide');
-        } else {
-            // Handle error
-            console.error('Failed to delete account');
-        }
-    })
     .catch(error => {
         // Handle network error
         console.error('Network error:', error);

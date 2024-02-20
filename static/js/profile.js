@@ -39,10 +39,10 @@ document.getElementById('confirmDelete').addEventListener('click', function () {
     })
     .then(response => {
         if (response.ok) {
-            // Close the modal and redirect the user
-            $('#deleteAccountModal').modal('hide');
+            // Redirect to home page
+            window.location.href = '/';
         } else {
-            // Handle error
+            // Handle bad responses
             console.error('Failed to delete account');
         }
     })

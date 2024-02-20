@@ -58,7 +58,9 @@ def post_detail(request, slug):
     post.posted_on = post.posted_on.strftime("%b %d, %Y %H:%M")
     post.updated_on = post.updated_on.strftime("%b %d, %Y %H:%M")
     # Check if the user likes the post
-    liked_post = Like.objects.filter(user=request.user, post=post).exists()
+    liked_post = False  # Initialize as false to avoid errors
+    if request.user.is_authenticated:  # Check if the user is logged in to avoid errors
+        liked_post = Like.objects.filter(user=request.user, post=post).exists()
 
     # Retrieve all comments
     comments = post.comments.all().order_by("-is_sticky", "posted_on")
@@ -66,11 +68,12 @@ def post_detail(request, slug):
     # Comments that are liked by the current user
     liked_comments = []
 
-    for comment in comments:
-        # Format the date time to exclude seconds and microseconds
-        comment.posted_on = comment.posted_on.strftime("%b %d, %Y %H:%M")
-        comment.updated_on = comment.updated_on.strftime("%b %d, %Y %H:%M")
-        comment.liked_by_user = Like.objects.filter(user=request.user, comment=comment).exists()
+    if request.user.is_authenticated:
+        for comment in comments:
+            # Format the date time to exclude seconds and microseconds
+            comment.posted_on = comment.posted_on.strftime("%b %d, %Y %H:%M")
+            comment.updated_on = comment.updated_on.strftime("%b %d, %Y %H:%M")
+            comment.liked_by_user = Like.objects.filter(user=request.user, comment=comment).exists()
 
     comment_form = CommentForm()
 
