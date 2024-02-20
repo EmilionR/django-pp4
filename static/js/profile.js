@@ -25,7 +25,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-
+// Delete account
 document.getElementById('confirmDelete').addEventListener('click', function () {
     // Retrieve the CSRF token
     let csrfToken = getCookie('csrftoken');

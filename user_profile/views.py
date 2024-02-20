@@ -9,7 +9,6 @@ import cloudinary.uploader
 from board.models import Post, Comment
 
 
-@login_required
 def profile(request, username):
     """
     A view to display a user's profile, and update it if the user is logged in    
@@ -23,6 +22,10 @@ def profile(request, username):
     comments = Comment.objects.filter(author=user).order_by('-posted_on')
 
     if request.method == "POST":
+        # Check if the current user is viewing their own profile
+        if request.user.username != username:
+            # If not, redirect to the profile without changes
+            return redirect('profile', username=username)
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
         if profile_form.is_valid():
              # Check if an image file is included in the request
@@ -47,10 +50,9 @@ def profile(request, username):
 
     return render(request, 'profile.html', context)
 
-
+@login_required
 def delete_account(request):
     if request.method == 'POST':
-        messages.success(request, "Account deleted successfully")
         request.user.delete()
         # Redirect to home page
         return redirect('home')
