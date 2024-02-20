@@ -260,3 +260,6 @@ https://docs.python.org/3/library/datetime.html
 
 CSRF without forms for the 'like' button AJAX code
 https://stackoverflow.com/questions/7827079/django-csrf-token-without-forms
+
+Queryset manipulation with Django Q model
+https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects

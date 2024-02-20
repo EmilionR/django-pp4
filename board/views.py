@@ -9,10 +9,9 @@ from django.urls import reverse_lazy, resolve
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
-
 
 # Create your views here.
 
@@ -22,9 +21,22 @@ class PostList(generic.ListView):
     Display a list of all posts and a posting form
     """
 
-    queryset = Post.objects.annotate(comment_count=Count('comments'))\
-                             .order_by("-is_sticky", "-posted_on")
     template_name = "board/index.html"
+
+    # The posts to display (all posts if no search term is provided)
+    def get_queryset(self):
+        # https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
+        queryset = Post.objects.annotate(comment_count=Count('comments'))\
+                             .order_by("-is_sticky", "-posted_on")
+        # Check if the user is searching for something
+        search_term = self.request.GET.get('search', '')
+        if search_term:
+            queryset = queryset.filter(
+                # Check if one of the fields contains the search term
+                Q(title__icontains=search_term) |
+                Q(body__icontains=search_term)                
+            )
+        return queryset
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -2,6 +2,23 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
+<div class="container-fluid mx-2">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <form method="get">
+                <div class="search-wrapper">
+                    <div class="search-input">
+                        <a href="" target="_blank" hidden></a>
+                        <input name="search" type="text" placeholder="Search...">
+                        <div class="autocom-box"></div>
+                    </div>
+                </div>
+                <input id="search-button" class="btn btn-primary" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <div class="container-fluid bg-shade">
     <!-- Post a Thread -->
@@ -67,7 +84,7 @@
                     <div class="col text-fade mb-0 pb-0">
                         <p class="mb-1">
                             <i class="far fa-heart"></i> {{ post.likes }}
-                            <i class="far fa-comment"></i>  {{ post.comment_count }}   
+                            <i class="far fa-comment"></i> {{ post.comment_count }}
                         </p>
                     </div>
                 </div>
