@@ -19,7 +19,7 @@
             </button>
             <!-- Search -->
             <form method="get" class="d-flex align-items-center mt-2">
-                <div class="search-container">  
+                <div class="search-container">
                     <input class="search-input" name="search" type="text" placeholder="Search...">
                     <button type="submit" id="search-button">
                         <i class="fas fa-search"></i>
@@ -51,45 +51,61 @@
 </div>
 
 <!-- Threads -->
-<div class="row mx-4 mt-0">
-    <div class="col-12 mt-3">
-        <div class="row">
-            {% for post in post_list %}
-            <div class="col-12 board-post bg-dark {% if post.is_sticky %}sticky{% endif %}">
-                <div class="row pt-2">
-                    <!-- Avatar -->
-                    <div class="col-2 col-md-1 d-none d-sm-block">
-                        <a href="{% url 'profile' post.author.username %}" class="author text-white my-0 py-0">
-                            <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
-                                class="text-fade" width="45">
-                        </a>
-                    </div>
-                    <!-- Title, author, time of post -->
-                    <div class="col-md-11 col-sm-10 col-12 text-left">
-                        <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                            <h2 class="text-white mb-0 pb-0 h5">
-                                {% if post.is_sticky %}*{% endif %}
-                                {{ post.title }}
-                            </h2>
+<div class="container-fluid">
+    <div class="row mx-3 mt-0 mb-2">
+        <div class="col-12 mt-3">
+            <div class="row">
+                {% for post in post_list %}
+                <div class="col-12 board-post bg-dark {% if post.is_sticky %}sticky{% endif %}">
+                    <div class="row pt-2">
+                        <!-- Avatar -->
+                        <div class="col-2 col-md-1 d-none d-sm-block">
                             <a href="{% url 'profile' post.author.username %}" class="author text-white my-0 py-0">
-                                {{ post.author }}
+                                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
+                                    class="text-fade" width="45">
                             </a>
-                            <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
-                        </a>
+                        </div>
+                        <!-- Title, author, time of post -->
+                        <div class="col-md-11 col-sm-10 col-12 text-left">
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                                <h2 class="text-white mb-0 pb-0 h5">
+                                    {% if post.is_sticky %}*{% endif %}
+                                    {{ post.title }}
+                                </h2>
+                                <a href="{% url 'profile' post.author.username %}" class="author text-white my-0 py-0">
+                                    {{ post.author }}
+                                </a>
+                                <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Likes and Comments -->
+                    <div class="row mb-0 pb-0">
+                        <div class="col text-fade mb-0 pb-0">
+                            <p class="mb-1">
+                                <i class="far fa-heart"></i> {{ post.likes }}
+                                <i class="far fa-comment"></i> {{ post.comment_count }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <!-- Likes and Comments -->
-                <div class="row mb-0 pb-0">
-                    <div class="col text-fade mb-0 pb-0">
-                        <p class="mb-1">
-                            <i class="far fa-heart"></i> {{ post.likes }}
-                            <i class="far fa-comment"></i> {{ post.comment_count }}
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
+    <div class="row justify-content-center mx-3 mb-3 g-2">
+        {% if page_obj.has_next %}
+        <div class="col-4 col-sm-2 col-lg-1 text-center">
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT</a>
+        </div>
+        {% endif %}
+        {% if page_obj.has_previous %}
+        <div class="col-4 col-sm-2 col-lg-1 text-center">
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">PREV</a>
+        </div>
+        {% endif %}
+    </div>
 </div>
+
+
 {% endblock %}

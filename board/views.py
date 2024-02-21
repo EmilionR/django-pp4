@@ -16,7 +16,6 @@ from django.utils.decorators import method_decorator
 # Create your views here.
 
 class PostList(generic.ListView):
-
     """
     Display a list of all posts and a posting form
     """
@@ -38,6 +37,9 @@ class PostList(generic.ListView):
             )
         return queryset
     
+    # Display 10 posts per page
+    paginate_by = 10
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post_form = PostForm()
@@ -45,6 +47,7 @@ class PostList(generic.ListView):
         context['post_form'] = post_form
         return context
     
+
     def post(self, request, *args, **kwargs):
         post_form = PostForm(request.POST)
         if post_form.is_valid():

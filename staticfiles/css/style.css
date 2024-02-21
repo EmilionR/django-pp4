@@ -35,17 +35,6 @@ h2 {
     border-radius: 8px;
 }
 
-.like-btn {
-    color: var(--clr-fade);
-    background: none;
-    border: none;
-    padding: 0;
-}
-
-.like-btn:hover {
-    color: var(--clr-white);
-}
-
 .profile-posts {
     border-radius: 4px;
     border: 3px solid var(--clr-light);
@@ -121,6 +110,26 @@ h2 {
 
 /*---------------------------------------- Buttons and such */
 
+
+.like-btn {
+    color: var(--clr-fade);
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btn-primary {
+    background-color: var(--clr-black);
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-light);
+}
+
+.like-btn:hover {
+    color: var(--clr-white);
+}
+
 .comment-control {
     color: var(--clr-fade);
     background-color: var(--clr-shade);
@@ -142,11 +151,18 @@ h2 {
 }
 
 .search-input {
-    padding: 6px 20px; /* Padding to make room for the icon */
+    padding: 5px 20px; /* Padding to make room for the icon */
     border:   1px solid #ccc;
     border-radius:   4px;
     width: 200px;
     min-width: 60px;
+    border: 2px solid var(--clr-black);
+    background-color: var(--clr-shade);
+    color: var(--clr-white);
+}
+
+.search-input::placeholder {
+    color: var(--clr-fade);
 }
 
 #search-button {
@@ -158,12 +174,13 @@ h2 {
     border: none;
     padding:  2px;
     cursor: pointer;
+    color: var(--clr-fade)
 }
 
 #search-button:focus,
 #search-button:hover {
     outline: none;
-    color: #524462;
+    color: var(--clr-white);
 }
 
 /*----------------------------------------- Utility classes */
