@@ -5,13 +5,15 @@ from crispy_forms.helper import FormHelper
 from .forms import PostForm, CommentForm, EditPostForm
 from django.contrib import messages
 from django.utils.text import slugify
-from django.urls import reverse_lazy, resolve
+from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count, Q
+from django.db import models
+from django.db.models import Count, Q, Max, Case, When, F
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
+
 
 # Create your views here.
 
@@ -25,8 +27,9 @@ class PostList(generic.ListView):
     # The posts to display (all posts if no search term is provided)
     def get_queryset(self):
         # https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
-        queryset = Post.objects.annotate(comment_count=Count('comments'))\
-                             .order_by("-is_sticky", "-posted_on")
+        queryset = Post.objects.annotate(
+            comment_count=Count('comments')
+            ).order_by("-is_sticky", "-latest_activity",)
         # Check if the user is searching for something
         search_term = self.request.GET.get('search', '')
         if search_term:

@@ -246,8 +246,9 @@ Mouse - [Photo by Joshua J. Cottenhttps](https://unsplash.com/photos/a-rat-sitti
 Unique together, abstract classes, and more
 https://docs.djangoproject.com/en/5.0/ref/models/options/
 
-Signal for automatically creating a profile when a new user is created
+Signals used for automatically creating a profile when a new user is created and updating post activity when new comments are posted
 https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
+https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/
 
 Phind for help with the post form and edit model
 

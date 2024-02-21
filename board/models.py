@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
-
-# Create your models here.
+from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Entry(models.Model):
@@ -24,6 +24,13 @@ class Post(Entry):
     )
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
+    latest_activity = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Set the latest_activity field to the current time if it hasn't been set yet
+        if not self.latest_activity:
+            self.latest_activity = timezone.now()
+        super(Post, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ["-posted_on"]
