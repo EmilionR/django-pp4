@@ -7,9 +7,17 @@
     <div class="row">
         <div class="col d-flex">
             <!-- Avatar -->
+            
             <a href="{% url 'profile' post.author.username %}" class="author text-white">
-                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
-                    class="avatar text-fade mx-2" width="64">
+                <!-- If user has no avatar, use placeholder -->
+                <img src="
+                {% if 'placeholder' in post.author.profile.avatar.url %}
+                {% static 'images/nobody.jpg' %}
+                {% else %}
+                {{ post.author.profile.avatar.url }}
+                {% endif %}"
+                alt="{{ post.author }}'s avatar."
+                class="avatar text-fade mx-2" width="64">
             </a>
             <!-- Title, author, time of post -->
             <div class="mx-3">
@@ -96,8 +104,15 @@
                     <!-- Avatar -->
                     <div class="col-3 col-sm-2 col-lg-1 pt-2 px-2">
                         <a href="{% url 'profile' comment.author.username %}" class="author text-white">
-                            <img src="{{ comment.author.profile.avatar.url }}" alt="{{ comment.author }}'s avatar."
-                                class="avatar text-fade mx-1" width="64">
+                            <!-- If user has no avatar, use placeholder -->
+                            <img src="
+                            {% if 'placeholder' in comment.author.profile.avatar.url %}
+                            {% static 'images/nobody.jpg' %}
+                            {% else %}
+                            {{ comment.author.profile.avatar.url }}
+                            {% endif %}"
+                            alt="{{ comment.author }}'s avatar."
+                            class="avatar text-fade mx-1" width="64">
                         </a>
                     </div>
                     <div class="col-9 col-sm-10 col-lg-11 px-3 px-lg-5">
@@ -141,8 +156,8 @@
                         href="{% url 'edit_comment' comment.pk %}">Edit</a>
                     <button class="btn-delete comment-control" entry_type="comment"
                         entry_id="{{ comment.id }}">Delete</button>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
             {% endfor %}
         </div>

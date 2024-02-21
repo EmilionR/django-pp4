@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 <div class="container-fluid mx-2">
     <div class="row">
@@ -61,8 +62,15 @@
                         <!-- Avatar -->
                         <div class="col-2 col-md-1 d-none d-sm-block">
                             <a href="{% url 'profile' post.author.username %}" class="author text-white my-0 py-0">
-                                <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}'s avatar."
-                                    class="text-fade" width="45">
+                                <!-- If user has no avatar, use placeholder -->
+                                <img src="
+                                {% if 'placeholder' in post.author.profile.avatar.url %}
+                                {% static 'images/nobody.jpg' %}
+                                {% else %}
+                                {{ post.author.profile.avatar.url }}
+                                {% endif %}"
+                                alt="{{ post.author }}'s avatar."
+                                class="text-fade" width="45">
                             </a>
                         </div>
                         <!-- Title, author, time of post -->
@@ -75,8 +83,7 @@
                                     </h2>
                                 </a>
                                 <span>
-                                    <a href="{% url 'profile' post.author.username %}"
-                                        class="author my-0 py-0">
+                                    <a href="{% url 'profile' post.author.username %}" class="author my-0 py-0">
                                         {{ post.author }}
                                     </a>
                                     <small class="text-fade my-0 py-0">{{ post.posted_on}}</small>
@@ -92,7 +99,7 @@
                                 <i class="far fa-comment"></i> {{ post.comment_count }}
                                 {% if post.comment_count > 0 %}
                                 <small class="px-5">
-                                    Latest: {{ post.latest_activity}} 
+                                    Latest: {{ post.latest_activity}}
                                 </small>
                                 {% endif %}
                             </p>
