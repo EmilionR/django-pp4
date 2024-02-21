@@ -25,7 +25,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-
+// Delete account
 document.getElementById('confirmDelete').addEventListener('click', function () {
     // Retrieve the CSRF token
     let csrfToken = getCookie('csrftoken');
@@ -36,6 +36,15 @@ document.getElementById('confirmDelete').addEventListener('click', function () {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken
         },
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to home page
+            window.location.href = '/';
+        } else {
+            // Handle bad responses
+            console.error('Failed to delete account');
+        }
     })
     .catch(error => {
         // Handle network error

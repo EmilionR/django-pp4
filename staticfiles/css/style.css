@@ -134,8 +134,39 @@ h2 {
     display: inline-block;
 }
 
+/*---------------------------------------------- Search bar */
 
-/*---------------------------------------- Utility classes */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-input {
+    padding: 6px 20px; /* Padding to make room for the icon */
+    border:   1px solid #ccc;
+    border-radius:   4px;
+    width: 200px;
+    min-width: 60px;
+}
+
+#search-button {
+    position: absolute !important;
+    right:   10px;
+    top:   50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding:  2px;
+    cursor: pointer;
+}
+
+#search-button:focus,
+#search-button:hover {
+    outline: none;
+    color: #524462;
+}
+
+/*----------------------------------------- Utility classes */
 
 
 .bg-shade {

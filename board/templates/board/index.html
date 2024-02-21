@@ -4,29 +4,28 @@
 
 <div class="container-fluid mx-2">
     <div class="row">
-        <div class="col d-flex justify-content-center">
-            <form method="get">
-                <div class="search-wrapper">
-                    <div class="search-input">
-                        <a href="" target="_blank" hidden></a>
-                        <input name="search" type="text" placeholder="Search...">
-                        <div class="autocom-box"></div>
-                    </div>
-                </div>
-                <input id="search-button" class="btn btn-primary" type="submit" value="Search">
-            </form>
-        </div>
+
     </div>
 </div>
 
 
 <div class="container-fluid bg-shade">
-    <!-- Post a Thread -->
-    <div class="row mx-4 mt-1">
-        <div class="col-12 mt-0">
-            <button id="posting-button" class="btn btn-primary px-4 col-m-6 mx-auto mt-3" onclick="openForm()">
-                Post a Thread
+    <div class="row mx-2 mt-1 justify-content-center justify-content-sm-end   ">
+        <div class="col d-flex flex-grow-0 mt-1 flex-wrap flex-sm-nowrap">
+            <!-- Post a Thread -->
+            <button id="posting-button" class="btn btn-primary px-4 mx-auto mx-sm-3 mt-2" style="white-space: nowrap"
+                onclick="openForm()">
+                New Post
             </button>
+            <!-- Search -->
+            <form method="get" class="d-flex align-items-center mt-2">
+                <div class="search-container">  
+                    <input class="search-input" name="search" type="text" placeholder="Search...">
+                    <button type="submit" id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     <!-- Post form -->
