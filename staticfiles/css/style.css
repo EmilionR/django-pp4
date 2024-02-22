@@ -53,26 +53,27 @@ a:focus {
 }
 
 /*--------------------------------------- Scrollbar styling */
+/* https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
 
-/* Firefox */
+/* Firefox & Recent Chromium */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--clr-light) var(--clr-black);
-  }
-  
-  /* Chromium, Edge, Safari */
-  *::-webkit-scrollbar {
+}
+
+/* Chromium, Edge, Safari */
+*::-webkit-scrollbar {
     width: 12px;
-  }
-  
-  *::-webkit-scrollbar-track {
+}
+
+*::-webkit-scrollbar-track {
     background: var(--clr-shade);
-  }
-  
-  *::-webkit-scrollbar-thumb {
+}
+
+*::-webkit-scrollbar-thumb {
     background-color: var(--clr-black);
     border-radius: 20px;
-  }
+}
 
 /*-------------------------------------------- Post styling */
 
@@ -99,6 +100,10 @@ a:focus {
     color: white;
 }
 
+.post-body p {
+    margin: 2px 6px;
+}
+
 #posting-button {
     display: block;
     margin: auto;
@@ -118,7 +123,8 @@ a:focus {
     background-color: transparent;
 }
 
-.post-link, .author {
+.post-link,
+.author {
     color: var(--clr-white);
 }
 
@@ -240,8 +246,9 @@ a:focus {
 }
 
 .search-input {
-    padding: 5px 20px; /* Padding to make room for the icon */
-    border:   1px solid #ccc;
+    padding: 5px 20px;
+    /* Padding to make room for the icon */
+    border: 1px solid #ccc;
     border-radius: 8px;
     width: 200px;
     min-width: 60px;
@@ -256,12 +263,12 @@ a:focus {
 
 #search-button {
     position: absolute !important;
-    right:   10px;
-    top:   50%;
+    right: 10px;
+    top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
-    padding:  2px;
+    padding: 2px;
     cursor: pointer;
     color: var(--clr-fade)
 }
@@ -310,5 +317,5 @@ a:focus {
         font-size: 1rem !important;
     }
 
-    
+
 }

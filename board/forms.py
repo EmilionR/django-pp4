@@ -1,6 +1,8 @@
 from .models import Post, Comment
 from django import forms
+from django_summernote.widgets import SummernoteWidget
 
+# https://github.com/summernote/django-summernote?tab=readme-ov-file#form
 
 class PostForm(forms.ModelForm):
     
@@ -8,8 +10,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'body',) #  Fields that user can write to
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Title'}),
-            'body': forms.Textarea(attrs={'placeholder': 'Your content here...'}),
+            'title': forms.TextInput(attrs={'placeholder': 'Title', "class": "form-control"}),
+            'body': SummernoteWidget(),
         }
 
 
@@ -19,7 +21,7 @@ class EditPostForm(forms.ModelForm):
         model = Post
         fields = ('body',) #  Fields that user can write to
         widgets = {
-            'body': forms.Textarea(attrs={'placeholder': 'Your comment here...'}),
+            'body': SummernoteWidget(attrs={'placeholder': 'Your comment here...', "class": "form-control"}),
         }
 
 
@@ -29,5 +31,5 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',) #  Fields that user can write to
         widgets = {
-            'body': forms.Textarea(attrs={'placeholder': 'Your comment here...'}),
+            'body': SummernoteWidget(attrs={'placeholder': 'Your comment here...', "class": "form-control"}),
         }
