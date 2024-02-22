@@ -20,7 +20,7 @@
             <!-- "About me" section -->
             <div id="about">
                 <small>Info</small>
-                <p>{{ profile.about }}</p>
+                <p>{{ profile.about | safe | linebreaks }}</p>
                 {% if profile.user == user %}
                 <!-- Edit and delete profile -->
                 <button class="btn btn-primary px-4 mx-auto" onclick="editAbout()">
@@ -35,10 +35,10 @@
             <!-- Edit profile form -->
             <div id="edit-about">
                 <form method="post" enctype="multipart/form-data">
-                    {{ profile_form.as_p | safe }}
+                    {{ profile_form.as_p }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary px-4 mx-auto">Save changes</button>
-                    <button type="button" class="btn btn-danger px-4 mx-auto" onclick="cancelEdit()">
+                    <button type="button" class="btn btn-primary px-4 mx-auto" onclick="cancelEdit()">
                         Cancel
                     </button>
                 </form>
@@ -56,7 +56,7 @@
                     <div class="card bg-dark mb-1">
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title | safe }}</h5>
-                            <p class="card-text">{{ post.body | safe }}</p>
+                            <p class="card-text">{{ post.body | safe | linebreaks }}</p>
                         </div>
                     </div>
                 </a>
@@ -76,7 +76,7 @@
                                 {{ comment.post.title | safe }}
                                 <span class="h6"> by {{ comment.post.author }}</span>
                             </h5>
-                            <p class="card-text">{{ comment.body | safe }}</p>
+                            <p class="card-text">{{ comment.body | safe | linebreaks }}</p>
                         </div>
                     </div>
                 </a>
