@@ -3,20 +3,56 @@
 :root {
     --clr-white: #F2F6D0;
     --clr-black: #1B191D;
-    --clr-shade: #524462;
-    --clr-light: #A48BA4;
+    --clr-shade: #403050;
+    --clr-light: #807090;
     --clr-fade: #EDBBBB;
 }
 
 /*---------------------------------------- General styling */
 
+p {
+    font-size: 0.9rem !important;
+}
+
 a {
     text-decoration: none;
+    color: var(--clr-light);
+}
+
+hr {
+    color: var(--clr-light);
+    margin: 4px;
 }
 
 h2 {
     font-size: 1.3rem;
 }
+
+a:hover,
+a:focus {
+    color: var(--clr-white);
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: var(--clr-light) !important;
+}
+
+.nav-link {
+    color: var(--clr-fade) !important;
+}
+
+.nav-link:hover {
+    color: var(--clr-light) !important;
+}
+
+.signup label,
+.signup li,
+.login label {
+    color: var(--clr-fade);
+}
+
+/*-------------------------------------------- Post styling */
 
 .board-post {
     border-radius: 12px 0 0 0;
@@ -29,8 +65,8 @@ h2 {
 }
 
 .avatar {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border: 2px solid var(--clr-fade);
     border-radius: 8px;
 }
@@ -60,30 +96,15 @@ h2 {
     background-color: transparent;
 }
 
-.signup label,
-.signup li,
-.login label {
-    color: var(--clr-fade);
-}
-
-#about {
-    background-color: var(--clr-black);
-    padding: 10px;
-}
-
-#edit-about {
-    display: none;
-}
-
-#edit-about textarea {
-    width: 100%;
-    background-color: #1B191D;
+.post-link, .author {
     color: var(--clr-white);
-    padding: 10px;
 }
 
-#edit-about label {
-    display: none;
+.post-link:hover,
+.post-link:focus,
+.author:hover,
+.author:focus {
+    color: var(--clr-light);
 }
 
 /* Styling for crispy form */
@@ -108,6 +129,35 @@ h2 {
     display: block;
 }
 
+/*---------------------------------------- Profile styling */
+
+#about {
+    background-color: var(--clr-black);
+    padding: 10px;
+}
+
+#edit-about {
+    display: none;
+}
+
+#edit-about textarea {
+    width: 100%;
+    background-color: #1B191D;
+    color: var(--clr-white);
+    padding: 10px;
+}
+
+#edit-about label {
+    display: none;
+}
+
+.posts-wrapper {
+    border-radius: 0 0 4px 4px;
+    border: 4px solid var(--clr-black);
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
 /*---------------------------------------- Buttons and such */
 
 
@@ -120,10 +170,18 @@ h2 {
 
 .btn-primary {
     background-color: var(--clr-black);
+    border-color: var(--clr-fade);
+    border-radius: 8px;
+    color: var(--clr-fade);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus,
+.page-link:hover,
+.page-link:focus {
     background-color: var(--clr-light);
+    color: var(--clr-white);
+    border-color: var(--clr-fade);
 }
 
 .like-btn:hover {
@@ -143,6 +201,15 @@ h2 {
     display: inline-block;
 }
 
+.page-link {
+    background-color: var(--clr-black);
+    color: var(--clr-fade);
+    border-color: var(--clr-light);
+    border-radius: 8px;
+    width: 70px;
+    text-align: center;
+}
+
 /*---------------------------------------------- Search bar */
 
 .search-container {
@@ -153,7 +220,7 @@ h2 {
 .search-input {
     padding: 5px 20px; /* Padding to make room for the icon */
     border:   1px solid #ccc;
-    border-radius:   4px;
+    border-radius: 8px;
     width: 200px;
     min-width: 60px;
     border: 2px solid var(--clr-black);
@@ -186,8 +253,13 @@ h2 {
 /*----------------------------------------- Utility classes */
 
 
+.bg-dark {
+    background-color: var(--clr-black) !important;
+
+}
+
 .bg-shade {
-    background-color: var(--clr-shade);
+    background-color: var(--clr-shade) !important;
 }
 
 .text-white {
@@ -206,9 +278,15 @@ h2 {
 
 
 /* Small devices (landscape phones, 576px and up) */
-@media srreen and (min-width: 576px) {
+@media (min-width: 576px) {
     .avatar {
-        width: 100px;
-        height: 100px;
+        width: 75px;
+        height: 75px;
     }
+
+    p {
+        font-size: 1rem !important;
+    }
+
+    
 }
