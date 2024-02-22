@@ -25,7 +25,16 @@ function getCookie(name) {
     return cookieValue;
 }
 
-// Delete account
+/**
+ * Initializes deletion functionality for the profile delete button.
+* 
+* - On the `deleteConfirm` button:
+* - Retrieve the profile ID on click.
+* - Update the `confirmDelete` link's href to point to the 
+* deletion endpoint for the profile.
+* - Display a modal (`deleteModal`) to prompt 
+* the user for confirmation before deletion.
+ */
 document.getElementById('confirmDelete').addEventListener('click', function () {
     // Retrieve the CSRF token
     let csrfToken = getCookie('csrftoken');
@@ -37,17 +46,17 @@ document.getElementById('confirmDelete').addEventListener('click', function () {
             'X-CSRFToken': csrfToken
         },
     })
-    .then(response => {
-        if (response.ok) {
-            // Redirect to home page
-            window.location.href = '/';
-        } else {
-            // Handle bad responses
-            console.error('Failed to delete account');
-        }
-    })
-    .catch(error => {
-        // Handle network error
-        console.error('Network error:', error);
-    });
+        .then(response => {
+            if (response.ok) {
+                // Redirect to home page
+                window.location.href = '/';
+            } else {
+                // Handle bad responses
+                console.error('Failed to delete account');
+            }
+        })
+        .catch(error => {
+            // Handle network error
+            console.error('Network error:', error);
+        });
 });

@@ -6,18 +6,22 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
 # User profile
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    about = models.CharField(max_length=500, default='No bio...')
-    avatar = CloudinaryField('image', default='placeholder')
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="profile")
+    about = models.CharField(max_length=500, default="No bio...")
+    avatar = CloudinaryField("image", default="placeholder")
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f"{self.user.username} Profile"
+
 
 # Admin panel for user profiles
 class ProfileAdmin(admin.ModelAdmin):
-    exclude = ('posts', 'comments')
+    exclude = ("posts", "comments")
+
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
         return form
@@ -29,6 +33,7 @@ class ProfileAdmin(admin.ModelAdmin):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):

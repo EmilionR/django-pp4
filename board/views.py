@@ -10,12 +10,13 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.db import models
-from django.db.models import Count, Q, Max, Case, When, F
+from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 
 
 # Create your views here.
+
 
 class PostList(generic.ListView):
     """
@@ -28,28 +29,29 @@ class PostList(generic.ListView):
     def get_queryset(self):
         # https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
         queryset = Post.objects.annotate(
-            comment_count=Count('comments')
-            ).order_by("-is_sticky", "-latest_activity",)
+            comment_count=Count("comments")).order_by(
+            "-is_sticky",
+            "-latest_activity",
+        )
         # Check if the user is searching for something
-        search_term = self.request.GET.get('search', '')
+        search_term = self.request.GET.get("search", "")
         if search_term:
             queryset = queryset.filter(
                 # Check if one of the fields contains the search term
-                Q(title__icontains=search_term) |
-                Q(body__icontains=search_term)                
+                Q(title__icontains=search_term)
+                | Q(body__icontains=search_term)
             )
         return queryset
-    
+
     # Display 10 posts per page
     paginate_by = 10
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post_form = PostForm()
         post_form.helper = FormHelper()
-        context['post_form'] = post_form
+        context["post_form"] = post_form
         return context
-    
 
     def post(self, request, *args, **kwargs):
         post_form = PostForm(request.POST)
@@ -58,11 +60,13 @@ class PostList(generic.ListView):
             post.author = request.user
             post.slug = slugify(post.title)
             post.save()
-            messages.success(request, 'Thread posted successfully.')
-            return redirect('home')
+            messages.success(request, "Thread posted successfully.")
+            return redirect("home")
         else:
-            messages.error(request, 'There was an error with your post. Please try again.')
-            return redirect('home')
+            messages.error(
+                request, "There was an error with your post. Please try again."
+            )
+            return redirect("home")
 
 
 def post_detail(request, slug):
@@ -77,7 +81,8 @@ def post_detail(request, slug):
     post.updated_on = post.updated_on.strftime("%b %d, %Y %H:%M")
     # Check if the user likes the post
     liked_post = False  # Initialize as false to avoid errors
-    if request.user.is_authenticated:  # Check if the user is logged in to avoid errors
+    # Check if the user is logged in (to avoid errors)
+    if request.user.is_authenticated:
         liked_post = Like.objects.filter(user=request.user, post=post).exists()
 
     # Retrieve all comments
@@ -91,7 +96,9 @@ def post_detail(request, slug):
             # Format the date time to exclude seconds and microseconds
             comment.posted_on = comment.posted_on.strftime("%b %d, %Y %H:%M")
             comment.updated_on = comment.updated_on.strftime("%b %d, %Y %H:%M")
-            comment.liked_by_user = Like.objects.filter(user=request.user, comment=comment).exists()
+            comment.liked_by_user = Like.objects.filter(
+                user=request.user, comment=comment
+            ).exists()
 
     comment_form = CommentForm()
 
@@ -103,8 +110,7 @@ def post_detail(request, slug):
             comment.post = post
             comment.save()
             messages.add_message(
-                request, messages.SUCCESS,
-                'Comment posted successfully'
+                request, messages.SUCCESS, "Comment posted successfully"
             )
             return redirect(comment.post.get_absolute_url())
 
@@ -118,7 +124,7 @@ def post_detail(request, slug):
             "comment_form": comment_form,
             "liked_post": liked_post,
             "liked_comments": liked_comments,
-         },
+        },
     )
 
 
@@ -126,31 +132,34 @@ class EditMixin(UserPassesTestMixin):
     """
     Checks if the user is allowed to edit
     """
-    template_name = 'board/editing.html'
+
+    template_name = "board/editing.html"
 
     def test_func(self):
         obj = self.get_object()
         return self.request.user == obj.author or self.request.user.is_staff
-        
+
     def get_success_url(self):
         if self.model == Comment:
             # Commens get the slug from the related Post
-            return reverse_lazy('post_detail', kwargs={'slug': self.get_object().post.slug})
+            return reverse_lazy(
+                "post_detail", kwargs={"slug": self.get_object().post.slug}
+            )
         else:
             # Posts get their own slug
-            return reverse_lazy('post_detail', kwargs={'slug': self.get_object().slug})
+            return reverse_lazy(
+                    "post_detail", kwargs={"slug": self.get_object().slug})
 
 
 class EditPost(EditMixin, UpdateView):
     model = Post
-    form_class = EditPostForm #  Using this form from forms.py
-    
+    form_class = EditPostForm  # Using this form from forms.py
+
 
 class EditComment(EditMixin, UpdateView):
     model = Comment
-    form_class = CommentForm # Using this form from forms.py
+    form_class = CommentForm  # Using this form from forms.py
 
-        
 
 @login_required
 def post_delete(request, entry_type, entry_id):
@@ -160,43 +169,48 @@ def post_delete(request, entry_type, entry_id):
     """
     EntryType = Comment if entry_type == "comment" else Post
     entry = get_object_or_404(EntryType, id=entry_id)
-    
+
     #  Decide where to redirect after deletion
-    redirect_url = entry.post.get_absolute_url() if entry_type == "comment" else reverse('home')
+    redirect_url = (
+        entry.post.get_absolute_url() if entry_type ==
+        "comment" else reverse("home")
+    )
 
     if request.user != entry.author and not request.user.is_staff:
         messages.error(request, "You can not delete another user's post.")
-        return redirect(redirect_url)  # Redirect if the user doesn't have permission
+        # Redirect if the user doesn't have permission
+        return redirect(redirect_url)
     if request.method == "POST":
         entry.delete()
-        messages.success(request, 'Post deleted successfully.')
+        messages.success(request, "Post deleted successfully.")
         return redirect(redirect_url)
-    
+
 
 class LikeMixin(View):
     """
     Like function refactored into a mixin to allow likes on different models
     without repeating code
     """
-    model = None  # Will be set to the model being liked
 
+    model = None  # Will be set to the model being liked
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        object_id = kwargs.get('object_id')
+        object_id = kwargs.get("object_id")
         user = request.user
         try:
             content_object = self.model.objects.get(id=object_id)
         except self.model.DoesNotExist:
-            return JsonResponse({'error': 'Content not found'}, status=404)
+            return JsonResponse({"error": "Content not found"}, status=404)
         # Check if it's a post or comment
         if self.model == Post:
             like = Like.objects.filter(user=user, post=content_object).first()
         else:
-            like = Like.objects.filter(user=user, comment=content_object).first()
+            like = Like.objects.filter(
+                    user=user, comment=content_object).first()
         # Check if the user has already liked the object, then like or unlike
         if like:
             like.delete()
@@ -204,15 +218,18 @@ class LikeMixin(View):
             content_object.likes -= 1
         else:
             if self.model == Post:
-                like = Like.objects.filter(user=user, post=content_object).first()
+                like = Like.objects.filter(
+                    user=user, post=content_object).first()
                 Like.objects.create(user=user, post=content_object)
             else:
-                like = Like.objects.filter(user=user, comment=content_object).first()
+                like = Like.objects.filter(
+                    user=user, comment=content_object).first()
                 Like.objects.create(user=user, comment=content_object)
             liked = True
             content_object.likes += 1
         content_object.save()
-        return JsonResponse({'liked': liked, 'new_likes': content_object.likes})
+        return JsonResponse(
+            {"liked": liked, "new_likes": content_object.likes})
 
 
 class LikePost(LikeMixin):

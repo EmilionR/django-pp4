@@ -11,51 +11,55 @@ from board.models import Post, Comment
 
 def profile(request, username):
     """
-    A view to display a user's profile, and update it if the user is logged in    
+    A view to display a user's profile, and update it if the user is logged in
     """
     # Fetch the user
     user = get_object_or_404(User, username=username)
     # Fetch the user's profile
     profile = get_object_or_404(Profile, user=user)
     # Fetch the the user's posts and comments
-    posts = Post.objects.filter(author=user).order_by('-posted_on')
-    comments = Comment.objects.filter(author=user).order_by('-posted_on')
+    posts = Post.objects.filter(author=user).order_by("-posted_on")
+    comments = Comment.objects.filter(author=user).order_by("-posted_on")
 
     if request.method == "POST":
         # Check if the current user is viewing their own profile
         if request.user.username != username:
             # If not, redirect to the profile without changes
-            return redirect('profile', username=username)
-        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+            return redirect("profile", username=username)
+        profile_form = ProfileForm(
+            request.POST, request.FILES, instance=profile)
         if profile_form.is_valid():
-             # Check if an image file is included in the request
-            if 'avatar' in request.FILES:
+            # Check if an image file is included in the request
+            if "avatar" in request.FILES:
                 # Upload the image to Cloudinary
-                result = cloudinary.uploader.upload(request.FILES['avatar'])
+                result = cloudinary.uploader.upload(request.FILES["avatar"])
                 # Update the image URL in the form's cleaned data
-                profile_form.cleaned_data['avatar'] = result['url']
+                profile_form.cleaned_data["avatar"] = result["url"]
             profile_form.save()
-            messages.add_message(request, messages.SUCCESS, "Profile updated successfully")
-            return redirect('profile', username=username)
+            messages.add_message(
+                request, messages.SUCCESS, "Profile updated successfully"
+            )
+            return redirect("profile", username=username)
     else:
         profile_form = ProfileForm(instance=profile)
 
     # Pass the posts to the template context
     context = {
-        'profile': profile,
-        'profile_form': profile_form,
-        'posts': posts,  # Include the user's posts in the context
-        'comments': comments,  # Include the user's comments in the context
+        "profile": profile,
+        "profile_form": profile_form,
+        "posts": posts,  # Include the user's posts in the context
+        "comments": comments,  # Include the user's comments in the context
     }
 
-    return render(request, 'profile.html', context)
+    return render(request, "profile.html", context)
+
 
 @login_required
 def delete_account(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         request.user.delete()
         # Redirect to home page
-        return redirect('home')
+        return redirect("home")
     else:
         # Render the confirmation template
-        return render(request, 'confirm_delete.html')
+        return render(request, "confirm_delete.html")
