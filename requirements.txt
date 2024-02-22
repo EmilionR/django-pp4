@@ -1,7 +1,6 @@
 asgiref==3.7.2
 backports.zoneinfo;python_version<"3.9"
 cloudinary==1.36.0
-crispy-bootstrap5==0.7.0
 dj-database-url==0.5.0
 dj3-cloudinary-storage==0.0.6
 django==4.2.7

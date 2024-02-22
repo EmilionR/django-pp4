@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-{% load crispy_forms_tags %}
 {% load static %}
 
 <div class="container-fluid mx-2">
@@ -39,7 +38,7 @@
                     What's on your mind, <span class="text-fade"> {{ user.username }}?</span>
                 </h4>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
-                    {{ post_form|crispy }}
+                    {{ post_form }}
                     {% csrf_token %}
                     <button id="submitButton" type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </form>
