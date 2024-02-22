@@ -130,7 +130,8 @@ def post_detail(request, slug):
 
 class EditMixin(UserPassesTestMixin):
     """
-    Checks if the user is allowed to edit
+    Checks if the user is allowed to edit,
+    If allowed, open editor for the post or comment
     """
 
     template_name = "board/editing.html"
@@ -148,7 +149,7 @@ class EditMixin(UserPassesTestMixin):
         else:
             # Posts get their own slug
             return reverse_lazy(
-                    "post_detail", kwargs={"slug": self.get_object().slug})
+                "post_detail", kwargs={"slug": self.get_object().slug})
 
 
 class EditPost(EditMixin, UpdateView):

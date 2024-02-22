@@ -3,12 +3,12 @@
 {% load crispy_forms_tags %}
 
 <div>
-    <div class="container mt-4">
+    <div class="container my-4">
         <div class="row g-0">
-            <div class="col-md-6">
+            <div class="col bg-dark w-100 p-4 rounded">
                 <form method="post" id="edit-form">
                     {% csrf_token %}
-                    {{ form | safe }}
+                    {{ form.body | as_crispy_field }}
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
