@@ -264,3 +264,6 @@ https://stackoverflow.com/questions/7827079/django-csrf-token-without-forms
 
 Queryset manipulation with Django Q model
 https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
+
+Scrollbar styling
+https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp

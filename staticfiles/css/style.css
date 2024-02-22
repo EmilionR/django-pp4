@@ -52,6 +52,28 @@ a:focus {
     color: var(--clr-fade);
 }
 
+/*--------------------------------------- Scrollbar styling */
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-light) var(--clr-black);
+  }
+  
+  /* Chromium, Edge, Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: var(--clr-shade);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--clr-black);
+    border-radius: 20px;
+  }
+
 /*-------------------------------------------- Post styling */
 
 .board-post {
@@ -155,7 +177,7 @@ a:focus {
     border-radius: 0 0 4px 4px;
     border: 4px solid var(--clr-black);
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 /*---------------------------------------- Buttons and such */
