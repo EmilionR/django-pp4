@@ -138,17 +138,21 @@ a:focus {
 /*-------------------------------------------- Form Styling */
 
 label {
-    color: var(--clr-fade);
+    color: var(--clr-fade) !important;
 }
 
 .form-control,
 .form-control:focus {
-    background-color: var(--clr-shade);
+    background-color: var(--clr-shade); 
     color: var(--clr-white);
     border: 2px solid var(--clr-black);
 }
 
+.btn-sm {
+    background-color: var(--clr-black) !important;
+    color: var(--clr-white) !important;
 
+}
 
 /*---------------------------------------- Profile styling */
 

@@ -157,9 +157,6 @@ SUMMERNOTE_CONFIG = {
         ],
         'fontNames': ['Roboto', 'Sans-serif'],
         'fontNamesIgnoreCheck': ['Roboto', 'Sans-serif'],
-        'css': (
-            '../static/css/style.css',
-        ),
     },
 }
 

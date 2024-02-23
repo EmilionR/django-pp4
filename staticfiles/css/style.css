@@ -136,29 +136,22 @@ a:focus {
 }
 
 /*-------------------------------------------- Form Styling */
-#div_id_title label,
-#div_id_body label {
-    display: none
+
+label {
+    color: var(--clr-fade) !important;
 }
 
-#div_id_body textarea,
-#div_id_title input {
+.form-control,
+.form-control:focus {
+    background-color: var(--clr-shade); 
     color: var(--clr-white);
-    background-color: var(--clr-shade);
-    border: none;
+    border: 2px solid var(--clr-black);
 }
 
-#div_id_body textarea::placeholder,
-#div_id_title input::placeholder {
-    color: var(--clr-fade);
-}
+.btn-sm {
+    background-color: var(--clr-black) !important;
+    color: var(--clr-white) !important;
 
-#edit-form textarea {
-    display: block;
-}
-
-.note-group-select-from-files {
-    display: none !important;
 }
 
 /*---------------------------------------- Profile styling */
