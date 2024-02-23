@@ -6,7 +6,7 @@ Fooroom is a forum site that aims to strike a happy middle ground between the mo
 
 Users can post, discuss, and interact without any unnecessary distractions.
 
-[View the website here](#)
+[View the website here](https://fooroom-9cc630806337.herokuapp.com/)
 
 ## Contents
 
@@ -59,27 +59,26 @@ The site has two pages, one for the main menu and one for the game itself.
 #### Home Page:
 ![Home page](#)
 
-__The home page has:__
-
+The home page displays a list of posts sorted by recent activity. Each post shows the avatar of the original poster along with information about when the post was posted, how many likes and comments it has, and when it got its latest comment. Clicking any of the posts opens the corresponding post as a new page. Posts designated as "sticky" are always displayed at the top of the list with a light border and an asterisk before the title.
 
 #### Post Page:
 ![Post page](#)
 
-__The Post page has:__
-
+Here, users can see the full contents of a chosen post along with any comments it has. Comments are sorted from oldest to newest in descending order. Under the main content of each post, there's a like button with its associated counter. To the right of it, there are buttons for editing and deleting the post. Given an authenticated user, the buttons appear to give the user full CRUD capabilities. Any user assigned as staff or administrator also gets these controls for all posts and not just their own.
 
 #### Profile Page:
 ![Profile page](#)
 
+On the profile page, an authenticated user can write a presentation and upload a profile picture. There's also a button for deleting the account. Users can also see a list of posts and comments made by the associated user, each one linking to its origin.
+
 #### Register/Login Page:
 ![Login page](#)
 
-__The Post page has:__
-
-__The Post page has:__
+The pages for account registration and user authentication are kept simple and clean. New users can sign up using a username, with email registration kept optional for a better user experience.
 
 ### Future Implementations:
 
+In a potential future iteration, the next things to add would be private messaging and a friend system.
 
 ## User Experience
 
