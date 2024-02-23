@@ -151,7 +151,10 @@ label {
 .btn-sm {
     background-color: var(--clr-black) !important;
     color: var(--clr-white) !important;
+}
 
+.note-group-select-from-files{
+    display: none;
 }
 
 /*---------------------------------------- Profile styling */
