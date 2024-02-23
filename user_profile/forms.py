@@ -7,12 +7,9 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = (
-            "avatar",
-            "about",
-        )  # Fields that can be updated
+        fields = ('avatar', 'about',)  # Fields that can be updated
         widgets = {
             #  Accept only image files
-            "avatar": forms.FileInput(attrs={"accept": "image/*"}),
-            "about": SummernoteWidget(attrs={"rows": 5}),
+            'avatar': forms.FileInput(attrs={'accept': 'image/*'}),
+            'about': SummernoteWidget(attrs={"class": "form-control"}),
         }

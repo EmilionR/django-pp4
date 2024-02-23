@@ -48,7 +48,6 @@ class PostList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post_form = PostForm()
-        post_form.helper = FormHelper()
         context["post_form"] = post_form
         return context
 

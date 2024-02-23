@@ -10,8 +10,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'body',) #  Fields that user can write to
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Title', "class": "form-control"}),
-            'body': SummernoteWidget(),
+            'title': forms.TextInput(attrs={"class": "form-control",}),
+            'body': SummernoteWidget(attrs={"class": "form-control",}),
         }
 
 
@@ -21,7 +21,7 @@ class EditPostForm(forms.ModelForm):
         model = Post
         fields = ('body',) #  Fields that user can write to
         widgets = {
-            'body': SummernoteWidget(attrs={'placeholder': 'Your comment here...', "class": "form-control"}),
+            'body': SummernoteWidget(attrs={"class": "form-control"}),
         }
 
 
@@ -31,5 +31,5 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',) #  Fields that user can write to
         widgets = {
-            'body': SummernoteWidget(attrs={'placeholder': 'Your comment here...', "class": "form-control"}),
+            'body': SummernoteWidget(attrs={"class": "form-control"}),
         }

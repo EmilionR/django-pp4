@@ -135,27 +135,20 @@ a:focus {
     color: var(--clr-light);
 }
 
-/* Styling for crispy form */
-#div_id_title label,
-#div_id_body label {
-    display: none
-}
+/*-------------------------------------------- Form Styling */
 
-#div_id_body textarea,
-#div_id_title input {
-    color: var(--clr-white);
-    background-color: var(--clr-shade);
-    border: none;
-}
-
-#div_id_body textarea::placeholder,
-#div_id_title input::placeholder {
+label {
     color: var(--clr-fade);
 }
 
-#edit-form textarea {
-    display: block;
+.form-control,
+.form-control:focus {
+    background-color: var(--clr-shade);
+    color: var(--clr-white);
+    border: 2px solid var(--clr-black);
 }
+
+
 
 /*---------------------------------------- Profile styling */
 

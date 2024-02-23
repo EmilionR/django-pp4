@@ -145,8 +145,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 SUMMERNOTE_THEME = 'bs4'
 
 SUMMERNOTE_CONFIG = {
-    "summernote": {
-        "width": "100%",
+    'summernote': {
+        'width': '100%',
+        'height': '400px',
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'strikethrough', 'fontsize', 'color']],
+            ['paragraph', ['ol', 'ul', ]],
+            ['insert', ['link', 'picture', 'video']],
+            ['misc', ['fullscreen', 'codeview', 'undo', 'redo','help', ]],
+        ],
+        'fontNames': ['Roboto', 'Sans-serif'],
+        'fontNamesIgnoreCheck': ['Roboto', 'Sans-serif'],
+        'css': (
+            '../static/css/style.css',
+        ),
     },
 }
 

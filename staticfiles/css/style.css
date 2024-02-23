@@ -135,7 +135,7 @@ a:focus {
     color: var(--clr-light);
 }
 
-/* Styling for crispy form */
+/*-------------------------------------------- Form Styling */
 #div_id_title label,
 #div_id_body label {
     display: none
@@ -155,6 +155,10 @@ a:focus {
 
 #edit-form textarea {
     display: block;
+}
+
+.note-group-select-from-files {
+    display: none !important;
 }
 
 /*---------------------------------------- Profile styling */
