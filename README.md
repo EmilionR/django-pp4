@@ -104,6 +104,9 @@ These are the features I have implemented for defensive design.
   * Profiles, images, and more have a creation routine that automatically adds them to prevent null references
   * Template tags check for placeholders and nonexistent values before rendering anything to the page
 
+* Error pages
+  * A custom 404 page appears if users try to visit a non-existent page. The page features a button for returning to the home page.
+  * A custom 500 page appears if the site encounters a server error trying to load content. The same "return to home" button is found here too.
 
 ## User Experience
 
