@@ -29,11 +29,11 @@ Users can post, discuss, and interact without any unnecessary distractions.
 * [Design](#Design)
   * [Color Scheme](#Color-Scheme)
   * [Typography](#Typography)
-  * [Agile Methodology](agile-methodology)
-  * [Data Model](data-model)
   * [Images](#Images)
   * [Wireframe](#wireframe)
   * [Accessibility](#Accessibility)
+  * [Agile Methodology](agile-methodology)
+  * [Data Model](data-model)
 
 * [Technologies Used](#Technologies-Used)
   * [Languages Used](#Languages-Used)
@@ -170,7 +170,27 @@ For this site, I kept it simple with a clean sans-serif font across the whole si
 
 The site uses no imagery of its own and instead leaves the whole image space for users' profile pictures.
 
-## Agile Methodology
+### Wireframes
+
+Before
+
+<details>
+![Wireframe](documentation/post-list.png)
+</details>
+
+<details>
+![Wireframe](documentation/thread-view.png)
+</details>
+
+<details>
+![Wireframe](documentation/profile-page.png)
+</details>
+
+### Accessibility
+
+I ensure high accessibility by using high contrast design across the entire site. I have also used ARIA features such as the aria-label and aria-hidden HTML tags to help screen readers perform well. I verified the accessibility with Lighthouse, WAVE, and Internet Disability Simulator. 
+
+### Agile Methodology
 
 I used GitHub projects to manage this project's development stages using Agile methodology. You can see my [iterations](https://github.com/EmilionR/django-pp4/milestones) and [project board](https://github.com/users/EmilionR/projects/4/views/1) to learn more.
 
@@ -178,7 +198,7 @@ After breaking up the epics into user stories, I added all the user stories to t
 Each user story has a list of acceptance criteria and associated tasks, each one with a checkbox for easy tracking of progress.
 
 
-## Data Model
+### Data Model
 
 ![Data model](documentation/forum-erd2.png)
 
@@ -189,19 +209,9 @@ I use a highly object-oriented design for the project, using abstraction and mix
 
 The models for posts and comments are there to let users create content. Each time a user submits a post or comment, a new object based its model is created. Similarly, a profile object is assigned to each new user created. And each time a user likes a post or a comment, this creates a new like object pairing the user and the entry so that users can only like any given entry once.
 
+<details>
 ![Old data model](documentation/forum-erd.png)
-
-### Wireframe
-
-![Wireframe](documentation/post-list.png)
-
-![Wireframe](documentation/thread-view.png)
-
-![Wireframe](documentation/profile-page.png)
-
-
-### Accessibility
-
+</details>
 
 ## Technologies Used
 
@@ -211,9 +221,15 @@ Python, HTML, CSS, and JavaScript.
 
 ### Frameworks & Libraries Used
 
-Django
+Django - The main framework, used for database handling and templates
 
-Bootstrap
+Bootstrap - Used for more efficient styling and scripting
+
+Summernote - Posting forms
+
+FontAwesome - Supplies the icons used across the site
+
+Google Fonts - Supplies the webfont used
 
 ### Other Technologies Used
 
@@ -221,13 +237,21 @@ VSCode - Used for all the coding.
 
 Git - For version control.
 
-GitHub - To store files and provide a live site.
+GitHub - For project management and storage
 
-Google Fonts - For stylish headings.
+Heroku - For live site deployment
+
+AWS - Hosting the database
+
+Cloudinary - Hosting the profile images
 
 Google & Mozilla Developer Tools - For debugging and trying out design improvements on the fly.
 
 GNU Image Manipulation Program - Cropping and scaling images for faster load times.
+
+Figma - Wireframing
+
+Lucidchart - ERD design
 
 Am I Responsive - For testing how the site looks on different devices.
 
@@ -279,8 +303,6 @@ Please refer to [TESTING.md](TESTING.md) for testing documentation.
 
 ## Credits
 
-### Content
-
 ### Media
 
 **Images used**
@@ -290,8 +312,6 @@ Grandmaster - [Generated with Night Cafe](https://creator.nightcafe.studio/)
 Cat - [Photo by Raoul Droog](https://unsplash.com/photos/russian-blue-cat-wearing-yellow-sunglasses-yMSecCHsIBc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
   
 Mouse - [Photo by Joshua J. Cottenhttps](https://unsplash.com/photos/a-rat-sitting-on-a-piece-of-wood-QxW15BmJxOQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
-
-
 
 ### Tutorials & Code Used
 
