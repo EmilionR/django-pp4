@@ -19,6 +19,7 @@ Users can post, discuss, and interact without any unnecessary distractions.
     * [Profile page](#profile-page)
     * [Register/Login page](#registerlogin-page)
   * [Future Implementations](#future-implementations)
+  * [Defensive Design Feaures](#defensive-design-features)
 
 * [User Experience](#User-Experience)
   * [User Stories](#User-Stories)
@@ -80,6 +81,30 @@ The pages for account registration and user authentication are kept simple and c
 
 In a potential future iteration, the next things to add would be private messaging and a friend system.
 
+### Defensive Design Features
+
+These are the features I have implemented for defensive design.
+
+* Authentication checks
+  * With the @login_required decorator on certain views, I restrict access for unauthenticated users.
+  * Using Django's UserPassesTestMixin, I ensure that users can not edit other user's posts (unless they have administrator access)
+  * Admin features are only accessible if signed in as a superuser
+  * I refrained from using the @csrf_exempt decorator for ajax calls to avoid potential cross-site exploits
+  * Manually inputting URLs to sensitive endpoints such as account deletion does not grant access
+
+* Form validation
+  * If a form contains any invalid data on submission, it will refuse to submit and instead warn the user
+  * Image file size is restricted using a custom validator
+  * Model fields that can be manipulated have default values and restrictions such as maximum character count
+  * CSRF token checks ensure that forms can only be submitted by users on the site
+  * No base forms that could enable code injection
+
+* Backup and default values
+  * Image fields have a placeholder to prevent broken links
+  * Profiles, images, and more have a creation routine that automatically adds them to prevent null references
+  * Template tags check for placeholders and nonexistent values before rendering anything to the page
+
+
 ## User Experience
 
 ### User stories
@@ -126,10 +151,15 @@ EPIC - User profile
 
 ![Color Palette](documentation/color-palette.png)
 
+I decided from the start that I wanted a "night mode" design for this site, but not just grayscale. I went with muted purple tones. This palette is consistently applied across the whole site, including widgets. Certain important buttons are kept red to highlight their nature, but everything else adheres to the color theme.
+
 ### Typography
 
+For this site, I kept it simple with a clean sans-serif font across the whole site. Roboto is the name of the font, which I imported from Google Fonts.
 
 ### Images
+
+The site uses no imagery of its own and instead leaves the whole image space for users' profile pictures.
 
 ## Agile Methodology
 
