@@ -343,7 +343,18 @@ Please refer to [TESTING.md](TESTING.md) for full testing documentation.
 
 ### Solved Bugs
 
+During development, I came across a multitude of bugs. With some debugging, I got to the root of each issue and corrected its behavior.
+
+* User content would display with incorrect formatting, and editing posts would sometimes load html tags. I fixed this by improving the template tags used and replacing Crispy forms with Summernote.
+* Avatar images would load incorrectly or not at all for new users. I fixed this by building robust checks in the templates for displaying user images.
+* Image upload file size restriction didn't work. I had to create a custom validator to make sure that any image bigger than half a megabyte is rejected.
+* Comments sometimes loaded inside one another, creating a staircase effect. I found the quirk in the template logic that prevented a certain closing div tag from rendering under certain circumstances.
+* The "Delete profile" button incorrectly appeared to any authenticated user viewing another profile (but did not allow deletion of other profiles). With a quick change to the view and template, it no longer appears.
+* Certain forms would re-send their requests when refreshing the page. I added additional checks to the requests to make sure they cannot re-send form data.
+
 ### Unfixed Bugs
+
+The only remaining but that I'm aware of is that the responsive styling can be somewhat inconsistent. When testing on different browsers and viewport sizes, certain text elements go out of alignment.
 
 ## Credits
 
