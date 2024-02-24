@@ -10,8 +10,6 @@ Users can post, discuss, and interact without any unnecessary distractions.
 
 ## Contents
 
-* [Development Process](#development-process)
-
 * [Features](#Features)
   * [Existing Features](#existing-features)
     * [Home page](#home-page)
@@ -25,6 +23,8 @@ Users can post, discuss, and interact without any unnecessary distractions.
   * [User Stories](#User-Stories)
 
 * [Deployment](#Deployment)
+* [Heroku](#heroku)
+* [GitHub](#github)
 
 * [Design](#Design)
   * [Color Scheme](#Color-Scheme)
@@ -32,12 +32,13 @@ Users can post, discuss, and interact without any unnecessary distractions.
   * [Images](#Images)
   * [Wireframe](#wireframe)
   * [Accessibility](#Accessibility)
-  * [Agile Methodology](agile-methodology)
-  * [Data Model](data-model)
+  * [Agile Methodology](#agile-methodology)
+  * [Data Model](#data-model)
 
 * [Technologies Used](#Technologies-Used)
   * [Languages Used](#Languages-Used)
   * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+  * [Other Technologies Used](#other-technologies-used)
 
 * [Testing](#Testing)
   * [Solved Bugs](#solved-bugs)
@@ -47,9 +48,6 @@ Users can post, discuss, and interact without any unnecessary distractions.
   * [Content](#Content)
   * [Media](#Media)
   * [Tutorials & Code Used](#tutorials--code-used)
-
-## Development Process
-
 
 ## Features
 
@@ -264,38 +262,84 @@ realfavicongenerator.net/ - For the Favicon
 ## Deployment
 
 ### Heroku
-The Application has been deployed from GitHub to Heroku following the steps:
 
-1. Sign in or sign up at heroku.com
-2. Create a new app with a unique app name and select your region
-3. Click "Create app"
-4. Click "Settings" and then "Config Vars", add a key called "PORT" with the value "8000" and (when making an app like this using an external worksheet) add another key with private API credentials in the value area.
-5. Add any required buildpacks. This project uses Python and Node.js, with the latter being used for the terminal display and not the program itself.
-6. Go to the "Deploy" tab and, under "Deployment method", select "GitHub." 
-7. Insert the GitHub repository link or the name of the repository and click "Search" followed by "Connect" to deploy the GitHub repo to Heroku.
-8. Next, you must select a branch of the repository for building the project, in this case "main."
-9. Click "Deploy Branch" to deploy, or use "Enable Automatic Deploys" to make automatic deployments when the repo is updated.
-10. You'll see a message saying “App was successfully deployed” when it's ready, and you click the "View" button to view the deployed project.
+To deploy the project to Heroku, I took the following steps.
+
+__Requirements and Procfile__
+
+In order to deploy the project, Heroku needs information about the technologies used. Before deployment, I create a Procfile and a list of requirements. In some cases, you may also need a runtime.txt file specifying the version of Python to use.
+
+* Create a plain file called Procfile without any file suffix, at the root level of the project.
+* Type ```web: gunicorn fooroom.wsgi:application``` into the Procfile and save.
+* In your IDE terminal, type ```pip3 freeze local > requirements.txt``` to create the requirements.
+* (Optional) Create a runtime.txt and type ```python-3.12.1``` (or whichever version you use)
+* Commit and push these files to the project repository.
+
+__Create the Heroku app:__
+
+* Sign in or sign up to [Heroku](https://heroku.com/).
+* Click the button that says "Create new app."
+* Enter a unique app name.
+* Choose your region from the dropdown menu.
+* Click the "Create app" button.
+
+__Heroku Settings:__
+
+For Heroku to be able to process and render the project, you must define some environment variables.
+Deploying the project without these is like trying to start a car without the key.
+
+* Go to the settings page of your new app
+* Scroll down and open the Config Vars
+* Add a DATABASE_URL variable and assign it a link to your database
+* Add a SECRET_KEY variable and assign it a secret key of your choice
+* Add a CLOUDINARY_URL variable and assign it a link to your Cloudinary
+
+__Project Settings:__
+
+It's important that the environment variables and settings in the django project are compatible with the settings on heroku. These are the steps to ensure a proper setup.
+
+* Include ```https://<your_app_name>.herokuapp.com``` in the ALLOWED_HOSTS and CSRF_TRUSTED_ORIGINS lists inside the settings.py file.
+* Make sure that the environment variables (DATABASE_URL, SECRET_KEY, and CLOUDINARY_URL) are correctly set ```to os.environ.get("<variable_name>")```
+* If making changes to static files or apps, make sure to run collectstatic or migrate as needed.
+* Commit and push to the repository.
+
+__Connect the repository__
+
+Once your Heroku settings and GitHub repository are up to date, it's time to connect the two.
+
+* Go to the Deploy tab of your heroku app.
+* Find the "Deployment method" section and click GitHub.
+* Type in the name of your repository to search for it
+* Click 'Connect' to connect the repository
+* (Optional) Enable automatic deployment to automatically update the Heroku app whenever you push to GitHub
+
+__Deploy the project to Heroku__
+
+Now, all that's left to do is to deploy and open the app.
+
+* Click "Deploy branch"
+* Wait for Heroku to finish building the app.
+* Upon successful deployment, click the "View" button to open the app.
 
 ### GitHub
 
-#### How to Fork the Repository
-
-1. Sign in to GitHub.
-2. Go to the repository for this project, [EmilionR/card-battle-pp2](https://github.com/EmilionR/card-battle-pp2/commits/main/)
-3. Click the Fork button in the top right corner.
-
-#### How to Clone the Repository
+__How to Fork the Repository__
 
 1. Log in (or sign up) to GitHub.
-2. Go to the repository for this project, [EmilionR/card-battle-pp2](https://github.com/EmilionR/card-battle-pp2/commits/main/)
+2. Go to the repository for this project, [EmilionR/django-pp4](https://github.com/EmilionR/django-pp4)
+3. Click the Fork button in the top right corner.
+
+__How to Clone the Repository__
+
+1. Log in (or sign up) to GitHub.
+2. Go to the repository for this project, [EmilionR/django-pp4](https://github.com/EmilionR/django-pp4)
 3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
 ## Testing
 
-Please refer to [TESTING.md](TESTING.md) for testing documentation.
+Please refer to [TESTING.md](TESTING.md) for full testing documentation.
 
 ### Solved Bugs
 
