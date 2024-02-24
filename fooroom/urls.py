@@ -19,6 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404, handler500
+from board.views import page_not_found_view, server_error_view
+
+handler404 = page_not_found_view
+handler500 = server_error_view
 
 urlpatterns = [
     path("accounts/", include("allauth.urls")),
