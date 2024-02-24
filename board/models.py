@@ -11,7 +11,6 @@ class Entry(models.Model):
     posted_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     likes = models.IntegerField(default=0)
-    preview = models.TextField(blank=True)
     is_sticky = models.BooleanField(default=False)
 
     class Meta:

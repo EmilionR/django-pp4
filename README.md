@@ -62,6 +62,8 @@ The site has two pages, one for the main menu and one for the game itself.
 
 The home page displays a list of posts sorted by recent activity. Each post shows the avatar of the original poster along with information about when the post was posted, how many likes and comments it has, and when it got its latest comment. Clicking any of the posts opens the corresponding post as a new page. Posts designated as "sticky" are always displayed at the top of the list with a light border and an asterisk before the title.
 
+The search bar lets users filter posts to easily find what they're looking for.
+
 #### Post Page:
 ![Post page](#)
 
@@ -79,7 +81,9 @@ The pages for account registration and user authentication are kept simple and c
 
 ### Future Implementations:
 
-In a potential future iteration, the next things to add would be private messaging and a friend system.
+The main thing I'd change in the future is the setup for image hosting and external resources. With the current setup, I can't access and change certain factors that are detrimental to page loading and general performace. Cloudinary is slow, Summernote's internal structure doesn't fully comply with current best practices, and the bootstrap imports redundant data. In the scope of a bigger project, I'd have dealt with this, but it wasn't a feasible investment of time for this study project.
+
+In a potential future iteration, I'd also like to add private messaging and a friend system. The list view and post detail view should also enable sorting choices.
 
 ### Defensive Design Features
 
@@ -140,6 +144,8 @@ EPIC - User posting
 
 * As a site user, I can edit or delete my posts so that I can correct mistakes
 
+* As a site user, I can like posts and see how many likes a post has
+
 EPIC - User profile
 
 * As a site user, I can upload a profile picture
@@ -166,10 +172,24 @@ The site uses no imagery of its own and instead leaves the whole image space for
 
 ## Agile Methodology
 
+I used GitHub projects to manage this project's development stages using Agile methodology. You can see my [iterations](https://github.com/EmilionR/django-pp4/milestones) and [project board](https://github.com/users/EmilionR/projects/4/views/1) to learn more.
+
+After breaking up the epics into user stories, I added all the user stories to the Issues page and connected them to the project board. I then set up milestones for each iteration and sorted relevant user stories into the corresponding iteration milestone based on urgency and importance. I kept iterations short and somewhat flexible.
+Each user story has a list of acceptance criteria and associated tasks, each one with a checkbox for easy tracking of progress.
+
 
 ## Data Model
 
-![Data model](documentation/forum-erd.png)
+![Data model](documentation/forum-erd2.png)
+
+I used a PostgreSQL relational database for this project. The entity relationship diagram (ERD) above represents the database of the project. The one below represents the original idea I envisioned before building the program.
+I had to make some alterations to harmonize better with Django's modular design and safety features.
+
+I use a highly object-oriented design for the project, using abstraction and mixins where applicable to reduce repetitions and redundancy. For example, I have an abstract model laying the foundation for posts and comments. I had to break away from this abstraction a few times due to the way django handles certain relations.
+
+The models for posts and comments are there to let users create content. Each time a user submits a post or comment, a new object based its model is created. Similarly, a profile object is assigned to each new user created. And each time a user likes a post or a comment, this creates a new like object pairing the user and the entry so that users can only like any given entry once.
+
+![Old data model](documentation/forum-erd.png)
 
 ### Wireframe
 
