@@ -1,5 +1,4 @@
 from django.test import TestCase
-from .views import PostList, post_detail, post_delete
 from .models import Post, Comment
 from django.contrib.auth.models import User
 
