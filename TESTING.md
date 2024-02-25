@@ -19,7 +19,6 @@
 
 __Site owner / Administrator goals__
 
-
 EPIC - Site Administration
 
 | Goals | How are they achieved? |
@@ -59,16 +58,18 @@ EPIC - User profile
 
 ### Python
 
-All Python files were run through with no errors found.
+All Python files were run validated with pep8 and cleaned until no errors were found.
 
 <details>
-!()[]
+![Python validation](documentation/pep8.png)
 </details>
 
 ### Javascript
 
+All JavaScript files were validated with jshint and return no errors.
+
 <details>
-!()[]
+![JavaScript validation](documentation/jshint.png)
 </details>
 
 ### HTML
@@ -77,13 +78,14 @@ All Python files were run through with no errors found.
 
 ### CSS
 
+I validated my CSS with the Jigsaw CSS validator and it came back without any errors. When validating by url, some minor bootstrap-specific warnings may appear, but that's par for the course when using bootstrap. These warnings don't appear when uploading the css file or pasting the page source.
 
-
-
+[CSS results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Fwhat-song-is-this%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=sv)
 
 ### Lighthouse
 
-Lighthouse validation was run on all pages (both mobile and desktop) in order to check accessibility and performance. At first I received the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. After I updated the button styling I received the below scores. 
+I used Lighthouse to test all pages. While the scores are not perfect, the main culprit for this is found in the widgets and frameworks used. There wasn't much I could do to abate this issue within the scope of the project. Loading images from cloudinary is quite slow, bootstrap loads unneccessary data, summernote has some deprecated code that isn't fully compliant with today's best practices.
+Overall, the site still scores approximately on par with similar sites such as Reddit.
 
 __Desktop__
 
@@ -110,9 +112,21 @@ __Mobile__
 ## Manual Testing
 
 __Browser Testing__
-    
+
+I have tested this site on the following browsers:
+
+* Google Chrome
+* Mozilla Firefox
+* Brave
+* Safari
+* Microsoft Edge
+
 __Device Testing__
 
+* Lenovo Thinkpad t480
+* Samsung Galaxy S23
+* Samsung Galaxy S22
+* Samsung Galaxy S9
 
 ### Site Navigation
 
