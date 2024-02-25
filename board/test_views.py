@@ -5,11 +5,10 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 
-class TestPostListView(TestCase):
+class ViewTests(TestCase):
     """
-    Test that the post list view works correctly
+    Base test class for testing views
     """
-
     def setUp(self):
         """
         Create posts and comments for testing
@@ -41,6 +40,12 @@ class TestPostListView(TestCase):
                 body=f"Test comment for {post.title}",
             )
             self.comments.append(comment)
+
+
+class TestPostListView(ViewTests):
+    """
+    Test that the post list view works correctly
+    """
 
     def test_post_list_view_uses_correct_template(self):
         """
@@ -79,3 +84,40 @@ class TestPostListView(TestCase):
         response = self.client.get("/?search=NoSuchPost")
         post_list = response.context["post_list"]
         self.assertEqual(len(post_list), 0)
+
+
+class TestPostDetailView(ViewTests):
+    """
+    Test that the post detail view works correctly
+    """
+
+    def test_post_detail_view_uses_correct_template(self):
+        """
+        Test that the post detail view uses the correct template
+        """
+        response = self.client.get(f"/{self.posts[0].slug}/")
+        self.assertTemplateUsed(response, "board/post_detail.html")
+
+    def test_post_detail_view_returns_post(self):
+        """
+        Test that the post detail view returns a post
+        """
+        response = self.client.get(f"/{self.posts[0].slug}/")
+        self.assertIn("post", response.context)
+
+    def test_post_detail_view_returns_comments(self):
+        """
+        Test that the post detail view returns comments
+        """
+        response = self.client.get(f"/{self.posts[0].slug}/")
+        self.assertIn("comments", response.context)
+
+    def test_post_detail_view_returns_comment_count(self):
+        """
+        Test that the post detail view returns the correct comment count
+        """
+        response = self.client.get(f"/{self.posts[0].slug}/")
+        comments = response.context["comments"]
+        self.assertEqual(len(comments), 1)
+
+
