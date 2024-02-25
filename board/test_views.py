@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 
+
 class ViewTests(TestCase):
     """
     Base test class for testing views
@@ -24,7 +25,7 @@ class ViewTests(TestCase):
 
         # Create multiple Post instances
         self.posts = []
-        for i in range(5):  # Adjust the range to create the desired number of posts
+        for i in range(5):
             post = Post.objects.create(
                 title=f"Test Post {i}",
                 body=f"Test body",
@@ -32,7 +33,7 @@ class ViewTests(TestCase):
                 slug=f"test-post-{i}",
             )
             self.posts.append(post)
-        
+
         # Create multiple Comment instances for each Post
         self.comments = []
         for post in self.posts:
@@ -65,7 +66,7 @@ class TestPostListView(ViewTests):
 
     def test_post_list_view_returns_posts_with_correct_comment_count(self):
         """
-        Test that the post list view returns posts with the correct comment count
+        Test that the post list view returns posts with correct comment count
         """
         response = self.client.get("/")
         post_list = response.context["post_list"]

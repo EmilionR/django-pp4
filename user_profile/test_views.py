@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 
+
 class TestViews(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -11,5 +12,6 @@ class TestViews(TestCase):
         )
 
     def test_get_profile_page(self):
+        """Test that the profile page is accessible"""
         response = self.client.get(f"/profile/{self.user.username}")
         self.assertEqual(response.status_code, 301)

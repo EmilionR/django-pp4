@@ -26,8 +26,9 @@ class ModelTestCase(TestCase):
             author=self.user,
             body='Test Body',
             is_sticky=True,
-            post = self.post
+            post=self.post
         )
+
 
 class TestPostModel(ModelTestCase):
     """
@@ -38,16 +39,16 @@ class TestPostModel(ModelTestCase):
         """
         Test string method for Post class
         """
-        self.assertEqual(str(self.post), f'{self.post.title} by {self.post.author}')
+        self.assertEqual(
+            str(self.post), f'{self.post.title} by {self.post.author}'
+            )
 
-    
     def test_post_get_absolute_url(self):
         """
         Test get_absolute_url method for Post class
         """
         self.assertEqual(self.post.get_absolute_url(), f'/{self.post.slug}/')
 
-    
     def test_post_latest_activity_is_set_to_now_if_not_set(self):
         """
         Test that latest_activity is set to now if not set
@@ -64,14 +65,16 @@ class TestCommentModel(ModelTestCase):
         """
         Test string method for Comment class
         """
-        self.assertEqual(str(self.comment), f'Comment by {self.comment.author}')
+        self.assertEqual(
+            str(self.comment), f'Comment by {self.comment.author}'
+            )
 
 
 class TestLikeModel(ModelTestCase):
     """
     Test that like models work correctly
     """
-        
+
     def test_like_post(self):
         """
         Test string method for Like class
@@ -80,8 +83,9 @@ class TestLikeModel(ModelTestCase):
             user=self.user,
             post=self.post,
         )
-        self.assertEqual(str(self.like), f'{self.like.user} likes {self.like.post}')
-
+        self.assertEqual(
+            str(self.like), f'{self.like.user} likes {self.like.post}'
+                )
 
     def test_like_comment(self):
         """
@@ -91,4 +95,6 @@ class TestLikeModel(ModelTestCase):
             user=self.user,
             comment=self.comment,
         )
-        self.assertEqual(str(self.like), f'{self.like.user} likes {self.like.comment}')
+        self.assertEqual(
+            str(self.like), f'{self.like.user} likes {self.like.comment}'
+            )
