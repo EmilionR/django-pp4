@@ -20,6 +20,9 @@ class ViewTests(TestCase):
             password='qwertyuiopå'
         )
 
+        # Log the user in to enable testing of views that require login
+        self.client.login(username='testuser', password='qwertyuiopå')
+
         # Create multiple Post instances
         self.posts = []
         for i in range(5):  # Adjust the range to create the desired number of posts
@@ -121,3 +124,21 @@ class TestPostDetailView(ViewTests):
         self.assertEqual(len(comments), 1)
 
 
+class TestPostDeleteView(ViewTests):
+    """
+    Test that the post delete view works correctly
+    """
+
+    def test_post_delete_view_deletes_post(self):
+        """
+        Test that the post delete view deletes a post
+        """
+        response = self.client.post(f"/delete/post/{self.posts[0].id}")
+        self.assertEqual(Post.objects.count(), 4)
+
+    def test_post_delete_view_deletes_comments(self):
+        """
+        Test that the post delete view deletes comments
+        """
+        response = self.client.post(f"/delete/post/{self.posts[0].id}")
+        self.assertEqual(Comment.objects.count(), 4)
