@@ -53,7 +53,7 @@ class Comment(Entry):
         ordering = ["posted_on"]
 
     def __str__(self):
-        return f"Comment {self.preview} by {self.author}"
+        return f"Comment by {self.author}"
 
 
 class Like(models.Model):
@@ -78,3 +78,6 @@ class Like(models.Model):
                 name="like_post_or_comment",
             )
         ]
+    
+    def __str__(self):
+        return f"{self.user} likes {self.post or self.comment}"
