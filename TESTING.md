@@ -17,7 +17,43 @@
 
 ### EPIC | User Profile
 
+__Site owner / Administrator goals__
 
+
+EPIC - Site Administration
+
+| Goals | How are they achieved? |
+| --- | --- |
+| As a site admin, I can manage, edit, and delete content on the site | Admin users can edit and delete content both on site and from the admin panel |
+| As a site admin, I can delete user accounts from the site | Accounts can be deleted from the admin panel |
+
+__User goals__
+
+EPIC - Site navigation
+
+| Goals | How are they achieved? |
+| --- | --- |
+| As a site user, I can have a clear idea of the site as soon as I open it so that I can know whether I should stay there. | The home page presents the site content, and all other user pages can be accessed from it |
+| As a site user, I can see how to navigate the site intuitively so that I can find what I want and find the around the site | A simple navbar is present on all pages |
+| As a site user, I can see a segmented list of posts so that I can select what to read | Posts appear in a neat list on the main page |
+| As a site user, I can click on a chosen post to see the whole post and its thread of comments on its own page | Clicking a post opens its page where users can see its content and comments |
+
+EPIC - User posting
+
+| Goals | How are they achieved? |
+| --- | --- |
+| As a site user, I can submit a new post to the forum so that people can read my post | New posts can be submitted from the main page |
+| As a site user, I can post replies to other people's posts and replies so that we can discuss the content of the post | Comments can be submitted from the post detail page |
+| As a site user, I can edit or delete my posts so that I can correct mistakes | Users can edit and delete their own posts using buttons directly on the post |
+| As a site user, I can like posts and see how many likes a post has | Each post and comment has a like button and a like counter |
+
+EPIC - User profile
+
+| Goals | How are they achieved? |
+| --- | --- |
+| As a site user, I can upload a profile picture | The profile page has a form with an image uploading button |
+| As a site user, I can view the profile page for my account and others | Profile pages are accessed by clicking usernames and avatars |
+| As a site user, I can see my posts and profile picture on my profile page | Each profile page has a list of posts and comments by the associated user |
 
 ## Validator Testing
 
