@@ -109,25 +109,25 @@ Overall, the site still scores approximately on par with similar sites such as R
 
 __Desktop__
 
-| Page         | Performance  | Accessibility | Best Practices  | SEO |
-|--------------|--------------|---------------|-----------------|-----|
-| Home         |          000 |           000 |             000 | 000 |
-| Post Detail  |           00 |           000 |             000 | 000 |
-| Profile page |           00 |           000 |             000 | 000 |
-| Login        |           00 |           000 |             000 | 000 |
-| Logout       |           00 |           000 |             000 | 000 |
-| Register     |           00 |           000 |             000 | 000 |
+| Page         | Performance | Accessibility | Best Practices | SEO |
+|--------------|-------------|---------------|----------------|-----|
+| Home         |         100 |            92 |             72 | 100 |
+| Post Detail  |          99 |            95 |             75 | 100 |
+| Profile page |          93 |            98 |             75 | 100 |
+| Login        |         100 |            94 |            100 | 100 |
+| Logout       |         100 |           100 |            100 | 100 |
+| Register     |         100 |            94 |            100 | 100 |
 
 __Mobile__
 
-| Page         | Performance  | Accessibility | Best Practices  | SEO |
-|--------------|--------------|---------------|-----------------|-----|
-| Home         |          000 |           000 |             000 | 000 |
-| Post Detail  |           00 |           000 |             000 | 000 |
-| Profile page |           00 |           000 |             000 | 000 |
-| Login        |           00 |           000 |             000 | 000 |
-| Logout       |           00 |           000 |             000 | 000 |
-| Register     |           00 |           000 |             000 | 000 |
+| Page         | Performance | Accessibility | Best Practices | SEO |
+|--------------|-------------|---------------|----------------|-----|
+| Home         |          96 |            92 |             72 | 100 |
+| Post Detail  |          81 |            95 |             75 | 100 |
+| Profile page |          82 |            98 |             75 | 100 |
+| Login        |          95 |            94 |            100 | 100 |
+| Logout       |          97 |           100 |            100 | 100 |
+| Register     |          97 |            94 |            100 | 100 |
 
 ## Manual Testing
 
