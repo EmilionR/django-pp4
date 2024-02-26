@@ -170,17 +170,20 @@ The site uses no imagery of its own and instead leaves the whole image space for
 
 ### Wireframes
 
-Before
+Before building the site, I made wireframes for all the main sites. I added a potential sidebar to the wireframe designs to show how the design would respond to such a sidebar if implemented. However, with only basic features on the site, the sidebar has no purpose and has been removed in the final design. 
 
 <details>
+<summary>Post list wireframe</summary>
 ![Wireframe](documentation/post-list.png)
 </details>
 
 <details>
+<summary>Post detail (thread) wireframe</summary>
 ![Wireframe](documentation/thread-view.png)
 </details>
 
 <details>
+<summary>Profile page wireframe</summary>
 ![Wireframe](documentation/profile-page.png)
 </details>
 
@@ -208,6 +211,7 @@ I use a highly object-oriented design for the project, using abstraction and mix
 The models for posts and comments are there to let users create content. Each time a user submits a post or comment, a new object based its model is created. Similarly, a profile object is assigned to each new user created. And each time a user likes a post or a comment, this creates a new like object pairing the user and the entry so that users can only like any given entry once.
 
 <details>
+<summary>Old data model</summary>
 ![Old data model](documentation/forum-erd.png)
 </details>
 
