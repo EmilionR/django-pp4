@@ -42,7 +42,7 @@
     <hr>
     <div class="d-flex flex-row gap-1 mx-1">
         <!-- Likes and Comments -->
-        <button class="like-btn" data-post-id="{{ post.id }}" data-content-type="post">
+        <button name="Like" class="like-btn" data-post-id="{{ post.id }}" data-content-type="post">
             <!-- If user has liked, display filled heart, else display empty heart -->
             {% if liked_post %}
             <i class="fas fa-heart"></i>
