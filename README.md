@@ -42,7 +42,7 @@ Users can post, discuss, and interact without any unnecessary distractions.
 
 * [Testing](#Testing)
   * [Solved Bugs](#solved-bugs)
-  * [Known Bugs](#unfixed-bugs)
+  * [Unfixed Bugs](#unfixed-bugs)
   
 * [Credits](#Credits)
   * [Content](#Content)
@@ -363,7 +363,9 @@ During development, I came across a multitude of bugs. With some debugging, I go
 
 ### Unfixed Bugs
 
-The only remaining but that I'm aware of is that the responsive styling can be somewhat inconsistent. When testing on different browsers and viewport sizes, certain text elements go out of alignment.
+The Summernote text editor often appears in its own original theme in the deployed version. I had no luck troubleshooting this issue.
+
+The responsive styling can be somewhat inconsistent. When testing on different browsers and viewport sizes, certain text elements go out of alignment.
 
 ## Credits
 
