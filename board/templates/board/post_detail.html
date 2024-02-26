@@ -134,7 +134,7 @@
                 <div class="d-flex flex-row gap-1 px-1 pb-1">
                     <!-- Likes -->
                     <strong class="text-fade">
-                        <button class="like-btn" data-post-id="{{ comment.id }}" data-content-type="comment">
+                        <button class="like-btn" name="Like" data-post-id="{{ comment.id }}" data-content-type="comment">
                             <!-- If user has liked, display filled heart, else display empty heart -->
                             {% if comment.liked_by_user %}
                             <i class="fas fa-heart"></i>
@@ -148,7 +148,7 @@
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
                     <a class="comment-control" comment_id="{{ comment.id }}"
                         href="{% url 'edit_comment' comment.pk %}">Edit</a>
-                    <button class="btn-delete comment-control" entry_type="comment"
+                    <button name="Delete" class="btn-delete comment-control" entry_type="comment"
                         entry_id="{{ comment.id }}">Delete</button>
                     {% endif %}
                 </div>
@@ -173,9 +173,10 @@
             </div>
             <div class="modal-footer">
                 <form id="deleteConfirm" method="post">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    aria-label="Close">Close</button>
                     <button type="submit" class="btn
-          btn-danger">Delete</button>
+          btn-danger" aria-label="Confirm delete">Delete</button>
                     {% csrf_token %}
                 </form>
             </div>
