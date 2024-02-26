@@ -75,7 +75,9 @@
                             <div class="row">
                                 <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                     <h2 class="mb-0 pb-0 h5">
-                                        {% if post.is_sticky %}*{% endif %}
+                                        {% if post.is_sticky %}
+                                        <i class="fas fa-thumbtack"></i>
+                                        {% endif %}
                                         {{ post.title }}
                                     </h2>
                                 </a>
