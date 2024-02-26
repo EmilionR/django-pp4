@@ -34,13 +34,13 @@
             <div class="post-body text-white p-0 mb-0">
                 {{ post.body | safe | linebreaks }}
                 {% if post.posted_on != post.updated_on %}
-                <small>Updated on {{ post.updated_on }}</small>
+                <small class="mx-1">Updated on {{ post.updated_on }}</small>
                 {% endif %}
             </div>
         </div>
     </div>
     <hr>
-    <div class="d-flex flex-row gap-1">
+    <div class="d-flex flex-row gap-1 mx-1">
         <!-- Likes and Comments -->
         <button class="like-btn" data-post-id="{{ post.id }}" data-content-type="post">
             <!-- If user has liked, display filled heart, else display empty heart -->
@@ -74,7 +74,7 @@
     <div class="row" id="posting-form">
         <div class="col card mb-3 mt-3 bg-dark">
             <div class="card-body">
-                <button id="close-form" onclick="closeForm()" class="text-white h3">X</button>
+                <button id="close-form" onclick="closeForm()" class="btn btn-primary btn-lg">X</button>
                 {% if user.is_authenticated %}
                 <h4 class="text-white">Post a comment <span class="h6 text-fade">as {{ user.username }}</span></h4>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
@@ -124,13 +124,13 @@
                         </div>
                         <div class="mb-1 text-white" id="comment{{ comment.id }}">
                             {% if comment.posted_on != comment.updated_on %}
-                            <small class="mx-2">Updated on {{ comment.updated_on }}</small>
+                            <p><small class="mx-1 text-fade">Updated on {{ comment.updated_on }}</small></p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
                 <hr>
-                <div class="d-flex flex-row gap-1 px-3 pb-1">
+                <div class="d-flex flex-row gap-1 px-1 pb-1">
                     <!-- Likes -->
                     <strong class="text-fade">
                         <button class="like-btn" data-post-id="{{ comment.id }}" data-content-type="comment">
@@ -145,7 +145,6 @@
                     </strong>
                     <!-- Edit / delete -->
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
-
                     <a class="comment-control" comment_id="{{ comment.id }}"
                         href="{% url 'edit_comment' comment.pk %}">Edit</a>
                     <button class="btn-delete comment-control" entry_type="comment"
