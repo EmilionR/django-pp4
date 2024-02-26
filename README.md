@@ -1,6 +1,6 @@
 # FOOROOM
 
-![Project-image]()
+![Project-image](documentation/post-detail.png)
 
 Fooroom is a forum site that aims to strike a happy middle ground between the modern format of Reddit and the sleek form and functionality of traditional bulletin board sites from decades past. Ease of use and no distractions make the foundation of this app's design philosophy.
 
@@ -56,24 +56,24 @@ The site has two pages, one for the main menu and one for the game itself.
 ### Existing Features
 
 #### Home Page:
-![Home page](#)
+![Home page](documentation/index.png)
 
 The home page displays a list of posts sorted by recent activity. Each post shows the avatar of the original poster along with information about when the post was posted, how many likes and comments it has, and when it got its latest comment. Clicking any of the posts opens the corresponding post as a new page. Posts designated as "sticky" are always displayed at the top of the list with a light border and a symbol before the title.
 
 The search bar lets users filter posts to easily find what they're looking for.
 
 #### Post Page:
-![Post page](#)
+![Post page](documentation/post-detail.png)
 
 Here, users can see the full contents of a chosen post along with any comments it has. Comments are sorted from oldest to newest in descending order. Under the main content of each post, there's a like button with its associated counter. To the right of it, there are buttons for editing and deleting the post. Given an authenticated user, the buttons appear to give the user full CRUD capabilities. Any user assigned as staff or administrator also gets these controls for all posts and not just their own.
 
 #### Profile Page:
-![Profile page](#)
+![Profile page](documentation/profile.png)
 
 On the profile page, an authenticated user can write a presentation and upload a profile picture. There's also a button for deleting the account. Users can also see a list of posts and comments made by the associated user, each one linking to its origin.
 
 #### Register/Login Page:
-![Login page](#)
+![Login page](documentation/login.png)
 
 The pages for account registration and user authentication are kept simple and clean. New users can sign up using a username, with email registration kept optional for a better user experience.
 
@@ -175,19 +175,19 @@ Before building the site, I made wireframes for all the main sites. I added a po
 <details>
 <summary>Post list wireframe</summary>
 
-![Wireframe](documentation/post-list.png)
+![Wireframe](documentation/wf-post-list.png)
 </details>
 
 <details>
 <summary>Post detail (thread) wireframe</summary>
 
-![Wireframe](documentation/thread-view.png)
+![Wireframe](documentation/wf-thread-view.png)
 </details>
 
 <details>
 <summary>Profile page wireframe</summary>
 
-![Wireframe](documentation/profile-page.png)
+![Wireframe](documentation/wf-profile-page.png)
 </details>
 
 ### Accessibility
@@ -315,7 +315,7 @@ __Connect the repository__
 
 Once your Heroku settings and GitHub repository are up to date, it's time to connect the two.
 
-* Go to the Deploy tab of your heroku app.
+* Go to the Deploy tab of your Heroku app.
 * Find the "Deployment method" section and click GitHub.
 * Type in the name of your repository to search for it
 * Click 'Connect' to connect the repository

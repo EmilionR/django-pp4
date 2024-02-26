@@ -9,8 +9,8 @@
 * [Manual Testing](#manual-testing)
   * [Site Navigation](#site-navigation)
   * [Home Page](#home-page)
-  * [Post Page](#)
-  * [Profile Page](#)
+  * [Post Page](#post-page)
+  * [Profile Page](#profile-page)
   * [Django All Auth Pages](#django-all-auth-pages)
 
 [Back to README](README.md)
@@ -151,7 +151,7 @@ __Device Testing__
 |  |  |  |  |
 |  |  |  |  |
 
-### Post Detail
+### Post Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
 |  |  |  |  |
