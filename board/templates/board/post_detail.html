@@ -42,7 +42,7 @@
     <hr>
     <div class="d-flex flex-row gap-1 mx-1">
         <!-- Likes and Comments -->
-        <button name="Like" class="like-btn" data-post-id="{{ post.id }}" data-content-type="post">
+        <button aria-label="Like" class="like-btn" data-post-id="{{ post.id }}" data-content-type="post">
             <!-- If user has liked, display filled heart, else display empty heart -->
             {% if liked_post %}
             <i class="fas fa-heart"></i>
@@ -58,7 +58,8 @@
         <!-- Edit / delete -->
         {% if user.is_authenticated and post.author == user or user.is_staff %}
         <a class="comment-control" post_id="{{ post.id }}" href="{% url 'edit_post' post.pk %}">Edit</a>
-        <button class="btn-delete comment-control" entry_type="post" entry_id="{{ post.id }}">Delete</button>
+        <button class="btn-delete comment-control" entry_type="post" entry_id="{{ post.id }}"
+            aria-label="Delete">Delete</button>
         {% endif %}
     </div>
 </div>
@@ -134,7 +135,8 @@
                 <div class="d-flex flex-row gap-1 px-1 pb-1">
                     <!-- Likes -->
                     <strong class="text-fade">
-                        <button class="like-btn" name="Like" data-post-id="{{ comment.id }}" data-content-type="comment">
+                        <button class="like-btn" aria-label="Like" data-post-id="{{ comment.id }}"
+                            data-content-type="comment">
                             <!-- If user has liked, display filled heart, else display empty heart -->
                             {% if comment.liked_by_user %}
                             <i class="fas fa-heart"></i>
@@ -148,7 +150,7 @@
                     {% if user.is_authenticated and comment.author == user or user.is_staff %}
                     <a class="comment-control" comment_id="{{ comment.id }}"
                         href="{% url 'edit_comment' comment.pk %}">Edit</a>
-                    <button name="Delete" class="btn-delete comment-control" entry_type="comment"
+                    <button aria-label="Delete" class="btn-delete comment-control" entry_type="comment"
                         entry_id="{{ comment.id }}">Delete</button>
                     {% endif %}
                 </div>
@@ -174,7 +176,7 @@
             <div class="modal-footer">
                 <form id="deleteConfirm" method="post">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                    aria-label="Close">Close</button>
+                        aria-label="Close">Close</button>
                     <button type="submit" class="btn
           btn-danger" aria-label="Confirm delete">Delete</button>
                     {% csrf_token %}
