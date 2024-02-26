@@ -8,18 +8,18 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-8 mt-3 mx-auto text-center">
             <h3  class="text-white">{% trans "Sign In" %}</h3>
 
-            <p class="text-white">{% blocktrans %}Welcome back to FOOroom. Enter your username and password below to log in and post. If
+            <p class="rounded p-3 text-white bg-dark">{% blocktrans %}Welcome back to FOOroom. Enter your username and password below to log in and post. If
                 you
                 have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
                 first.{% endblocktrans %}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-3 mx-auto text-center">
             <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
                 {{ form.as_p }}
