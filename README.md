@@ -1,6 +1,6 @@
 # FOOROOM
 
-![Project-image](documentation/post-detail.png)
+![Project-image](documentation/responsive.png)
 
 Fooroom is a forum site that aims to strike a happy middle ground between the modern format of Reddit and the sleek form and functionality of traditional bulletin board sites from decades past. Ease of use and no distractions make the foundation of this app's design philosophy.
 
