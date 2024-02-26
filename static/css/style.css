@@ -275,6 +275,18 @@ label {
     color: var(--clr-white);
 }
 
+/*------------------------------------------ Footer styling */
+
+.footer-link {
+    color: var(--clr-white) !important;
+    padding: 6px;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+    color: var(--clr-light) !important;
+}
+
 /*----------------------------------------- Utility classes */
 
 

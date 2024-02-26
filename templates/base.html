@@ -100,10 +100,22 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-dark">
-        {% block copyright %}
-        <p class="text-center text-white">© Emil Jädersten {% now "Y" %}</p>
-        {% endblock %}
+    <footer class="footer mt-auto">
+        <div class="row pt-2 px-4 bg-dark d-flex justify-content-between">
+            <div class="col-sm-6 d-flex nowrap justify-content-center justify-content-sm-start">
+                <a href="https://github.com/EmilionR?tab=repositories" target="_blank" class="footer-link"
+                    aria-label="Visit my GitHub in a new tab">
+                    <i class="fab fa-github h3"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/emil-jadersten/" target="_blank" class="footer-link"
+                    aria-label="Visit my LinkedIn in a new tab">
+                    <i class="fab fa-linkedin h3"></i>
+                </a>
+            </div>
+            <div class="col-sm-6 text-nowrap text-center text-sm-end align-self-center">
+                <p class="text-white mx-4">© Emil Jädersten {% now "Y" %}</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
