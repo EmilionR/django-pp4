@@ -13,6 +13,8 @@
   * [Profile Page](#)
   * [Django All Auth Pages](#django-all-auth-pages)
 
+[Back to README](README.md)
+
 ## User Story Testing
 
 ### EPIC | User Profile
@@ -164,3 +166,5 @@ __Device Testing__
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
+
+[Back to README](README.md)

@@ -359,6 +359,7 @@ During development, I came across a multitude of bugs. With some debugging, I go
 * Comments sometimes loaded inside one another, creating a staircase effect. I found the quirk in the template logic that prevented a certain closing div tag from rendering under certain circumstances.
 * The "Delete profile" button incorrectly appeared to any authenticated user viewing another profile (but did not allow deletion of other profiles). With a quick change to the view and template, it no longer appears.
 * Certain forms would re-send their requests when refreshing the page. I added additional checks to the requests to make sure they cannot re-send form data.
+* At one point, the navbar toggler became unresponsive under certain circumstances. I found a bootstrap tag that I had placed in the wrong place and moved it to the right place, and the navbar became fully functional again.
 
 ### Unfixed Bugs
 
