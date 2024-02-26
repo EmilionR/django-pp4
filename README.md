@@ -30,7 +30,7 @@ Users can post, discuss, and interact without any unnecessary distractions.
   * [Color Scheme](#Color-Scheme)
   * [Typography](#Typography)
   * [Images](#Images)
-  * [Wireframe](#wireframe)
+  * [Wireframes](#wireframes)
   * [Accessibility](#Accessibility)
   * [Agile Methodology](#agile-methodology)
   * [Data Model](#data-model)
@@ -174,22 +174,25 @@ Before building the site, I made wireframes for all the main sites. I added a po
 
 <details>
 <summary>Post list wireframe</summary>
+
 ![Wireframe](documentation/post-list.png)
 </details>
 
 <details>
 <summary>Post detail (thread) wireframe</summary>
+
 ![Wireframe](documentation/thread-view.png)
 </details>
 
 <details>
 <summary>Profile page wireframe</summary>
+
 ![Wireframe](documentation/profile-page.png)
 </details>
 
 ### Accessibility
 
-I ensure high accessibility by using high contrast design across the entire site. I have also used ARIA features such as the aria-label and aria-hidden HTML tags to help screen readers perform well. I verified the accessibility with Lighthouse, WAVE, and Internet Disability Simulator. 
+I ensure high accessibility by using high-contrast design across the entire site. I have also used ARIA features such as the aria-label and aria-hidden HTML tags to help screen readers perform well. I verified the accessibility with Lighthouse, WAVE, and Internet Disability Simulator. 
 
 ### Agile Methodology
 
@@ -212,6 +215,7 @@ The models for posts and comments are there to let users create content. Each ti
 
 <details>
 <summary>Old data model</summary>
+
 ![Old data model](documentation/forum-erd.png)
 </details>
 
@@ -303,7 +307,7 @@ __Project Settings:__
 It's important that the environment variables and settings in the django project are compatible with the settings on heroku. These are the steps to ensure a proper setup.
 
 * Include ```https://<your_app_name>.herokuapp.com``` in the ALLOWED_HOSTS and CSRF_TRUSTED_ORIGINS lists inside the settings.py file.
-* Make sure that the environment variables (DATABASE_URL, SECRET_KEY, and CLOUDINARY_URL) are correctly set ```to os.environ.get("<variable_name>")```
+* Make sure that the environment variables (DATABASE_URL, SECRET_KEY, and CLOUDINARY_URL) are correctly set to ```os.environ.get("<variable_name>")```
 * If making changes to static files or apps, make sure to run collectstatic or migrate as needed.
 * Commit and push to the repository.
 
@@ -380,8 +384,6 @@ https://docs.djangoproject.com/en/5.0/ref/models/options/
 Signals used for automatically creating a profile when a new user is created and updating post activity when new comments are posted
 https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/
-
-Phind for help with the post form and edit model
 
 For cloudinary and profile image form
 https://cloudinary.com/blog/managing-media-files-in-django

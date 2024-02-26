@@ -62,6 +62,7 @@ All Python files were run validated with pep8 and cleaned until no errors were f
 
 <details>
 <summary>Python validation results</summary>
+
 ![Python validation](documentation/pep8.png)
 </details>
 
@@ -71,6 +72,7 @@ All JavaScript files were validated with jshint and return no errors.
 
 <details>
 <summary>JavaScript validation results</summary>
+
 ![JavaScript validation](documentation/jshint.png)
 </details>
 
