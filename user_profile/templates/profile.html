@@ -19,7 +19,7 @@
             <!-- "About me" section -->
             <div id="about">
                 <small>Info</small>
-                <p>{{ profile.about | safe | linebreaks }}</p>
+                {{ profile.about | safe }}
                 {% if profile.user == user %}
                 <!-- Edit and delete profile -->
                 <button class="btn btn-primary px-4 mx-auto" onclick="editAbout()">
@@ -55,7 +55,7 @@
                     <div class="card bg-dark mb-1">
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title | safe }}</h5>
-                            <p class="card-text">{{ post.body | safe | linebreaks }}</p>
+                            {{ post.body | safe | linebreaks }}
                         </div>
                     </div>
                 </a>

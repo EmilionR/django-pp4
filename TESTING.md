@@ -80,7 +80,21 @@ All JavaScript files were validated with jshint and return no errors.
 
 ### HTML
 
+I validated my HTML pages using the W3 Nu HTML Checker. You can check the results for each page below.
+While the test for the profile page warns about some errors, these are caused by a clash between Summernote and the validator.
+Similarly, the signup page warns about some tags left by the form rendered from django.allauth
 
+[Home page](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2F)
+
+[Post page](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Fwhat-song-is-this%2F)
+
+[Profile](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Fprofile%2FGrandmaster%2F)
+
+[Signup page](https://fooroom-9cc630806337.herokuapp.com/accounts/signup/)
+
+[Login](https://fooroom-9cc630806337.herokuapp.com/accounts/login/)
+
+[Logout](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2F)
 
 ### CSS
 

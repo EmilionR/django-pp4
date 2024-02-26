@@ -123,7 +123,7 @@
                         <div class="text-white post-body" id="comment{{ comment.id }}">
                             {{ comment.body | safe | linebreaks}}
                         </div>
-                        <div class="mb-1 text-white" id="comment{{ comment.id }}">
+                        <div class="mb-1 text-white">
                             {% if comment.posted_on != comment.updated_on %}
                             <p><small class="mx-1 text-fade">Updated on {{ comment.updated_on }}</small></p>
                             {% endif %}
