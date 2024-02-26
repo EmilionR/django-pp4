@@ -14,7 +14,7 @@
                 {% static 'images/nobody.jpg' %}
                 {% else %}
                 {{ post.author.profile.avatar.url }}
-                {% endif %}" alt="{{ post.author }}'s avatar." class="avatar text-fade mx-2" width="64">
+                {% endif %}" alt="{{ post.author }}'s avatar." class="avatar text-fade mx-2" width="64" height="64">
             </a>
             <!-- Title, author, time of post -->
             <div class="mx-3">
@@ -106,7 +106,8 @@
                             {% static 'images/nobody.jpg' %}
                             {% else %}
                             {{ comment.author.profile.avatar.url }}
-                            {% endif %}" alt="{{ comment.author }}'s avatar." class="avatar text-fade mx-1" width="64">
+                            {% endif %}" alt="{{ comment.author }}'s avatar." class="avatar text-fade mx-1" width="64"
+                                height="64">
                         </a>
                     </div>
                     <div class="col-9 col-sm-10 col-lg-11 px-3 px-lg-5">
@@ -163,7 +164,8 @@
         <div class="modal-content text-white bg-dark">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you want to delete your comment?
