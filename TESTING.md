@@ -18,6 +18,7 @@
   * [Profile Page](#profile-page)
   * [Edit Profile Form](#edit-profile-form)
   * [Django All Auth Pages](#django-all-auth-pages)
+  * [Error Pages](#error-pages)
 
 [Back to README](README.md)
 
@@ -329,5 +330,24 @@ __Device Testing__
 | Submit Button | Hover/Focus | Indicate focus | Pass |
 | Submit Button | Click | Validate form fields and update one or both if valid | Pass |
 | Submit Button | Click | Submit the form and add update the profile in the database | Pass |
+
+### Django AllAuth Pages
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
+| Signup Form | Display | Display all relevant fields and labels | Pass |
+| Signup Form | Display | Notify users about any invalid or forgotten fields | Pass |
+| 'Sign up' Button | Click | If all inputs are valid, create a new user and profile | Pass |
+| Login Form | Display | Display inputs for username and password only | Pass |
+| 'Sign in' Button | Click | If credentials are valid, sign the user in | Pass |
+| Signout Confirmation | Display | Ask the user to confirm loggin out | Pass |
+| 'Sign out' Button | Display | Logs the user out | Pass |
+
+### Error Pages
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
+| 404 Page | Display | If user tries to access a non-existent page, display 404 page | Pass |
+| 404 Page | Display | Display 404 error message and a button to return to the home page | Pass |
+| 500 Page | Display | If encounters a server error, display 500 page | Pass |
+| 500 Page | Display | Display 500 error message and a button to return to the home page | Pass |
 
 [Back to README](README.md)
