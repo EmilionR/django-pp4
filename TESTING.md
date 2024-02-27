@@ -125,6 +125,7 @@ __Desktop__
 | Logout       |         100 |           100 |            100 | 100 |
 | Register     |         100 |            94 |            100 | 100 |
 
+
 __Mobile__
 
 | Page         | Performance | Accessibility | Best Practices | SEO |
