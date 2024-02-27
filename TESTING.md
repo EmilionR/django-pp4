@@ -205,7 +205,7 @@ __Device Testing__
 | Close Button | Display | Hang in the top-right corner | Pass |
 | Close Button | Hover/Focus | Indicate focus | Pass |
 | Close Button | Click | Close the Post form | Pass |
-| Submmit Button | Hover/Focus | Indicate focus | Pass |
+| Submit Button | Hover/Focus | Indicate focus | Pass |
 | Submit Button | Click | Submit the form and add post to database | Pass |
 
 ### Post Detail
@@ -283,17 +283,37 @@ __Device Testing__
 ### Profile Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
+| Heading | Display | Display username | Pass |
+| Heading | Display | Display admin status if signed in as superuser or staff | Pass |
+| Profile picture | Display | Display placeholder image if no image has been uploaded | Pass |
+| Profile picture | Display | Display the user's latest uploaded image | Pass |
+| Info Section | Display | Display user-defined information | Pass |
+| 'Edit Profile' Button | Display | Display if signed in as profile owner | Pass |
+| 'Edit Profile' Button | Hover/Focus | Indicate focus | Pass |
+| 'Edit Profile' Button | Click | Open profile editing form | Pass |
+| 'Delete Account' Button | Display | Display if signed in as profile owner | Pass |
+| 'Delete Account' Button | Hover/Focus | Indicate focus | Pass |
+| 'Delete Account' Button | Click | Delete the account | Pass |
+| Post List | Display | Display list of posts by the associated user in container | Pass |
+| Comment List | Display | Display list of comments by the associated user in container | Pass |
+| List Containers | Display | Display side by side on large screens, stacked on smaller screens | Pass |
+| List Entry | Display | Display the text body | Pass |
+| List Entry | Hover/Focus | Indicate focus | Pass |
+| List Entry | Click | Open the corresponding post | Pass |
+| Post List Entry | Display  | Display post title | Pass |
+| Comment List Entry | Display  | Display post title and author | Pass |
+
+### Edit Profile Form
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
+| Image Uploader | Display | Display a message about maximum file size | Pass |
+| Image Uploader | Click | Users can upload an image from their computer | Pass |
+| Image Uploader | Click | Images larger than 0.5mb are rejected | Pass |
+| About Field | Editor | Display Summernote editor with customized toolbar | Pass |
+| Cancel Button | Hover/Focus | Indicate focus | Pass |
+| Cancel Button | Click | Close the Comment form | Pass |
+| Submit Button | Hover/Focus | Indicate focus | Pass |
+| Submit Button | Click | Validate form fields and update one or both if valid | Pass |
+| Submit Button | Click | Submit the form and add update the profile in the database | Pass |
 
 [Back to README](README.md)
