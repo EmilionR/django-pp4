@@ -6,6 +6,7 @@
   * [HTML](#html)
   * [CSS](#css)
   * [Lighthouse](#lighthouse)
+  * [Custom Automated Testing](#custom-automated-testing)
 * [Manual Testing](#manual-testing)
   * [Site Navigation](#site-navigation)
   * [Home Page](#home-page)
@@ -129,6 +130,13 @@ __Mobile__
 | Logout       |          97 |           100 |            100 | 100 |
 | Register     |          97 |            94 |            100 | 100 |
 
+
+### Custom Automated Testing
+
+In addition to the various validators and automated tests above, I created my own tests to test my python code.
+Using Django's testing features, I created 27 tests for the various models, views, and forms used across the apps that make up the project. I then used these tests to iron out bugs and oversights. For example, my tests check whether the search function returns a properly sorted list and whether uploaded images meet the filesize restrictions. All tests now pass consistently.
+
+These tests work by setting up a testing environment and creating mock data to test the functions and features of the project. That lets me do rapid and repeated tests without manual input. And since it's done in a virtual testing environment that is destroyed after each test run, I don't have to clean out junk data from the actual database after testing.
 
 ## Manual Testing
 
