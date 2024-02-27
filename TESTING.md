@@ -114,7 +114,7 @@ I validated my CSS with the Jigsaw CSS validator and it came back without any er
 I used Lighthouse to test all pages. While the scores are not perfect, the main culprit for this is found in the widgets and frameworks used. There wasn't much I could do to abate this issue within the scope of the project. Loading images from cloudinary is quite slow, bootstrap loads unneccessary data, summernote has some deprecated code that isn't fully compliant with today's best practices.
 Overall, the site still scores approximately on par with similar sites such as Reddit.
 
-__Desktop__
+#### Desktop
 
 | Page         | Performance | Accessibility | Best Practices | SEO |
 |--------------|-------------|---------------|----------------|-----|
@@ -126,7 +126,7 @@ __Desktop__
 | Register     |         100 |            94 |            100 | 100 |
 
 
-__Mobile__
+#### Mobile
 
 | Page         | Performance | Accessibility | Best Practices | SEO |
 |--------------|-------------|---------------|----------------|-----|
