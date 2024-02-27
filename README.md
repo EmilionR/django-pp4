@@ -45,7 +45,6 @@ Users can post, discuss, and interact without any unnecessary distractions.
   * [Unfixed Bugs](#unfixed-bugs)
   
 * [Credits](#Credits)
-  * [Content](#Content)
   * [Media](#Media)
   * [Tutorials & Code Used](#tutorials--code-used)
 
@@ -259,7 +258,7 @@ Figma - Wireframing
 
 Lucidchart - ERD design
 
-Am I Responsive - For testing how the site looks on different devices.
+Multi Device Webiste Mockup Generator - For testing how the site looks on different devices.
 
 WAVE Evaluation Tool - To check accessibility.
 
