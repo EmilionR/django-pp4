@@ -196,6 +196,8 @@ __Device Testing__
 | 'New Post' Button | Click | Open post form | Pass |
 
 ### Post Form
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
 | Content | Display | Display "You must log in" message to unauthenticated users | Pass |
 | Content | Display | Display heading and two input fields | Pass |
 | Title Field | Input | Limit input length | Pass |
@@ -206,17 +208,89 @@ __Device Testing__
 | Submmit Button | Hover/Focus | Indicate focus | Pass |
 | Submit Button | Click | Submit the form and add post to database | Pass |
 
-### Post Page
+### Post Detail
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
-|  |  |  | Pass |
+| Post | Display | Post displays title, author, and time of posting | Pass |
+| Post | Display | Post displays likes, comments, and latest activity | Pass |
+| Post Links | Hover/Focus | Indicate focus | Pass |
+| Title Link | Click | Open post detail page | Pass |
+| Author Link | Click | Open the associated profile page | Pass |
+| Avatar | Display | Avatars display on screens above a certain size | Pass |
+| Avatar | Click | Clicking an avatar opens the associated profile page | Pass |
+| Body | Display | Display post body with proper formatting | Pass |
+| 'Updated' Message | Display | If post has been edited, display an update message with a timestamp | Pass |
+| Like Button | Display | Display as heart icon | Pass |
+| Like Button | Hover/Focus | Indicate focus | Pass |
+| Like Button | Click (Authenticated) | Like/unlike the post and increment/decrement like count | Pass |
+| Like Button | Click (Unauthenticated) | Do nothing | Pass |
+| Like Counter | Display | Display the correct number of likes received by the post | Pass |
+| Comment Counter | Display | Display the correct number of comments on the post | Pass |
+| Edit Button | Display |  Display if logged in as the author of the post | Pass |
+| Edit Button | Display |  Display if logged in as superuser or staff | Pass |
+| Edit Button | Click | Open editing page | Pass |
+| Delete Button | Display |  Display if logged in as the author of the post | Pass |
+| Delete Button | Display |  Display if logged in as superuser or staff | Pass |
+| Delete Button | Click | Delete the post | Pass |
+| Comment Button | Display | Display between post and comments | Pass |
+| Comment Button | Hover/Focus | Indicate focus | Pass |
+| Comment Button | Click | Open comment form | Pass |
+
+### Comment Form
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
+| Content | Display | Display "You must log in" message to unauthenticated users | Pass |
+| Content | Display | Display heading and input field | Pass |
+| Body Field | Editor | Display Summernote editor with customized toolbar | Pass |
+| Close Button | Display | Hang in the top-right corner | Pass |
+| Close Button | Hover/Focus | Indicate focus | Pass |
+| Close Button | Click | Close the Comment form | Pass |
+| Submmit Button | Hover/Focus | Indicate focus | Pass |
+| Submit Button | Click | Submit the form and add comment to database | Pass |
+
+### Comment
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
+| Comments | Display | Display list of comments below post | Pass |
+| Sticky Comment | Display | Sticky comments display at the top, below the post | Pass |
+| Comment | Display | Comment displays title, author, and time of posting | Pass |
+| Comment | Display | Comment displays likes, comments, and latest activity | Pass |
+| Comment Links | Hover/Focus | Indicate focus | Pass |
+| Author Link | Click | Open the associated profile page | Pass |
+| Avatar | Display | Avatars display on screens above a certain size | Pass |
+| Avatar | Click | Clicking an avatar opens the associated profile page | Pass |
+| Body | Display | Display comment body with proper formatting | Pass |
+| 'Updated' Message | Display | If comment has been edited, display an update message with a timestamp | Pass |
+| Like Button | Display | Display as heart icon | Pass |
+| Like Button | Hover/Focus | Indicate focus | Pass |
+| Like Button | Click (Authenticated) | Like/unlike the comment and increment/decrement like count | Pass |
+| Like Button | Click (Unauthenticated) | Do nothing | Pass |
+| Like Counter | Display | Display the correct number of likes received by the comment | Pass |
+| Edit Button | Display |  Display if logged in as the author of the comment | Pass |
+| Edit Button | Display |  Display if logged in as superuser or staff | Pass |
+| Edit Button | Click | Open editing page | Pass |
+| Delete Button | Display |  Display if logged in as the author of the comment | Pass |
+| Delete Button | Display |  Display if logged in as superuser or staff | Pass |
+| Delete Button | Click | Delete the comment | Pass |
+
+# Editing Page
+| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| --- | --- | --- | --- |
+| Body Field | Editor | Display Summernote editor with customized toolbar | Pass |
+| Submmit Button | Hover/Focus | Indicate focus | Pass |
+| Submit Button | Click | Submit the form and update the post in the database | Pass |
 
 ### Profile Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
 |  |  |  | Pass |
 |  |  |  | Pass |
 |  |  |  | Pass |
