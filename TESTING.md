@@ -10,14 +10,14 @@
 * [Manual Testing](#manual-testing)
   * [Site Navigation](#site-navigation)
   * [Home Page](#home-page)
+    * [Post Form](#post-form)
   * [Post Detail](#post-detail)
-  * [Post Form](#post-form)
-  * [Comment Form](#comment-form)
-  * [Comment](#comment)
+    * [Comment Form](#comment-form)
+    * [Comment](#comment)
   * [Editing Page](#editing-page)
   * [Profile Page](#profile-page)
-  * [Edit Profile Form](#edit-profile-form)
-  * [Django All Auth Pages](#django-all-auth-pages)
+    * [Edit Profile Form](#edit-profile-form)
+  * [Django AllAuth Pages](#django-allauth-pages)
   * [Error Pages](#error-pages)
 
 [Back to README](README.md)
@@ -107,7 +107,7 @@ Similarly, the signup page warns about some tags left by the form rendered from 
 
 I validated my CSS with the Jigsaw CSS validator and it came back without any errors. When validating by url, some minor bootstrap-specific warnings may appear, but that's par for the course when using bootstrap. These warnings don't appear when uploading the css file or pasting the page source.
 
-[CSS results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Fwhat-song-is-this%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=sv)
+[CSS results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Fwhat-song-is-this%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&)
 
 ### Lighthouse
 

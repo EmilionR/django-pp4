@@ -22,12 +22,8 @@ Users can post, discuss, and interact without any unnecessary distractions.
 * [User Experience](#User-Experience)
   * [User Stories](#User-Stories)
 
-* [Deployment](#Deployment)
-* [Heroku](#heroku)
-* [GitHub](#github)
-
 * [Design](#Design)
-  * [Color Scheme](#Color-Scheme)
+  * [Color Scheme](#color-scheme)
   * [Typography](#Typography)
   * [Images](#Images)
   * [Wireframes](#wireframes)
@@ -37,8 +33,12 @@ Users can post, discuss, and interact without any unnecessary distractions.
 
 * [Technologies Used](#Technologies-Used)
   * [Languages Used](#Languages-Used)
-  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+  * [Frameworks, Libraries & Programs Used](#frameworks--libraries-used)
   * [Other Technologies Used](#other-technologies-used)
+
+* [Deployment](#Deployment)
+  * [Heroku](#heroku)
+  * [GitHub](#github)
 
 * [Testing](#Testing)
   * [Solved Bugs](#solved-bugs)
@@ -153,7 +153,7 @@ EPIC - User profile
 
 ## Design
 
-### Color palette
+### Color Scheme
 
 ![Color Palette](documentation/color-palette.png)
 
@@ -380,28 +380,18 @@ Mouse - [Photo by Joshua J. Cottenhttps](https://unsplash.com/photos/a-rat-sitti
 
 ### Tutorials & Code Used
 
-Unique together, abstract classes, and more
-https://docs.djangoproject.com/en/5.0/ref/models/options/
+Unique together, abstract classes, and more - [Django Docs](https://docs.djangoproject.com/en/5.0/ref/models/options/)
 
-Signals used for automatically creating a profile when a new user is created and updating post activity when new comments are posted
-https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
-https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/
+Signals used for automatically creating a profile when a new user is created and updating post activity when new comments are posted [SimpleIsBetterThanComplex](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone) and [GeeksForGeeks](https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/)
 
-For cloudinary and profile image form
-https://cloudinary.com/blog/managing-media-files-in-django
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype
+For cloudinary and profile image form - [Cloudinary Docs](https://cloudinary.com/blog/managing-media-files-in-django) and [Mozilla Developer](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype)
 
-Shortening the datetime format
-https://docs.python.org/3/library/datetime.html
+Shortening the datetime format - [Python Docs](https://docs.python.org/3/library/datetime.html)
 
-CSRF without forms for the 'like' button AJAX code
-https://stackoverflow.com/questions/7827079/django-csrf-token-without-forms
+CSRF without forms for the 'like' button AJAX code - [StackOverflow](https://stackoverflow.com/questions/7827079/django-csrf-token-without-forms)
 
-Queryset manipulation with Django Q model
-https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
+Queryset manipulation with Django Q model - [Django Docs](https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects)
 
-Scrollbar styling
-https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+Scrollbar styling - [W3schools](https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp)
 
-Summernote form integration
-https://github.com/summernote/django-summernote?tab=readme-ov-file#form
+Summernote form integration - [Django-Summernote Readme](https://github.com/summernote/django-summernote?tab=readme-ov-file#form)
