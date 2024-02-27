@@ -165,7 +165,7 @@ __Device Testing__
 
 ### Site Navigation
 
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Navbar Logo | Hover/Focus | Indicate focus | Pass |
 | Navbar Logo | Click | Redirect to home | Pass |
@@ -189,7 +189,7 @@ __Device Testing__
 | Footer Links | Click | Open link in new page | Pass |
 
 ### Home Page
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Post list | Display | All posts appear in sorted order | Pass |
 | Post list | Display | Posts move to top when commented | Pass |
@@ -211,7 +211,7 @@ __Device Testing__
 | 'New Post' Button | Click | Open post form | Pass |
 
 ### Post Form
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Content | Display | Display "You must log in" message to unauthenticated users | Pass |
 | Content | Display | Display heading and two input fields | Pass |
@@ -224,7 +224,7 @@ __Device Testing__
 | Submit Button | Click | Submit the form and add post to database | Pass |
 
 ### Post Detail
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Post | Display | Post displays title, author, and time of posting | Pass |
 | Post | Display | Post displays likes, comments, and latest activity | Pass |
@@ -252,7 +252,7 @@ __Device Testing__
 | Comment Button | Click | Open comment form | Pass |
 
 ### Comment Form
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Content | Display | Display "You must log in" message to unauthenticated users | Pass |
 | Content | Display | Display heading and input field | Pass |
@@ -264,7 +264,7 @@ __Device Testing__
 | Submit Button | Click | Submit the form and add comment to database | Pass |
 
 ### Comment
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Comments | Display | Display list of comments below post | Pass |
 | Sticky Comment | Display | Sticky comments display at the top, below the post | Pass |
@@ -289,14 +289,14 @@ __Device Testing__
 | Delete Button | Click | Delete the comment | Pass |
 
 ### Editing Page
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Body Field | Editor | Display Summernote editor with customized toolbar | Pass |
 | Submmit Button | Hover/Focus | Indicate focus | Pass |
 | Submit Button | Click | Submit the form and update the post in the database | Pass |
 
 ### Profile Page
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Heading | Display | Display username | Pass |
 | Heading | Display | Display admin status if signed in as superuser or staff | Pass |
@@ -319,7 +319,7 @@ __Device Testing__
 | Comment List Entry | Display  | Display post title and author | Pass |
 
 ### Edit Profile Form
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Image Uploader | Display | Display a message about maximum file size | Pass |
 | Image Uploader | Click | Users can upload an image from their computer | Pass |
@@ -332,7 +332,7 @@ __Device Testing__
 | Submit Button | Click | Submit the form and add update the profile in the database | Pass |
 
 ### Django AllAuth Pages
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | Signup Form | Display | Display all relevant fields and labels | Pass |
 | Signup Form | Display | Notify users about any invalid or forgotten fields | Pass |
@@ -343,7 +343,7 @@ __Device Testing__
 | 'Sign out' Button | Display | Logs the user out | Pass |
 
 ### Error Pages
-| Feature | Expected Outcome | Testing Performed | Pass/Fail |
+| Feature | Action | Expected Outcome | Pass/Fail |
 | --- | --- | --- | --- |
 | 404 Page | Display | If user tries to access a non-existent page, display 404 page | Pass |
 | 404 Page | Display | Display 404 error message and a button to return to the home page | Pass |
