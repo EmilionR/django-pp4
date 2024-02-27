@@ -152,33 +152,74 @@ __Device Testing__
 
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Navbar Logo | Hover/Focus | Indicate focus | Pass |
+| Navbar Logo | Click | Redirect to home | Pass |
+| Navbar toggler | Display | Visible on small screens only | Pass |
+| Navbar toggler | Click | Opens dropdown with navigation links | Pass |
+| Navbar Links | Display | Links display in header on screens above a certain size | Pass |
+| Profile Link | Display | Only display when user is signed in | Pass |
+| Profile Link | Hover/Focus | Indicate focus | Pass |
+| Profile Link | Click | Open profile page | Pass |
+| Register Link | Display | Only display when user is not signed in | Pass |
+| Register Link | Hover/Focus | Indicate focus | Pass |
+| Register Link | Click | Open signup page | Pass |
+| Log-in Link | Display | Only display when user is not signed in | Pass |
+| Log-in Link | Hover/Focus | Indicate focus | Pass |
+| Log-in Link | Click | Open login page | Pass |
+| Log-out Link | Display | Only display when user is signed in | Pass |
+| Log-out Link | Hover/Focus | Indicate focus | Pass |
+| Log-out Link | Click | Open login page | Pass |
+| Footer Links | Display | Icons for Github and LinkedIn appear | Pass |
+| Footer Links | Hover/Focus | Indicate focus | Pass |
+| Footer Links | Click | Open link in new page | Pass |
 
 ### Home Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Post list | Display | All posts appear in sorted order | Pass |
+| Post list | Display | Posts move to top when commented | Pass |
+| Post list | Display | Sticky posts appear on top with a thumbtack icon | Pass |
+| Post | Display | Post displays title, author, and time of posting | Pass |
+| Post | Display | Post displays likes, comments, and latest activity | Pass |
+| Avatar | Display | Avatars display on screens above a certain size | Pass |
+| Avatar | Click | Clicking an avatar opens the associated profile page | Pass |
+| Post Links | Hover/Focus | Indicate focus | Pass |
+| Title Link | Click | Open post detail page | Pass |
+| Author Link | Click | Open the associated profile page | Pass |
+| Heart Counter | Display | Display the correct number of likes received by the post | Pass |
+| Comment Counter | Display | Display the correct number of comments on the post | Pass |
+| 'Latest' Section | Display | Display the time of the latest comment | Pass |
+| Search Bar | Display | Align self to center on small screens, right on large screens | Pass |
+| Search Bar | Submit | Apply search term and filter posts | Pass |
+| 'New Post' Button | Display | Align self to center on small screens, right on large screens | Pass |
+| 'New Post' Button | Hover/Focus | Indicate focus | Pass |
+| 'New Post' Button | Click | Open post form | Pass |
+
+### Post Form
+| Content | Display | Display "You must log in" message to unauthenticated users | Pass |
+| Content | Display | Display heading and two input fields | Pass |
+| Title Field | Input | Limit input length | Pass |
+| Body Field | Editor | Display Summernote editor with customized toolbar | Pass |
+| Close Button | Display | Hang in the top-right corner | Pass |
+| Close Button | Hover/Focus | Indicate focus | Pass |
+| Close Button | Click | Close the Post form | Pass |
+| Submmit Button | Hover/Focus | Indicate focus | Pass |
+| Submit Button | Click | Submit the form and add post to database | Pass |
 
 ### Post Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
 
 ### Profile Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
+|  |  |  | Pass |
 
 [Back to README](README.md)
