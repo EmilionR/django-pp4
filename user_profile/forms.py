@@ -20,9 +20,8 @@ class ProfileForm(forms.ModelForm):
     def clean_avatar(self):
         file = self.cleaned_data.get('avatar')
         if file:
-            # Assuming 'file' is a CloudinaryResource object
-            resource = cloudinary.api.resource(file.public_id)
+            # Check if the file size is greater than 0.5 MB
             max_size =  524288  #  0.5 MB in bytes
-            if resource['bytes'] > max_size:
+            if file.size > max_size:
                 raise ValidationError(f'File size must be less than {max_size /  1024 /  1024} MB.')
         return file

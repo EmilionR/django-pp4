@@ -129,6 +129,7 @@ __Mobile__
 | Logout       |          97 |           100 |            100 | 100 |
 | Register     |          97 |            94 |            100 | 100 |
 
+
 ## Manual Testing
 
 __Browser Testing__
