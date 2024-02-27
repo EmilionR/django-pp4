@@ -10,8 +10,13 @@
 * [Manual Testing](#manual-testing)
   * [Site Navigation](#site-navigation)
   * [Home Page](#home-page)
-  * [Post Page](#post-page)
+  * [Post Detail](#post-detail)
+  * [Post Form](#post-form)
+  * [Comment Form](#comment-form)
+  * [Comment](#comment)
+  * [Editing Page](#editing-page)
   * [Profile Page](#profile-page)
+  * [Edit Profile Form](#edit-profile-form)
   * [Django All Auth Pages](#django-all-auth-pages)
 
 [Back to README](README.md)
@@ -83,7 +88,7 @@ All JavaScript files were validated with jshint and return no errors.
 
 I validated my HTML pages using the W3 Nu HTML Checker. You can check the results for each page below.
 While the test for the profile page warns about some errors, these are caused by a clash between Summernote and the validator.
-Similarly, the signup page warns about some tags left by the form rendered from django.allauth
+Similarly, the signup page warns about some tags left by the form rendered from django.allauth. 
 
 [Home page](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2F)
 
@@ -91,9 +96,9 @@ Similarly, the signup page warns about some tags left by the form rendered from 
 
 [Profile](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Fprofile%2FGrandmaster%2F)
 
-[Signup page](https://fooroom-9cc630806337.herokuapp.com/accounts/signup/)
+[Signup page](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Faccounts%2Fsignup%2F)
 
-[Login](https://fooroom-9cc630806337.herokuapp.com/accounts/login/)
+[Login](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2Faccounts%2Flogin%2F)
 
 [Logout](https://validator.w3.org/nu/?doc=https%3A%2F%2Ffooroom-9cc630806337.herokuapp.com%2F)
 
@@ -282,7 +287,7 @@ __Device Testing__
 | Delete Button | Display |  Display if logged in as superuser or staff | Pass |
 | Delete Button | Click | Delete the comment | Pass |
 
-# Editing Page
+### Editing Page
 | Feature | Expected Outcome | Testing Performed | Pass/Fail |
 | --- | --- | --- | --- |
 | Body Field | Editor | Display Summernote editor with customized toolbar | Pass |
